@@ -6,8 +6,8 @@
 <meta name="theme-color" content="#09050d"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<meta name="spark-build" content="v75">
-<title>SPARK — Riga • Jūrmala · v75</title>
+<meta name="spark-build" content="v76">
+<title>SPARK — Riga • Jūrmala · v76</title>
 <style>
 :root{--bg:#09050d;--card:#15101c;--card2:#211526;--text:#fff7ff;--muted:#b9aabd;--pink:#ff3d91;--violet:#8b5cf6;--line:#302136;--ok:#40e0a0;--verified:#3897f0;--danger:#ff5f6d}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0%,#3a0e3e 0,#120818 38%,#07040a 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
@@ -650,6 +650,23 @@ async function signed(path){
 async function safeSigned(path){
   try{return await signed(path)}catch(e){console.warn("profile photo unavailable",path,e);signedPhotoCache.delete(path);return ""}
 }
+const chatMediaCache=new Map();
+async function safeChatSigned(path){
+  if(!path)return "";
+  const cached=chatMediaCache.get(path);
+  if(cached && cached.expires>Date.now())return cached.url;
+  try{
+    const {data,error}=await sb.storage.from("chat-media").createSignedUrl(path,3600);
+    if(error)throw error;
+    const url=data?.signedUrl||"";
+    if(url)chatMediaCache.set(path,{url,expires:Date.now()+50*60*1000});
+    return url;
+  }catch(e){
+    console.warn("chat media unavailable",path,e);
+    chatMediaCache.delete(path);
+    return "";
+  }
+}
 async function loadFeed(){
   const minAge=Math.max(18,Math.min(99,parseInt($("minAge")?.value||18,10)||18));
   const maxAge=Math.max(minAge,Math.min(99,parseInt($("maxAge")?.value||99,10)||99));
@@ -695,7 +712,7 @@ async function renderCard(){
   const photoHtml=feedPhotoUrls.length?`<img id="feedPhotoImg" src="${feedPhotoUrls[0]}" alt="" draggable="false">`:`<div style="font-size:70px">✦</div>`;
   const dots=feedPhotoUrls.length>1?`<div class="photo-dots">${feedPhotoUrls.map((_,i)=>`<span class="photo-dot ${i===0?"active":""}"></span>`).join("")}</div>`:"";
   const nav=feedPhotoUrls.length>1?`<div class="photo-nav"><button id="prevPhoto" type="button" aria-label="Previous photo">‹</button><button id="nextPhoto" type="button" aria-label="Next photo">›</button></div>`:"";
-  $('feedCard').innerHTML=`<div class="photo photo-swipe swipe-card" id="feedPhoto"><div class="swipe-badge pass">✕ ${escapeHtml(t("swipePass"))}</div><div class="swipe-badge like">♥ ${escapeHtml(t("swipeLike"))}</div>${photoHtml}${dots}${nav}<div class="photo-overlay">${p.__demo?`<div class="demo-badge">DEMO</div>`:""}<h2>${escapeHtml(p.display_name)} <span class="verified-badge" title="${escapeAttr(t("profileVerified"))}" aria-label="${escapeAttr(t("profileVerified"))}"></span>, ${age(p.date_of_birth)}</h2><div class="meta">${p.city==="jurmala"?"Jūrmala":"Riga"}${p.bio?` · ${escapeHtml(p.bio)}`:""}</div><div class="tags">${(p.interests||[]).slice(0,5).map(x=>`<span class="tag">${escapeHtml(x)}</span>`).join("")}</div></div></div><div class="actions"><button id="pass" class="circle" type="button" title="${escapeAttr(t("swipePass"))}" aria-label="${escapeAttr(t("swipePass"))}">×</button><button id="like" class="circle like" type="button" title="${escapeAttr(t("swipeLike"))}" aria-label="${escapeAttr(t("swipeLike"))}">♥</button></div><div class="safety-actions"><button id="blockUser" class="btn alt small" type="button">🚫 ${escapeHtml(t("blockUser"))}</button><button id="reportUser" class="btn alt small" type="button">⚑ ${escapeHtml(t("reportUser"))}</button></div>`;
+  $('feedCard').innerHTML=`<div class="photo photo-swipe swipe-card" id="feedPhoto"><div class="swipe-badge pass">✕ ${escapeHtml(t("swipePass"))}</div><div class="swipe-badge like">♥ ${escapeHtml(t("swipeLike"))}</div>${photoHtml}${dots}${nav}<div class="photo-overlay">${p.__demo?`<div class="demo-badge">DEMO</div>`:""}<h2>${escapeHtml(p.display_name)} ${p.__demo?"":`<span class="verified-badge" title="${escapeAttr(t("profileVerified"))}" aria-label="${escapeAttr(t("profileVerified"))}"></span>`}, ${age(p.date_of_birth)}</h2><div class="meta">${p.city==="jurmala"?"Jūrmala":"Riga"}${p.bio?` · ${escapeHtml(p.bio)}`:""}</div><div class="tags">${(p.interests||[]).slice(0,5).map(x=>`<span class="tag">${escapeHtml(x)}</span>`).join("")}</div></div></div><div class="actions"><button id="pass" class="circle" type="button" title="${escapeAttr(t("swipePass"))}" aria-label="${escapeAttr(t("swipePass"))}">×</button><button id="like" class="circle like" type="button" title="${escapeAttr(t("swipeLike"))}" aria-label="${escapeAttr(t("swipeLike"))}">♥</button></div><div class="safety-actions"><button id="blockUser" class="btn alt small" type="button">🚫 ${escapeHtml(t("blockUser"))}</button><button id="reportUser" class="btn alt small" type="button">⚑ ${escapeHtml(t("reportUser"))}</button></div>`;
   const feedImg=$("feedPhotoImg");
   if(feedImg && queue[idx]?.__demo){feedImg.addEventListener("error",()=>{feedImg.onerror=null;feedImg.src=demoFallbackUrl(queue[idx]?.display_name);},{once:true});}
   $('pass').onclick=()=>animateCardAction('pass',p); $('like').onclick=()=>animateCardAction('like',p);
@@ -1102,6 +1119,9 @@ async function openChat(mid,name){ currentChatName=name||"";
   currentMatch=mid;
   const {data:match,error:matchError}=await sb.from("matches").select("id,user_a,user_b").eq("id",mid).maybeSingle();
   if(matchError || !match){currentMatch=null;currentChatUser=null;show("matches");showToast(matchError?friendlyError(matchError):t("noMatches"));await loadMatches().catch(()=>{});return}
+  if(match.user_a!==user.id && match.user_b!==user.id){
+    currentMatch=null; currentChatUser=null; show("matches"); showToast(t("noMatches")); await loadMatches().catch(()=>{}); return;
+  }
   const otherId=match.user_a===user.id?match.user_b:match.user_a;
   const {data:other}=await sb.from("profiles").select("id,display_name").eq("id",otherId).maybeSingle();
   currentChatUser=other||{id:otherId,display_name:name};
@@ -1166,10 +1186,9 @@ async function loadMessages(){
   const rows=data||[];
   const photoRows=rows.filter(m=>m.message_type==="photo"&&m.media_path);
   await Promise.all(photoRows.map(async m=>{
-    try{
-      const {data:u}=await sb.storage.from("chat-media").createSignedUrl(m.media_path,3600);
-      if(u?.signedUrl) messageMediaUrls.set(m.id,u.signedUrl);
-    }catch(e){console.warn("message media url",e)}
+    const url=await safeChatSigned(m.media_path);
+    if(url) messageMediaUrls.set(m.id,url);
+    else messageMediaUrls.delete(m.id);
   }));
   const messagesBox=$("messages");
   const distanceFromBottom=messagesBox.scrollHeight-messagesBox.scrollTop-messagesBox.clientHeight;
