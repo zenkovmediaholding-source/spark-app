@@ -6,14 +6,14 @@
 <meta name="theme-color" content="#09050d"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<meta name="spark-build" content="v56-big-qa">
-<title>SPARK — Riga • Jūrmala · v56</title>
+<meta name="spark-build" content="v64">
+<title>SPARK — Riga • Jūrmala · v64</title>
 <style>
 :root{--bg:#09050d;--card:#15101c;--card2:#211526;--text:#fff7ff;--muted:#b9aabd;--pink:#ff3d91;--violet:#8b5cf6;--line:#302136;--ok:#40e0a0;--verified:#3897f0;--danger:#ff5f6d}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0%,#3a0e3e 0,#120818 38%,#07040a 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
 button,input,select,textarea{font:inherit}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #ff6cae;outline-offset:2px}button{cursor:pointer}.app{max-width:520px;margin:auto;min-height:100vh;padding:18px 16px 100px}.brand{font-weight:900;letter-spacing:.14em;font-size:26px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.pill{border:1px solid var(--line);background:#ffffff09;border-radius:999px;padding:8px 12px;color:#ddd}
 .screen{display:none}.screen.active{display:block}.hero{padding:34px 6px 22px}.hero h1{font-size:48px;line-height:.95;margin:0 0 14px}.hero p{color:var(--muted);font-size:17px;line-height:1.5}.gradient{background:linear-gradient(100deg,#ff3d91,#a855f7);-webkit-background-clip:text;background-clip:text;color:transparent}
-.card{background:linear-gradient(145deg,#1b1222,#100b15);border:1px solid var(--line);border-radius:28px;padding:18px;box-shadow:0 20px 60px #0007}.field{margin:12px 0}.field label{display:block;color:var(--muted);font-size:13px;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:#0e0913;color:white;border-radius:15px;padding:13px 14px;outline:none}.field textarea{min-height:90px;resize:vertical}.btn{border:0;border-radius:16px;padding:14px 18px;color:white;font-weight:800;background:linear-gradient(100deg,var(--pink),var(--violet));width:100%;margin-top:8px}.btn:disabled,.circle:disabled{opacity:.45;cursor:not-allowed;filter:saturate(.55)}.btn.alt{background:#ffffff0b;border:1px solid var(--line)}.btn.small{width:auto;padding:10px 14px}.row{display:flex;gap:10px}.row>*{flex:1}.lang{display:flex;gap:8px;margin:10px 0 20px}.lang button{flex:1;border:1px solid var(--line);background:#ffffff08;color:white;border-radius:13px;padding:10px}.lang button.active{background:#ff3d9120;border-color:#ff3d91}.notice{padding:13px 14px;border-radius:16px;background:#ff3d9112;border:1px solid #ff3d9144;color:#f9d7e8;margin:12px 0}.ok{background:#40e0a012;border-color:#40e0a044}.error{background:#ff5f6d12;border-color:#ff5f6d44}.feed-card{position:relative;overflow:hidden;padding:0}.photo{height:58vh;min-height:430px;max-height:650px;background:linear-gradient(135deg,#301631,#100b14);display:flex;align-items:center;justify-content:center;color:#6e5b72}.photo img{width:100%;height:100%;object-fit:cover}.photo-overlay{position:absolute;inset:auto 0 0;padding:70px 22px 22px;background:linear-gradient(transparent,#000d)}.photo-overlay h2{font-size:31px;margin:0 0 5px}.meta{color:#ddd}.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.tag{padding:7px 10px;border-radius:999px;background:#ffffff15;font-size:12px}.actions{display:flex;gap:12px;margin-top:14px}.circle{width:58px;height:58px;border-radius:50%;border:1px solid var(--line);background:#ffffff0b;color:white;font-size:24px}.circle.like{background:linear-gradient(135deg,#ff3d91,#8b5cf6);border:0}.nav{position:fixed;bottom:0;left:0;right:0;background:#0c0710ee;backdrop-filter:blur(18px);border-top:1px solid var(--line);padding:10px max(16px,calc((100vw - 520px)/2));display:flex;justify-content:space-around;z-index:20}.nav button{background:none;border:0;color:#9d8fa3;font-size:12px}.nav button.active{color:white}.chat-list{display:grid;gap:10px}.chat{display:flex;gap:12px;align-items:center;padding:13px;border:1px solid var(--line);background:#ffffff06;border-radius:18px;text-align:left;color:inherit;width:100%}.chat-main{min-width:0;flex:1}.chat-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.chat-preview{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}.chat-meta{display:flex;align-items:center;gap:7px}.chat-time{font-size:11px;color:var(--muted);white-space:nowrap}.unread{min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:linear-gradient(135deg,var(--pink),var(--violet));display:grid;place-items:center;font-size:11px;font-weight:900}.avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#ff3d91,#8b5cf6);display:grid;place-items:center;font-weight:900;overflow:hidden}.avatar img{width:100%;height:100%;object-fit:cover}.messages{height:55vh;overflow:auto;display:flex;flex-direction:column;gap:8px;padding:10px 0}.bubble{max-width:78%;padding:10px 13px;border-radius:17px;background:#ffffff0b;border:1px solid var(--line);align-self:flex-start}.bubble.mine{align-self:flex-end;background:linear-gradient(135deg,#ff3d9133,#8b5cf633);border-color:#ff3d9144}.verified-badge{display:inline-grid;place-items:center;width:19px;height:19px;margin-left:5px;border-radius:50%;background:var(--verified);color:#fff;font-size:12px;font-weight:950;line-height:1;vertical-align:2px;box-shadow:0 0 0 2px #09050d,0 2px 8px #3897f066}.verified-badge::before{content:"✓";transform:translateY(-.5px)}.verified-label{display:inline-flex;align-items:center;gap:5px;color:#cfe9ff}.verified-label .verified-badge{margin-left:0;box-shadow:none}.small{font-size:12px;color:var(--muted)}.safety-actions{display:flex;gap:8px;margin-top:12px}.chat-header{margin-bottom:14px}.chat-title-row{display:flex;align-items:center;gap:10px}.chat-back{flex:0 0 auto!important}.chat-title-wrap{min-width:0;flex:1}.chat-safety-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.chat-action{min-width:0;width:100%;min-height:48px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#211529,#130d18);color:#eee;display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 12px;font-size:13px;font-weight:800;letter-spacing:.01em;transition:transform .16s,border-color .16s,background .16s}.chat-action:hover{border-color:#ffffff2e;background:linear-gradient(145deg,#29192f,#170f1c)}.chat-action:active{transform:translateY(1px) scale(.98)}.chat-action.danger{color:#ffdce9}.chat-action-icon{width:25px;height:25px;display:grid;place-items:center;border-radius:9px;background:#ffffff0b;border:1px solid #ffffff12;font-size:15px;line-height:1}.chat-action.danger .chat-action-icon{background:#ff3d9112;border-color:#ff3d9130}.safety-actions .btn{margin:0}.report-modal{position:fixed;inset:0;background:#050308cc;backdrop-filter:blur(12px);z-index:80;display:grid;place-items:end center;padding:16px}.report-sheet{width:min(520px,100%);background:linear-gradient(145deg,#1b1222,#100b15);border:1px solid var(--line);border-radius:26px;padding:18px;box-shadow:0 30px 80px #000b}.report-reasons{display:grid;gap:8px;margin:12px 0}.report-reasons button{text-align:left;border:1px solid var(--line);background:#ffffff06;color:#fff;border-radius:14px;padding:12px}.report-reasons button.active{border-color:#ff3d91;background:#ff3d9115}.report-details{min-height:80px}.demo-chat{border:1px solid #3897ff66!important;background:linear-gradient(145deg,#111a2a,#0d1018)!important;position:relative}.demo-chat::after{content:"DEMO";position:absolute;right:12px;top:10px;font-size:9px;font-weight:900;letter-spacing:.12em;color:#8fc7ff;border:1px solid #3897ff66;border-radius:999px;padding:4px 7px}.demo-avatar{background:linear-gradient(135deg,#3897ff,#8b5cf6)!important}.demo-note{margin:0 0 12px;padding:10px 12px;border-radius:14px;background:#3897ff12;border:1px solid #3897ff44;color:#cfe9ff;font-size:12px}.chat-profile-avatar{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;flex:0 0 46px;background:linear-gradient(135deg,#3897ff,#8b5cf6);font-weight:900;overflow:hidden;border:1px solid #ffffff18}.chat-profile-avatar img{width:100%;height:100%;object-fit:cover}.chat-status{display:flex;align-items:center;gap:6px;margin-top:2px}.online-dot{width:7px;height:7px;border-radius:50%;background:#40e0a0;box-shadow:0 0 0 3px #40e0a014}.typing{align-self:flex-start;display:inline-flex;gap:4px;align-items:center;padding:8px 11px;border-radius:15px;background:#ffffff08;border:1px solid var(--line);color:var(--muted);font-size:12px}.typing i{width:5px;height:5px;border-radius:50%;background:#b9aabd;animation:typingDot 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}@keyframes typingDot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-2px)}}.chat-date{align-self:center;padding:5px 9px;border-radius:999px;background:#ffffff07;border:1px solid #ffffff0d;color:#8f8195;font-size:10px}.composer{position:sticky;bottom:78px;z-index:5;margin-top:8px;padding:8px 0 2px;background:linear-gradient(#09050d00,#09050df2 20%,#09050d 60%)}.composer-row{display:flex;gap:8px;align-items:center}.composer-input-wrap{flex:1;display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:#110b16;border-radius:18px;padding:5px 6px 5px 12px}.composer-input-wrap input{flex:1;border:0!important;background:transparent!important;padding:9px 2px!important;margin:0!important}.icon-btn{width:38px;height:38px;border:0;border-radius:12px;background:#ffffff08;color:#d9cde0;display:grid;place-items:center}.send-btn{width:44px;height:44px;border-radius:15px;border:0;background:linear-gradient(135deg,var(--pink),var(--violet));color:#fff;font-weight:900}.emoji-panel{display:flex;gap:7px;overflow:auto;padding:8px 2px 2px}.emoji-panel button{border:1px solid var(--line);background:#ffffff06;color:#fff;border-radius:12px;padding:7px 10px}.chat-photo{display:block;max-width:220px;max-height:260px;border-radius:14px;margin-top:7px;object-fit:cover;border:1px solid #ffffff18}.attach-btn{position:relative;overflow:hidden}.attach-btn input{position:absolute;inset:0;opacity:0;cursor:pointer}.demo-reset{margin-top:8px;font-size:11px;color:#8f8195;text-align:center}.demo-reset button{border:0;background:none;color:#9fcfff;padding:0;text-decoration:underline}.hide{display:none!important}.offline-banner{position:fixed;top:calc(8px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:120;width:min(400px,calc(100vw - 24px));padding:11px 14px;border-radius:15px;background:#2a1118ee;border:1px solid #ff5f6d66;box-shadow:0 12px 30px #0008;backdrop-filter:blur(12px);font-size:13px;text-align:center;color:#ffe8ed}.offline-banner.online{background:#10251bee;border-color:#40e0a066;color:#d9ffef}.retry-btn{margin-top:10px!important}
+.card{background:linear-gradient(145deg,#1b1222,#100b15);border:1px solid var(--line);border-radius:28px;padding:18px;box-shadow:0 20px 60px #0007}.field{margin:12px 0}.field label{display:block;color:var(--muted);font-size:13px;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:#0e0913;color:white;border-radius:15px;padding:13px 14px;outline:none}.field textarea{min-height:90px;resize:vertical}.btn{border:0;border-radius:16px;padding:14px 18px;color:white;font-weight:800;background:linear-gradient(100deg,var(--pink),var(--violet));width:100%;margin-top:8px}.btn:disabled,.circle:disabled{opacity:.45;cursor:not-allowed;filter:saturate(.55)}.btn.alt{background:#ffffff0b;border:1px solid var(--line)}.btn.small{width:auto;padding:10px 14px}.row{display:flex;gap:10px}.row>*{flex:1}.lang{display:flex;gap:8px;margin:10px 0 20px}.lang button{flex:1;border:1px solid var(--line);background:#ffffff08;color:white;border-radius:13px;padding:10px}.lang button.active{background:#ff3d9120;border-color:#ff3d91}.notice{padding:13px 14px;border-radius:16px;background:#ff3d9112;border:1px solid #ff3d9144;color:#f9d7e8;margin:12px 0}.ok{background:#40e0a012;border-color:#40e0a044}.error{background:#ff5f6d12;border-color:#ff5f6d44}.feed-card{position:relative;overflow:hidden;padding:0}.photo{height:58vh;min-height:430px;max-height:650px;background:linear-gradient(135deg,#301631,#100b14);display:flex;align-items:center;justify-content:center;color:#6e5b72}.photo img{width:100%;height:100%;object-fit:cover}.photo-overlay{position:absolute;inset:auto 0 0;padding:70px 22px 22px;background:linear-gradient(transparent,#000d)}.photo-overlay h2{font-size:31px;margin:0 0 5px}.meta{color:#ddd}.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.tag{padding:7px 10px;border-radius:999px;background:#ffffff15;font-size:12px}.actions{display:flex;gap:12px;margin-top:14px}.circle{width:58px;height:58px;border-radius:50%;border:1px solid var(--line);background:#ffffff0b;color:white;font-size:24px}.circle.like{background:linear-gradient(135deg,#ff3d91,#8b5cf6);border:0}.nav{position:fixed;bottom:0;left:0;right:0;background:#0c0710ee;backdrop-filter:blur(18px);border-top:1px solid var(--line);padding:10px max(16px,calc((100vw - 520px)/2));display:flex;justify-content:space-around;z-index:20}.nav button{background:none;border:0;color:#9d8fa3;font-size:12px}.nav button.active{color:white}.chat-list{display:grid;gap:10px}.chat{display:flex;gap:12px;align-items:center;padding:13px;border:1px solid var(--line);background:#ffffff06;border-radius:18px;text-align:left;color:inherit;width:100%}.chat-main{min-width:0;flex:1}.chat-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.chat-preview{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}.chat-meta{display:flex;align-items:center;gap:7px}.chat-time{font-size:11px;color:var(--muted);white-space:nowrap}.unread{min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:linear-gradient(135deg,var(--pink),var(--violet));display:grid;place-items:center;font-size:11px;font-weight:900}.avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#ff3d91,#8b5cf6);display:grid;place-items:center;font-weight:900;overflow:hidden}.avatar img{width:100%;height:100%;object-fit:cover}.messages{height:55vh;overflow:auto;display:flex;flex-direction:column;gap:8px;padding:10px 0}.bubble{max-width:78%;padding:10px 13px;border-radius:17px;background:#ffffff0b;border:1px solid var(--line);align-self:flex-start}.bubble.mine{align-self:flex-end;background:linear-gradient(135deg,#ff3d9133,#8b5cf633);border-color:#ff3d9144}.verified-badge{display:inline-grid;place-items:center;width:19px;height:19px;margin-left:5px;border-radius:50%;background:var(--verified);color:#fff;font-size:12px;font-weight:950;line-height:1;vertical-align:2px;box-shadow:0 0 0 2px #09050d,0 2px 8px #3897f066}.verified-badge::before{content:"✓";transform:translateY(-.5px)}.verified-label{display:inline-flex;align-items:center;gap:5px;color:#cfe9ff}.verified-label .verified-badge{margin-left:0;box-shadow:none}.small{font-size:12px;color:var(--muted)}.safety-actions{display:flex;gap:8px;margin-top:12px}.chat-header{margin-bottom:14px}.chat-title-row{display:flex;align-items:center;gap:10px}.chat-back{flex:0 0 auto!important}.chat-title-wrap{min-width:0;flex:1}.chat-safety-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.chat-action{min-width:0;width:100%;min-height:48px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#211529,#130d18);color:#eee;display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 12px;font-size:13px;font-weight:800;letter-spacing:.01em;transition:transform .16s,border-color .16s,background .16s}.chat-action:hover{border-color:#ffffff2e;background:linear-gradient(145deg,#29192f,#170f1c)}.chat-action:active{transform:translateY(1px) scale(.98)}.chat-action.danger{color:#ffdce9}.chat-action-icon{width:25px;height:25px;display:grid;place-items:center;border-radius:9px;background:#ffffff0b;border:1px solid #ffffff12;font-size:15px;line-height:1}.chat-action.danger .chat-action-icon{background:#ff3d9112;border-color:#ff3d9130}.safety-actions .btn{margin:0}.report-modal{position:fixed;inset:0;background:#050308cc;backdrop-filter:blur(12px);z-index:80;display:grid;place-items:end center;padding:16px}.report-sheet{width:min(520px,100%);background:linear-gradient(145deg,#1b1222,#100b15);border:1px solid var(--line);border-radius:26px;padding:18px;box-shadow:0 30px 80px #000b}.report-reasons{display:grid;gap:8px;margin:12px 0}.report-reasons button{text-align:left;border:1px solid var(--line);background:#ffffff06;color:#fff;border-radius:14px;padding:12px}.report-reasons button.active{border-color:#ff3d91;background:#ff3d9115}.report-details{min-height:80px}.hide{display:none!important}.offline-banner{position:fixed;top:calc(8px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:120;width:min(400px,calc(100vw - 24px));padding:11px 14px;border-radius:15px;background:#2a1118ee;border:1px solid #ff5f6d66;box-shadow:0 12px 30px #0008;backdrop-filter:blur(12px);font-size:13px;text-align:center;color:#ffe8ed}.offline-banner.online{background:#10251bee;border-color:#40e0a066;color:#d9ffef}.retry-btn{margin-top:10px!important}
 .consent-row{display:flex;gap:9px;align-items:flex-start;color:#b9aabd;font-size:12px;line-height:1.45;margin:12px 0}.consent-row input{accent-color:#ff3d91;margin-top:2px}.settings-grid{display:grid;gap:10px;margin-top:14px}.danger-zone{margin-top:14px;border-color:#ff5f6d55!important;background:linear-gradient(145deg,#211016,#120a0f)!important}.legal-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.legal-link{border:1px solid var(--line);background:#ffffff06;color:#d9cde0;border-radius:12px;padding:8px 10px;font-size:12px}.modal-text{max-height:52vh;overflow:auto;line-height:1.55;color:#ddd}.settings-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 14px;border:1px solid var(--line);background:#ffffff06;border-radius:16px}.settings-row .small{flex:1}.edit-card{margin-top:12px}.edit-actions{display:flex;gap:10px}.edit-actions>*{flex:1}
 .mod-card{display:grid;gap:12px}.filter-panel{margin:0 0 12px}.filter-panel .field{flex:1}.filter-panel .row{align-items:flex-end}.filter-panel .btn{width:100%}.profile-photo-box{margin:0 0 16px}.profile-photo-preview{width:100%;aspect-ratio:4/5;border-radius:22px;overflow:hidden;background:linear-gradient(145deg,#1b1222,#100b15);border:1px solid var(--line);display:grid;place-items:center;font-size:64px;margin-bottom:10px}.profile-photo-preview img{width:100%;height:100%;object-fit:cover}.photo-nav{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 10px;pointer-events:none}.photo-nav button{pointer-events:auto;width:40px;height:40px;border:1px solid #ffffff33;background:#0008;color:white;border-radius:50%;font-size:22px}.photo-dots{position:absolute;top:12px;left:12px;right:12px;display:flex;gap:5px;z-index:3}.photo-dot{height:4px;flex:1;border-radius:99px;background:#ffffff55}.photo-dot.active{background:#fff}.profile-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.profile-thumb{position:relative;border-radius:16px;overflow:hidden;background:#100b15;border:1px solid var(--line);min-width:0}.profile-thumb img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}.profile-thumb .thumb-badge{position:absolute;left:7px;top:7px;padding:5px 8px;border-radius:999px;background:#000b;font-size:10px;font-weight:800;z-index:2}.profile-thumb .thumb-actions{position:static;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto auto;gap:6px;padding:7px;background:#120d18}.profile-thumb .thumb-actions button{min-width:0;width:100%;border:1px solid #ffffff0d;border-radius:10px;background:#000a;color:#fff;font-size:11px;line-height:1.2;padding:9px 7px;white-space:normal;overflow-wrap:anywhere;word-break:normal;text-align:center}.profile-thumb .thumb-actions button:first-child{grid-column:1 / -1}.profile-thumb .thumb-actions button:nth-child(2),.profile-thumb .thumb-actions button:nth-child(3){grid-column:auto}.profile-thumb .thumb-actions button:last-child{grid-column:1 / -1;min-height:38px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.profile-thumb .thumb-actions button:disabled{opacity:.38}.profile-thumb .thumb-actions button:not(:disabled):active{transform:scale(.98)}.photo-count{margin-top:8px}.photo-swipe{touch-action:pan-y;position:relative;user-select:none;overflow:hidden}.swipe-card{will-change:transform;transition:transform .22s ease,opacity .22s ease}.swipe-card.dragging{transition:none}.swipe-badge{position:absolute;top:22px;padding:10px 14px;border:2px solid currentColor;border-radius:12px;font-weight:900;font-size:18px;letter-spacing:.04em;opacity:0;z-index:5;pointer-events:none}.swipe-badge.like{right:18px;color:#ff6cae;transform:rotate(10deg)}.swipe-badge.pass{left:18px;color:#fff;transform:rotate(-10deg)}.match-toast{position:fixed;left:50%;bottom:88px;transform:translate(-50%,20px);z-index:50;background:linear-gradient(135deg,#ff3d91,#8b5cf6);color:#fff;padding:14px 18px;border-radius:18px;box-shadow:0 15px 40px #0009;font-weight:900;opacity:0;pointer-events:none;transition:.25s ease;white-space:nowrap}.match-toast.show{opacity:1;transform:translate(-50%,0)}.profile-photo-box .btn{margin-top:8px}.mod-photo{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;background:#100b15;border:1px solid var(--line)}.mod-actions{display:flex;gap:8px}.mod-actions .btn{margin:0}.mod-status{font-size:13px;color:var(--muted)}
 
@@ -119,7 +119,7 @@ button{max-width:100%}
 .bubble{overflow-wrap:anywhere;word-break:break-word}
 .bubble .chat-photo{max-width:min(220px,70vw);height:auto}
 .messages{scrollbar-width:thin}
-.notice,.demo-note,.small{overflow-wrap:anywhere}
+.notice,.small{overflow-wrap:anywhere}
 @media(max-width:360px){
   .profile-gallery{grid-template-columns:1fr}
   .profile-thumb .thumb-actions{grid-template-columns:1fr 1fr}
@@ -191,9 +191,9 @@ button{max-width:100%}
     <div class="card">
       <div id="onboardVerify"></div>
       <div class="notice">🔐 <span data-i18n="verifyNotice">Сейчас создаётся заявка на проверку. Реальную liveness-проверку подключим перед запуском.</span></div>
-      <div class="field"><label data-i18n="verifyPhoto">Фото для верификации</label><input id="verifyPhoto" type="file" accept="image/*" capture="user"></div>
+      <div class="notice">🔐 <span data-i18n="verifyNotice">Проверка личности проходит через защищённый сервис. После завершения результат вернётся в SPARK.</span></div>
       <button id="openModerationFromVerify" class="btn alt hide" type="button" data-i18n="moderation">🛡️ Модерация</button>
-    <button id="submitVerify" class="btn" data-i18n="submitVerify">Отправить на проверку</button>
+    <button id="submitVerify" class="btn" data-i18n="submitVerify">Начать проверку личности</button>
       <div id="verifyMsg" class="small" style="margin-top:10px"></div>
     </div>
   </section>
@@ -215,7 +215,6 @@ button{max-width:100%}
   <section id="matches" class="screen">
     <div class="hero" style="padding-top:10px"><h1><span data-i18n="your">Ваши</span> <span class="gradient" data-i18n="matches">матчи</span></h1><p data-i18n="matchesIntro">Когда симпатия взаимна — начинается разговор.</p></div>
     <button id="openMessagesTop" class="btn alt" type="button">💬 <span data-i18n="messagesNav">Сообщения</span></button>
-    <div class="demo-note" data-i18n="demoChatNote">🧪 Демо-чат — здесь можно проверить, как выглядит входящее сообщение от вымышленного профиля.</div>
     <div id="matchList" class="chat-list"></div>
   </section>
 
@@ -252,7 +251,6 @@ button{max-width:100%}
         </div>
         <button id="sendMessage" class="send-btn" type="button" data-i18n-aria="send" aria-label="Send">➤</button>
       </div>
-      <div class="demo-reset" id="demoResetHint">Демо-чат сохраняется только на этом устройстве. <button type="button" onclick="sparkResetDemo()">Сбросить</button></div>
     </div>
   </section>
 
@@ -385,7 +383,7 @@ const I18N = {
     emailPlaceholder:"you@example.com",passwordPlaceholder:"••••••••",bioPlaceholder:"Пара слов о тебе…",interestsPlaceholder:"музыка, море, путешествия",messagePlaceholder:"Напиши сообщение…",typing:"печатает…",
     noNew:"Пока никого нового",noNewText:"Когда появятся новые подтверждённые профили, они будут здесь.",noMatches:"Пока нет взаимных симпатий.",
     openChat:"Открыть чат",noMessage:"Начни разговор",onlineNow:"Сейчас в сети",offlineNow:"Не в сети",newMessages:"новых",photoMessage:"Фото",matchCreated:"Новый матч",profileVerified:"Фото подтверждено. Ты видим в ленте.",profilePending:"Фото на проверке.",profileNotVerified:"Верификация ещё не пройдена.",
-    ageRequired:"Нужен возраст 18+.",nameRequired:"Введи имя.",profileSaved:"Профиль сохранён.",choosePhoto:"Выбери фото.",sent:"Заявка отправлена. После одобрения профиль появится в ленте.",messageTooLong:"Сообщение не может быть длиннее 2000 символов.",photoTooLarge:"Фото слишком большое. Максимум 4 МБ.",photoSending:"Фото уже отправляется…",imageOnly:"Можно отправлять только изображения.",demoNoChanges:"Это демонстрационный аккаунт — реальные данные не изменяются.",demoNoReport:"Это демонстрационный аккаунт — жалоба не отправляется в базу.",logoutAllConfirm:"Выйти со всех устройств?",verificationStatus:"Статус",moderationBadge:"МОДЕРАЦИЯ",review:"Проверь",requests:"заявки",moderation:"Модерация",moderationIntro:"Здесь появляются новые фото на подтверждение.",photoModerationEmpty:"Новых фото на проверку нет.",photoApprove:"Одобрить фото",photoReject:"Отклонить фото",photoRejectReason:"Причина отклонения",photoModerationError:"Не удалось загрузить очередь фото.",photoModerated:"Фото обработано.",pendingRequests:"Новых заявок нет.",submitted:"Отправлено",approve:"Подтвердить",reject:"Отклонить",rejectReason:"Причина отказа (необязательно)",approved:"Заявка подтверждена.",rejected:"Заявка отклонена.",moderationError:"Не удалось загрузить заявки.",profilePhotos:"Фото профиля (до 6)",addPhotos:"Добавить фото",photoSaved:"Фото добавлено.",photoRequired:"Выбери фото.",photoLimit:"Можно загрузить максимум 6 фото.",primaryPhoto:"Главное",makePrimary:"Сделать главным",deletePhoto:"Удалить",moveLeft:"←",moveRight:"→",photosHint:"Главное фото показывается первым. Фото можно менять местами.",stepProfile:"Профиль",stepPhoto:"Фото",stepVerify:"Проверка",stepReady:"Готово",stepOf:"Шаг",checkName:"Имя заполнено",checkDob:"Возраст 18+",checkCity:"Город выбран",checkPhoto:"Главное фото добавлено",checkVerify:"Фото отправлено на проверку",addProfilePhoto:"Добавь главное фото профиля, чтобы тебя могли показывать в ленте.",minAge:"Возраст от",maxAge:"Возраст до",allCities:"Оба города",applyFilters:"Применить",
+    ageRequired:"Нужен возраст 18+.",nameRequired:"Введи имя.",profileSaved:"Профиль сохранён.",choosePhoto:"Выбери фото.",sent:"Заявка отправлена. После одобрения профиль появится в ленте.",messageTooLong:"Сообщение не может быть длиннее 2000 символов.",photoTooLarge:"Фото слишком большое. Максимум 4 МБ.",photoSending:"Фото уже отправляется…",imageOnly:"Можно отправлять только изображения.",logoutAllConfirm:"Выйти со всех устройств?",verificationStatus:"Статус",moderationBadge:"МОДЕРАЦИЯ",review:"Проверь",requests:"заявки",moderation:"Модерация",moderationIntro:"Здесь появляются новые фото на подтверждение.",photoModerationEmpty:"Новых фото на проверку нет.",photoApprove:"Одобрить фото",photoReject:"Отклонить фото",photoRejectReason:"Причина отклонения",photoModerationError:"Не удалось загрузить очередь фото.",photoModerated:"Фото обработано.",pendingRequests:"Новых заявок нет.",submitted:"Отправлено",approve:"Подтвердить",reject:"Отклонить",rejectReason:"Причина отказа (необязательно)",approved:"Заявка подтверждена.",rejected:"Заявка отклонена.",moderationError:"Не удалось загрузить заявки.",profilePhotos:"Фото профиля (до 6)",addPhotos:"Добавить фото",photoSaved:"Фото добавлено.",photoRequired:"Выбери фото.",photoLimit:"Можно загрузить максимум 6 фото.",primaryPhoto:"Главное",makePrimary:"Сделать главным",deletePhoto:"Удалить",moveLeft:"←",moveRight:"→",photosHint:"Главное фото показывается первым. Фото можно менять местами.",stepProfile:"Профиль",stepPhoto:"Фото",stepVerify:"Проверка",stepReady:"Готово",stepOf:"Шаг",checkName:"Имя заполнено",checkDob:"Возраст 18+",checkCity:"Город выбран",checkPhoto:"Главное фото добавлено",checkVerify:"Фото отправлено на проверку",addProfilePhoto:"Добавь главное фото профиля, чтобы тебя могли показывать в ленте.",minAge:"Возраст от",maxAge:"Возраст до",allCities:"Оба города",applyFilters:"Применить",
   },
   lv:{
     safetyBadge:"DROŠĪBA",reportTitle:"Ziņot par profilu",reportIntro:"Izvēlies iemeslu. Ziņojums nonāks moderācijas rindā.",reportDetailsPlaceholder:"Papildu informācija…",sendReport:"Nosūtīt ziņojumu",reportReasons:["Surogātpasts vai reklāma","Apvainojumi vai draudi","Viltus profils","Nepiemērots saturs","Cits"],blockUser:"Bloķēt",reportUser:"Ziņot",chatReport:"Ziņot",chatBlock:"Bloķēt",blockConfirm:"Bloķēt šo lietotāju?",blocked:"Lietotājs bloķēts.",
@@ -393,12 +391,12 @@ const I18N = {
     email:"E-pasts",password:"Parole",signup:"Izveidot kontu",signin:"Pieslēgties",forgotPassword:"Aizmirsi paroli?",newPasswordTitle:"Jauna",passwordTitle:"parole",newPasswordIntro:"Iestati jaunu SPARK konta paroli.",newPassword:"Jaunā parole",repeatPassword:"Atkārto paroli",updatePassword:"Saglabāt jauno paroli",your:"Tavs",profile:"profils",profileIntro:"Vispirms aizpildīsim profilu. Plūsmā tiek rādīti tikai apstiprināti profili.",
     name:"Vārds",dob:"Dzimšanas datums",city:"Pilsēta",about:"Par tevi",interests:"Intereses ar komatiem",saveProfile:"Saglabāt profilu",editProfile:"Rediģēt profilu",cancel:"Atcelt",languageSetting:"Valoda",languageHint:"Mainās uzreiz un tiek saglabāta profilā.",security:"Drošība",notifications:"Paziņojumi",enableNotifications:"Ieslēgt paziņojumus",notificationsOn:"Paziņojumi ieslēgti",notificationsOff:"Paziņojumi izslēgti",currentPassword:"Pašreizējā parole",newPassword:"Jaunā parole",changePassword:"Mainīt paroli",passwordChanged:"Parole nomainīta.",passwordError:"Neizdevās nomainīt paroli.",logoutAll:"Iziet no visām ierīcēm",logoutCurrent:"Iziet no šīs ierīces",terms:"Noteikumi",privacy:"Privātums",legalInfo:"Juridiskā informācija",legalOperator:"Operators",legalRegNumber:"Reģistrācijas numurs",legalAddress:"Juridiskā adrese",legalCountry:"Valsts",legalEmail:"E-pasts",legalPrivacyContact:"Privātuma kontaktpersona",legalDataContact:"Datu piekļuves/dzēšanas kontaktpersona",legalTermsVersion:"Noteikumu versija",legalPrivacyVersion:"Privātuma politikas versija",close:"Aizvērt",back:"Atpakaļ",send:"Sūtīt",emoji:"Emocijzīmes",photo:"Foto",demoChatNote:"🧪 Demo čats — šeit vari pārbaudīt, kā izskatās ienākoša ziņa no izdomāta profila.",signupConsent:"Man ir 18+ gadi, un es piekrītu noteikumiem un privātuma politikai.",dangerZone:"Konta dzēšana",deleteAccount:"Dzēst kontu",deleteAccountHint:"Tas ir neatgriezeniski: profils, foto, sakritības un ziņas tiks dzēstas.",deleteConfirm:"Dzēst kontu neatgriezeniski? Ieraksti SPARK, lai apstiprinātu.",deleteConfirmPlaceholder:"Ieraksti SPARK",deleteAccountDeleted:"Konts ir dzēsts.",deleteAccountError:"Neizdevās dzēst kontu. Mēģini vēlreiz.",
     verifyVerb:"Apstiprini",photo:"foto",verifyIntro:"Tas ir obligāts solis. Augšupielādē aktuālu selfiju pārbaudei. Kamēr tas nav apstiprināts, profils citiem netiks rādīts.",
-    verifyNotice:"Tiks izveidots verifikācijas pieteikums. Īsto liveness pārbaudi pieslēgsim pirms palaišanas.",verifyPhoto:"Verifikācijas foto",submitVerify:"Nosūtīt pārbaudei",
+    verifyNotice:"Identitātes pārbaude notiek drošā Persona servisā. Pēc pabeigšanas rezultāts tiks nosūtīts uz SPARK.",verifyPhoto:"Identitātes pārbaude",submitVerify:"Sākt identitātes pārbaudi",
     nearby:"TUVUMĀ",feed:"Plūsma",matches:"Sakritības",matchesIntro:"Kad simpātija ir abpusēja, sākas saruna.",sparkChat:"SPARK tērzēšana",messagesNav:"Ziņas",my:"Mans",me:"Es",refresh:"Atjaunot statusu",logout:"Iziet",
     emailPlaceholder:"you@example.com",passwordPlaceholder:"••••••••",bioPlaceholder:"Daži vārdi par tevi…",interestsPlaceholder:"mūzika, jūra, ceļojumi",messagePlaceholder:"Uzraksti ziņu…",typing:"raksta…",
     noNew:"Pagaidām neviena jauna profila",noNewText:"Kad būs jauni apstiprināti profili, tie parādīsies šeit.",noMatches:"Pagaidām nav abpusēju simpātiju.",
     openChat:"Atvērt sarunu",noMessage:"Sāc sarunu",onlineNow:"Tiešsaistē",offlineNow:"Nav tiešsaistē",newMessages:"jaunas",photoMessage:"Foto",matchCreated:"Jauna sakritība",profileVerified:"Foto ir apstiprināts. Tavs profils ir redzams plūsmā.",profilePending:"Foto tiek pārbaudīts.",profileNotVerified:"Verifikācija vēl nav pabeigta.",
-    ageRequired:"Nepieciešams vecums 18+.",nameRequired:"Ievadi vārdu.",profileSaved:"Profils saglabāts.",choosePhoto:"Izvēlies foto.",sent:"Pieteikums nosūtīts. Pēc apstiprināšanas profils parādīsies plūsmā.",messageTooLong:"Ziņa nedrīkst būt garāka par 2000 rakstzīmēm.",photoTooLarge:"Foto ir pārāk liels. Maksimums 4 MB.",photoSending:"Foto jau tiek nosūtīts…",imageOnly:"Drīkst sūtīt tikai attēlus.",demoNoChanges:"Šis ir demonstrācijas konts — reāli dati netiek mainīti.",demoNoReport:"Šis ir demonstrācijas konts — ziņojums netiek saglabāts.",logoutAllConfirm:"Iziet no visām ierīcēm?",verificationStatus:"Statuss",moderationBadge:"MODERĀCIJA",review:"Pārbaudi",requests:"pieteikumus",moderation:"Moderācija",moderationIntro:"Šeit parādās jaunie foto verifikācijai.",photoModerationEmpty:"Jaunu foto pārbaudei nav.",photoApprove:"Apstiprināt foto",photoReject:"Noraidīt foto",photoRejectReason:"Noraidījuma iemesls",photoModerationError:"Neizdevās ielādēt foto rindu.",photoModerated:"Foto apstrādāts.",pendingRequests:"Jaunu pieteikumu nav.",submitted:"Iesniegts",approve:"Apstiprināt",reject:"Noraidīt",rejectReason:"Noraidījuma iemesls (neobligāti)",approved:"Pieteikums apstiprināts.",rejected:"Pieteikums noraidīts.",moderationError:"Neizdevās ielādēt pieteikumus.",profilePhotos:"Profila foto (līdz 6)",addPhotos:"Pievienot foto",photoSaved:"Foto pievienots.",photoRequired:"Izvēlies foto.",photoLimit:"Var augšupielādēt ne vairāk kā 6 foto.",primaryPhoto:"Galvenais",makePrimary:"Iestatīt kā galveno",deletePhoto:"Dzēst",moveLeft:"←",moveRight:"→",photosHint:"Galvenais foto tiek rādīts pirmais. Foto var mainīt vietām.",addProfilePhoto:"Pievieno galveno profila foto, lai tevi varētu rādīt plūsmā.",minAge:"Vecums no",maxAge:"Vecums līdz",allCities:"Abas pilsētas",applyFilters:"Piemērot",
+    ageRequired:"Nepieciešams vecums 18+.",nameRequired:"Ievadi vārdu.",profileSaved:"Profils saglabāts.",choosePhoto:"Izvēlies foto.",sent:"Pieteikums nosūtīts. Pēc apstiprināšanas profils parādīsies plūsmā.",messageTooLong:"Ziņa nedrīkst būt garāka par 2000 rakstzīmēm.",photoTooLarge:"Foto ir pārāk liels. Maksimums 4 MB.",photoSending:"Foto jau tiek nosūtīts…",imageOnly:"Drīkst sūtīt tikai attēlus.",logoutAllConfirm:"Iziet no visām ierīcēm?",verificationStatus:"Statuss",moderationBadge:"MODERĀCIJA",review:"Pārbaudi",requests:"pieteikumus",moderation:"Moderācija",moderationIntro:"Šeit parādās jaunie foto verifikācijai.",photoModerationEmpty:"Jaunu foto pārbaudei nav.",photoApprove:"Apstiprināt foto",photoReject:"Noraidīt foto",photoRejectReason:"Noraidījuma iemesls",photoModerationError:"Neizdevās ielādēt foto rindu.",photoModerated:"Foto apstrādāts.",pendingRequests:"Jaunu pieteikumu nav.",submitted:"Iesniegts",approve:"Apstiprināt",reject:"Noraidīt",rejectReason:"Noraidījuma iemesls (neobligāti)",approved:"Pieteikums apstiprināts.",rejected:"Pieteikums noraidīts.",moderationError:"Neizdevās ielādēt pieteikumus.",profilePhotos:"Profila foto (līdz 6)",addPhotos:"Pievienot foto",photoSaved:"Foto pievienots.",photoRequired:"Izvēlies foto.",photoLimit:"Var augšupielādēt ne vairāk kā 6 foto.",primaryPhoto:"Galvenais",makePrimary:"Iestatīt kā galveno",deletePhoto:"Dzēst",moveLeft:"←",moveRight:"→",photosHint:"Galvenais foto tiek rādīts pirmais. Foto var mainīt vietām.",addProfilePhoto:"Pievieno galveno profila foto, lai tevi varētu rādīt plūsmā.",minAge:"Vecums no",maxAge:"Vecums līdz",allCities:"Abas pilsētas",applyFilters:"Piemērot",
   },
   en:{
     safetyBadge:"SAFETY",reportTitle:"Report profile",reportIntro:"Choose a reason. The report will go to moderation.",reportDetailsPlaceholder:"Additional details…",sendReport:"Send report",reportReasons:["Spam or advertising","Harassment or threats","Fake profile","Inappropriate content","Other"],blockUser:"Block",reportUser:"Report",chatReport:"Report",chatBlock:"Block",blockConfirm:"Block this user?",blocked:"User blocked.",
@@ -406,7 +404,7 @@ const I18N = {
     email:"Email",password:"Password",signup:"Create account",signin:"Sign in",forgotPassword:"Forgot password?",newPasswordTitle:"New",passwordTitle:"password",newPasswordIntro:"Set a new password for your SPARK account.",newPassword:"New password",repeatPassword:"Repeat password",updatePassword:"Save new password",your:"Your",profile:"profile",profileIntro:"First, complete your profile. Only verified profiles appear in discovery.",
     name:"Name",dob:"Date of birth",city:"City",about:"About you",interests:"Interests separated by commas",saveProfile:"Save profile",editProfile:"Edit profile",cancel:"Cancel",languageSetting:"Language",languageHint:"Changes instantly and is saved to your profile.",security:"Security",notifications:"Notifications",enableNotifications:"Enable notifications",notificationsOn:"Notifications enabled",notificationsOff:"Notifications disabled",currentPassword:"Current password",newPassword:"New password",changePassword:"Change password",passwordChanged:"Password changed.",passwordError:"Could not change password.",logoutAll:"Sign out on all devices",logoutCurrent:"Sign out on this device",terms:"Terms",privacy:"Privacy",close:"Close",back:"Back",send:"Send",emoji:"Emoji",photo:"Photo",demoChatNote:"🧪 Demo chat — use it to preview what an incoming message from a fictional profile looks like.",signupConsent:"I am 18+ and I agree to the Terms and Privacy Policy.",dangerZone:"Delete account",deleteAccount:"Delete account",deleteAccountHint:"This is permanent: your profile, photos, matches and messages will be deleted.",deleteConfirm:"Delete your account permanently? Type SPARK to confirm.",deleteConfirmPlaceholder:"Type SPARK",deleteAccountDeleted:"Account deleted.",deleteAccountError:"Could not delete the account. Please try again.",
     verifyVerb:"Verify",photo:"photo",verifyIntro:"This step is required. Upload a current selfie for review. Your profile stays hidden until approval.",
-    verifyNotice:"A verification request will be created. Real liveness verification will be connected before launch.",verifyPhoto:"Verification photo",submitVerify:"Send for review",
+    verifyNotice:"Identity verification runs through the secure Persona service. The result returns to SPARK after completion.",verifyPhoto:"Identity verification",submitVerify:"Start identity verification",
     nearby:"NEARBY",feed:"Discover",matches:"Matches",matchesIntro:"When the interest is mutual, the conversation begins.",sparkChat:"SPARK chat",messagesNav:"Messages",my:"My",me:"Me",refresh:"Refresh status",logout:"Sign out",
     emailPlaceholder:"you@example.com",passwordPlaceholder:"••••••••",bioPlaceholder:"A few words about you…",interestsPlaceholder:"music, sea, travel",messagePlaceholder:"Write a message…",typing:"typing…",
     noNew:"No one new yet",noNewText:"New verified profiles will appear here.",noMatches:"No mutual matches yet.",swipeLike:"Like",swipePass:"Pass",newMatch:"It’s a match!",openChat:"Open chat",
@@ -452,20 +450,6 @@ function setLanguage(next){
   }
 }
 
-const DEMO_MATCH="demo-alexandra-24";
-const DEMO_STORAGE_KEY="spark_demo_messages_v2";
-const DEMO_DEFAULT_MESSAGES=[
-  {sender:"demo",body:"Привет! 😊 Как проходит твой день?",created_at:new Date(Date.now()-8*60000).toISOString()},
-  {sender:"demo",body:"Увидела твой профиль — очень понравились путешествия ✨",created_at:new Date(Date.now()-6*60000).toISOString()}
-];
-function loadDemoMessages(){
-  try{const raw=localStorage.getItem(DEMO_STORAGE_KEY);if(raw){const parsed=JSON.parse(raw);if(Array.isArray(parsed)&&parsed.length)return parsed;}}catch(e){console.warn("demo storage read",e)}
-  return DEMO_DEFAULT_MESSAGES.map(x=>({...x}));
-}
-let demoMessages=loadDemoMessages();
-let demoReplyTimer=null;
-const messageMediaUrls=new Map();
-function saveDemoMessages(){try{localStorage.setItem(DEMO_STORAGE_KEY,JSON.stringify(demoMessages));}catch(e){console.warn("demo storage write",e)}}
 const $=id=>document.getElementById(id);
 function chatDraftKey(mid){return `spark_message_draft_${mid||"none"}`;}
 function readChatDraft(mid){try{return localStorage.getItem(chatDraftKey(mid))||localStorage.getItem("spark_message_draft")||"";}catch{return "";}}
@@ -560,10 +544,22 @@ async function boot(){
   if(verificationError){console.error(verificationError);show("auth");authNotice(authErrorText(verificationError));return}
   window.__sparkVerification=v||null;
   if(!v || v.status!=="approved"){renderOnboarding("verify");show("verify"); renderVerify(v); return}
-  const {data:primaryPhoto,error:primaryPhotoError}=await sb.from("photos").select("id").eq("user_id",user.id).eq("type","profile").eq("is_primary",true).limit(1);
+  const {data:primaryPhoto,error:primaryPhotoError}=await sb.from("photos").select("id,moderation_status").eq("user_id",user.id).eq("type","profile").eq("is_primary",true).limit(1);
   if(primaryPhotoError){console.error(primaryPhotoError);show("auth");authNotice(authErrorText(primaryPhotoError));return}
-  window.__sparkPrimaryPhoto=!!primaryPhoto?.length;
-  if(!primaryPhoto?.length){renderOnboarding("verify");await loadMe(); $("meStatus").innerHTML=`📸 ${t("addProfilePhoto")}`; show("me"); return}
+  const primary=primaryPhoto?.[0]||null;
+  window.__sparkPrimaryPhoto=!!primary;
+  window.__sparkPrimaryPhotoApproved=primary?.moderation_status==="approved";
+  if(!primary){renderOnboarding("verify");await loadMe(); $("meStatus").innerHTML=`📸 ${t("addProfilePhoto")}`; show("me"); return}
+  if(primary.moderation_status!=="approved"){
+    renderOnboarding("verify");
+    await loadMe();
+    const photoStatus=primary.moderation_status==="rejected"
+      ? (lang==="ru"?"Фото отклонено модерацией. Выбери другое фото или загрузи новое.":lang==="lv"?"Foto noraidīts moderācijā. Izvēlies citu vai augšupielādē jaunu.":"Photo was rejected. Choose another photo or upload a new one.")
+      : (lang==="ru"?"Фото ещё проверяется. Лента откроется после одобрения.":lang==="lv"?"Foto vēl tiek pārbaudīts. Plūsma atvērsies pēc apstiprināšanas.":"Your photo is still being reviewed. Discovery will open after approval.");
+    $("meStatus").innerHTML=`📸 ${photoStatus}`;
+    show("me");
+    return;
+  }
   await loadPreferences(); await loadFeed(); show("feed");
 }
 function renderVerify(v){const empty=lang==="ru"?"Верификация ещё не отправлена.":lang==="lv"?"Verifikācija vēl nav nosūtīta.":"Verification has not been submitted yet.";const status=v?.status;const labels={pending:lang==="ru"?"на проверке":lang==="lv"?"gaida pārbaudi":"pending",approved:lang==="ru"?"одобрена":lang==="lv"?"apstiprināta":"approved",rejected:lang==="ru"?"отклонена":lang==="lv"?"noraidīta":"rejected"};let text=status?`${t("verificationStatus")}: ${labels[status]||status}`:empty;if(status==="rejected"&&v?.rejection_reason) text+=` — ${lang==="ru"?"Причина":lang==="lv"?"Iemesls":"Reason"}: ${v.rejection_reason}`;$("verifyMsg").textContent=text}
@@ -587,25 +583,17 @@ async function submitVerify(){
   if(window.__sparkVerifyBusy)return;
   if(!ensureOnline())return;
   window.__sparkVerifyBusy=true;
+  const btn=$("submitVerify"); if(btn)btn.disabled=true;
   try{
-  const f=$("verifyPhoto").files[0];
-  if(!f){msg("verifyMsg",t("choosePhoto"));return}
-  const {data:existingVerification}=await sb.from("verifications").select("status").eq("user_id",user.id).maybeSingle();
-  if(existingVerification?.status==="pending"){msg("verifyMsg",lang==="ru"?"Проверка уже отправлена. Дождись решения модератора.":lang==="lv"?"Verifikācija jau nosūtīta. Sagaidi moderatora lēmumu.":"Verification is already pending. Please wait for moderation.");return}
-  if(!/^image\/(jpeg|png|webp)$/i.test(f.type)){msg("verifyMsg",lang==="ru"?"Нужна фотография JPG, PNG или WebP.":lang==="lv"?"Nepieciešams JPG, PNG vai WebP fotoattēls.":"Please choose a JPG, PNG or WebP photo.");return}
-  if(f.size>8*1024*1024){msg("verifyMsg",lang==="ru"?"Фото слишком большое. Максимум 8 МБ.":lang==="lv"?"Foto ir pārāk liels. Maksimums 8 MB.":"Photo is too large. Maximum 8 MB.");return}
-  let prepared;
-  try{prepared=await prepareImageFile(f,4500000,1800)}catch(e){msg("verifyMsg",userFacingError(e));return}
-  const path=`${user.id}/verification-${Date.now()}-${Math.random().toString(36).slice(2,7)}.jpg`;
-  const {error:up}=await sb.storage.from("profile-photos").upload(path,prepared,{contentType:"image/jpeg",upsert:false,cacheControl:"3600"});
-  if(up){msg("verifyMsg",friendlyError(up));return}
-  const {error:pe}=await sb.from("photos").insert({user_id:user.id,storage_path:path,type:"verification",sort_order:0,is_primary:false});
-  if(pe){await sb.storage.from("profile-photos").remove([path]);msg("verifyMsg",friendlyError(pe));return}
-  const {error:ve}=await sb.from("verifications").upsert({user_id:user.id,status:"pending",method:"selfie",submitted_at:new Date().toISOString()});
-  if(ve){await sb.from("photos").delete().eq("user_id",user.id).eq("storage_path",path);await sb.storage.from("profile-photos").remove([path]);msg("verifyMsg",friendlyError(ve));return}
-  $("verifyPhoto").value="";
-  window.__sparkVerification={status:"pending"}; renderOnboarding("verify"); msg("verifyMsg",t("sent"),true);
-  } finally { window.__sparkVerifyBusy=false; }
+    const {data:{session},error:sessionError}=await sb.auth.getSession();
+    if(sessionError||!session?.access_token){msg("verifyMsg",authErrorText(sessionError||{message:"session_missing"}));return;}
+    const resp=await fetch(SUPABASE_URL+"/functions/v1/start-verification",{method:"POST",headers:{"Authorization":"Bearer "+session.access_token,"Content-Type":"application/json"}});
+    let body=null; try{body=await resp.json()}catch{}
+    if(!resp.ok){const code=body?.error||"verification_start_failed"; msg("verifyMsg",code==="verification_provider_not_configured"?("Сервис проверки личности пока не настроен."):("Не удалось начать проверку. Попробуй ещё раз."));return;}
+    window.__sparkVerification={status:body?.status||"pending",provider:body?.provider||"persona",external_id:body?.external_id||null};
+    if(body?.provider_url){window.location.href=body.provider_url;return;}
+    renderOnboarding("verify"); msg("verifyMsg","Проверка создана. Заверши её в сервисе проверки.",true);
+  } finally {window.__sparkVerifyBusy=false;if(btn)btn.disabled=false;}
 }
 async function signed(path){const {data}=await sb.storage.from("profile-photos").createSignedUrl(path,3600);return data?.signedUrl||""}
 async function loadFeed(){
@@ -934,24 +922,15 @@ async function loadMatches(){
       </div>
     </button>`);
   }
-  const demoName=lang==="ru"?"Александра, 24":lang==="lv"?"Aleksandra, 24":"Alexandra, 24"; const demoPreview=lang==="ru"?"Привет! 😊 Как проходит твой день?":lang==="lv"?"Sveika! 😊 Kā tev iet?":"Hi! 😊 How is your day going?"; const demoRow=`<button type="button" class="chat demo-chat" data-mid="${DEMO_MATCH}" data-name="${escapeAttr(demoName)}">
-      <div class="avatar demo-avatar">А</div>
-      <div class="chat-main">
-        <div class="chat-top"><b>${escapeHtml(demoName)}<span class="verified-badge" title="${escapeAttr(t("profileVerified"))}" aria-label="${escapeAttr(t("profileVerified"))}"></span></b><div class="chat-meta"><span class="chat-time">${lang==="ru"?"сейчас":lang==="lv"?"tagad":"now"}</span><span class="unread">2</span></div></div>
-        <div class="small chat-preview">${escapeHtml(demoPreview)}</div>
-      </div>
-    </button>`;
-  $("matchList").innerHTML=demoRow+(rows.length?rows.join(""):`<div class="card"><p class="small">${escapeHtml(t("noMatches"))}</p></div>`);
+  $("matchList").innerHTML=rows.length?rows.join(""):`<div class="card"><p class="small">${escapeHtml(t("noMatches"))}</p></div>`;
   document.querySelectorAll("#matchList [data-mid]").forEach(b=>{
     b.onclick=async(e)=>{e.preventDefault();e.stopPropagation();await openChat(b.dataset.mid,b.dataset.name);};
   });
   }catch(e){
     console.error("loadMatches error",e);
-    $("matchList").innerHTML=demoRowFallback();
-    document.querySelector("#matchList [data-mid]")?.addEventListener("click",()=>openChat(DEMO_MATCH,"Александра, 24"));
+    $("matchList").innerHTML=`<div class="notice error">${escapeHtml(friendlyError(e))}</div>`;
   }
 }
-function demoRowFallback(){const demoName=lang==="ru"?"Александра, 24":lang==="lv"?"Aleksandra, 24":"Alexandra, 24";const demoPreview=lang==="ru"?"Привет! 😊 Как проходит твой день?":lang==="lv"?"Sveika! 😊 Kā tev iet?":"Hi! 😊 How is your day going?";return `<button class="chat demo-chat" data-mid="${DEMO_MATCH}" data-name="${escapeAttr(demoName)}" type="button"><div class="avatar demo-avatar">А</div><div class="chat-main"><div class="chat-top"><b>${escapeHtml(demoName)}<span class="verified-badge"></span></b><div class="chat-meta"><span class="chat-time">${lang==="ru"?"сейчас":lang==="lv"?"tagad":"now"}</span><span class="unread">2</span></div></div><div class="small chat-preview">${escapeHtml(demoPreview)}</div></div></button>`;}
 function notificationSupported(){return "Notification" in window;}
 function notificationEnabled(){return localStorage.getItem("spark_notifications")==="1" && notificationSupported() && Notification.permission==="granted";}
 function renderNotificationState(){
@@ -1010,7 +989,7 @@ function initMobileLifecycle(){
   const refresh=()=>{
     if(!user||document.visibilityState!=="visible")return;
     renderNetwork();
-    if(currentMatch&&currentMatch!==DEMO_MATCH && document.querySelector("#chat.active")) setTimeout(()=>openChat(currentMatch,currentChatName).catch(()=>{}),180);
+    if(currentMatch && document.querySelector("#chat.active")) setTimeout(()=>openChat(currentMatch,currentChatName).catch(()=>{}),180);
     if(document.querySelector("#feed.active")) setTimeout(()=>loadFeed().catch(()=>{}),180);
   };
   document.addEventListener("visibilitychange",refresh);
@@ -1022,14 +1001,6 @@ function initMobileLifecycle(){
 }
 async function openChat(mid,name){ currentChatName=name||"";
   currentMatch=mid;
-  if(mid===DEMO_MATCH){
-    currentChatUser={id:"demo-alexandra-24",display_name:"Александра, 24",demo:true};
-    $("chatTitle").innerHTML=`Александра, 24 <span class="verified-badge" title="Фото подтверждено"></span>`;
-    $("chatAvatar").innerHTML="А"; $("chatAvatar").className="chat-profile-avatar demo-avatar";
-    $("chatStatusText").textContent=t("onlineNow");
-    $("chatReport").title=t("chatReport"); $("chatBlock").title=t("chatBlock");
-    show("chat"); try{const draft=readChatDraft(currentMatch); if(draft && !$("messageInput").value) $("messageInput").value=draft.slice(0,2000);}catch{} await loadMessages(); return;
-  }
   const {data:match,error:matchError}=await sb.from("matches").select("id,user_a,user_b").eq("id",mid).maybeSingle();
   if(matchError || !match){currentMatch=null;currentChatUser=null;show("matches");showToast(matchError?friendlyError(matchError):t("noMatches"));await loadMatches().catch(()=>{});return}
   const otherId=match.user_a===user.id?match.user_b:match.user_a;
@@ -1091,11 +1062,6 @@ async function reportChatUser(){
 
 async function loadMessages(){
   if(!currentMatch)return;
-  if(currentMatch===DEMO_MATCH){
-    const today=new Date().toLocaleDateString(lang==="ru"?"ru-RU":lang==="lv"?"lv-LV":"en-US",{day:"numeric",month:"long"});
-    $("messages").innerHTML=`<div class="chat-date">${escapeHtml(today)}</div>`+demoMessages.map(m=>`<div class="bubble ${m.sender==="me"?"mine":""}">${m.type==="photo"&&m.body?`<img class="chat-photo" src="${escapeAttr(m.body)}" alt="${escapeAttr(lang==="ru"?"Фото":lang==="lv"?"Foto":"Photo")}" loading="lazy">`:escapeHtml(m.body||"")}<div class="small" style="text-align:right;margin-top:4px">${formatChatTime(m.created_at)}${m.sender==="me"?" · ✓✓":""}</div></div>`).join("");
-    $("messages").scrollTop=$("messages").scrollHeight; return;
-  }
   const {data,error}=await sb.from("messages").select("id,sender_id,body,message_type,media_path,created_at").eq("match_id",currentMatch).order("created_at",{ascending:true});
   if(error){$("messages").innerHTML=`<div class="notice error">${escapeHtml(friendlyError(error))}</div>`;return}
   const rows=data||[];
@@ -1123,15 +1089,6 @@ async function sendMessage(){
   window.__sparkSendingMessage=true;
   const sendBtn=$("sendMessage"); if(sendBtn)sendBtn.disabled=true;
   try{
-  if(currentMatch===DEMO_MATCH){
-    demoMessages.push({sender:"me",body,created_at:new Date().toISOString()}); saveDemoMessages(); $("messageInput").value=""; clearChatDraft(currentMatch); await loadMessages();
-    $("typingIndicator").classList.remove("hide");
-    clearTimeout(demoReplyTimer); demoReplyTimer=setTimeout(async()=>{
-      $("typingIndicator").classList.add("hide");
-      demoMessages.push({sender:"demo",body:"Хаха 😊 Расскажи подробнее!",created_at:new Date().toISOString()}); saveDemoMessages();
-      await loadMessages();
-    },1200); return;
-  }
   const {error}=await sb.from("messages").insert({match_id:currentMatch,sender_id:user.id,body});
   if(error){const em=rateLimitText(error)||friendlyError(error);msg("chatMsg",em);} else {$('messageInput').value="";clearChatDraft(currentMatch); await markMatchRead(currentMatch);await loadMessages(); if(channel) channel.send({type:"broadcast",event:"typing",payload:{user_id:user.id,typing:false}})}
   } finally {
@@ -1368,13 +1325,7 @@ async function deleteAccount(){
 
 function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
 function escapeAttr(s){return escapeHtml(s).replace(/`/g,"&#096;")}
-if($("openMessagesTop")) {
-  $("openMessagesTop").onclick=async()=>{
-    $("openMessagesTop").disabled=true;
-    try { await openChat(DEMO_MATCH,"Александра, 24"); } finally { $("openMessagesTop").disabled=false; }
-  };
-  $("openMessagesTop").dataset.bound="1";
-}
+if($("openMessagesTop")) $("openMessagesTop").onclick=()=>navigate("matches");
 if($("filterToggle")) $("filterToggle").onclick=()=> $("filterPanel").classList.toggle("hide");
 if($("applyFilters")) $("applyFilters").onclick=async()=>{await savePreferences();$("filterPanel").classList.add("hide");await loadFeed()};
 if($("saveProfilePhoto")) $("saveProfilePhoto").onclick=saveProfilePhoto;
@@ -1487,20 +1438,6 @@ $("photoInput").addEventListener("change",async e=>{
   const f=e.target.files?.[0]; if(!f||!currentMatch)return;
   if(f.size>4*1024*1024){showToast(t("photoTooLarge"));e.target.value="";return}
   if(!/^image\/(jpeg|png|webp|gif)$/i.test(f.type)){showToast(t("imageOnly"));e.target.value="";return}
-  if(currentMatch===DEMO_MATCH){
-    try{
-      const prepared=await prepareImageFile(f,650000,1100);
-      const r=new FileReader();
-      r.onload=async()=>{
-        try{demoMessages.push({sender:"me",type:"photo",body:r.result,created_at:new Date().toISOString()});saveDemoMessages();await loadMessages();
-          clearTimeout(demoReplyTimer); $("typingIndicator").classList.remove("hide");
-          demoReplyTimer=setTimeout(async()=>{$("typingIndicator").classList.add("hide");demoMessages.push({sender:"demo",body:"Красиво 😊",created_at:new Date().toISOString()});saveDemoMessages();await loadMessages()},1200);
-        }catch(err){showToast(userFacingError(err));}
-      };
-      r.readAsDataURL(prepared);
-    }catch(err){showToast(userFacingError(err));}
-    e.target.value=""; return;
-  }
   if(!user){e.target.value="";return}
   if(window.__sparkSendingPhoto){showToast(t("photoSending"));e.target.value="";return}
   window.__sparkSendingPhoto=true;
@@ -1520,7 +1457,7 @@ $("saveProfile").onclick=saveProfile;$("submitVerify").onclick=submitVerify;$("s
 let sparkTypingTimer=null;
 $("messageInput").addEventListener("input",()=>{const input=$("messageInput");if(input.value.length>2000)input.value=input.value.slice(0,2000);
   if(currentMatch) saveChatDraft(currentMatch,$("messageInput").value)
-  if(!channel||currentMatch===DEMO_MATCH)return;
+  if(!channel)return;
   clearTimeout(sparkTypingTimer);
   channel.send({type:"broadcast",event:"typing",payload:{user_id:user.id,typing:true}});
   sparkTypingTimer=setTimeout(()=>channel?.send({type:"broadcast",event:"typing",payload:{user_id:user.id,typing:false}}),1200);
@@ -1557,10 +1494,7 @@ async function navigate(screen, opts={}){
   try {
     if(screen==="feed"){ loadFeed().catch(e=>console.error("feed load",e)); return; }
     if(screen==="matches"){ loadMatches().catch(e=>console.error("matches load",e)); return; }
-    if(screen==="chat"){
-      const demoName=lang==="ru"?"Александра, 24":lang==="lv"?"Aleksandra, 24":"Alexandra, 24";
-      openChat(opts.match||DEMO_MATCH,opts.name||demoName).catch(e=>console.error("chat load",e)); return;
-    }
+    if(screen==="chat"){ if(!opts.match){ show("matches"); loadMatches().catch(e=>console.error("matches load",e)); return; } openChat(opts.match,opts.name).catch(e=>console.error("chat load",e)); return; }
     if(screen==="me"){ loadMe().catch(e=>console.error("profile load",e)); return; }
     if(screen==="moderation"){ loadModeration().catch(e=>console.error("moderation load",e)); return; }
   } catch(e){ console.error("Navigation error",e); }
@@ -1579,14 +1513,12 @@ async function navigate(screen, opts={}){
   }, false);
 })();
 window.sparkShow=show;
-window.sparkOpenDemoChat=()=>navigate("chat",{match:DEMO_MATCH,name:"Александра, 24"});
-window.sparkResetDemo=()=>{demoMessages=DEMO_DEFAULT_MESSAGES.map(x=>({...x}));saveDemoMessages();if(currentMatch===DEMO_MATCH)loadMessages();};
 initSparkNativeBridge();
 initNotificationNavigation();
 initMobileLifecycle();
 sb.auth.onAuthStateChange((event,s)=>{if(event==="PASSWORD_RECOVERY"){show("resetPassword");return;} if(event==="SIGNED_OUT"){user=null;profile=null;isModerator=false;currentMatch=null;currentChatName="";if(channel){sb.removeChannel(channel);channel=null;}show("auth");return;} if(s?.user&&!user){user=s.user;setTimeout(boot,0)}});
 setupInstallUI();
-window.addEventListener("online",()=>{renderNetwork(); if(user){setTimeout(()=>{loadMe().catch(()=>{}); if(currentMatch && currentMatch!==DEMO_MATCH)loadMessages().catch(()=>{});},500);}});
+window.addEventListener("online",()=>{renderNetwork(); if(user){setTimeout(()=>{loadMe().catch(()=>{}); if(currentMatch)loadMessages().catch(()=>{});},500);}});
 window.addEventListener("offline",renderNetwork);
 renderNetwork();
 init();
