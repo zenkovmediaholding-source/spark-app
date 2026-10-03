@@ -6,8 +6,8 @@
 <meta name="theme-color" content="#09050d"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<meta name="spark-build" content="v68">
-<title>SPARK — Riga • Jūrmala · v68</title>
+<meta name="spark-build" content="v69">
+<title>SPARK — Riga • Jūrmala · v69</title>
 <style>
 :root{--bg:#09050d;--card:#15101c;--card2:#211526;--text:#fff7ff;--muted:#b9aabd;--pink:#ff3d91;--violet:#8b5cf6;--line:#302136;--ok:#40e0a0;--verified:#3897f0;--danger:#ff5f6d}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0%,#3a0e3e 0,#120818 38%,#07040a 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
@@ -597,7 +597,17 @@ async function submitVerify(){
     renderOnboarding("verify"); msg("verifyMsg","Проверка создана. Заверши её в сервисе проверки.",true);
   } finally {window.__sparkVerifyBusy=false;if(btn)btn.disabled=false;}
 }
-async function signed(path){const {data}=await sb.storage.from("profile-photos").createSignedUrl(path,3600);return data?.signedUrl||""}
+const signedPhotoCache=new Map();
+async function signed(path){
+  if(!path)return "";
+  const cached=signedPhotoCache.get(path);
+  if(cached && cached.expires>Date.now())return cached.url;
+  const {data,error}=await sb.storage.from("profile-photos").createSignedUrl(path,3600);
+  if(error)throw error;
+  const url=data?.signedUrl||"";
+  if(url)signedPhotoCache.set(path,{url,expires:Date.now()+50*60*1000});
+  return url;
+}
 async function loadFeed(){
   const minAge=Math.max(18,Math.min(99,parseInt($("minAge")?.value||18,10)||18));
   const maxAge=Math.max(minAge,Math.min(99,parseInt($("maxAge")?.value||99,10)||99));
@@ -631,7 +641,7 @@ async function renderCard(){
   const photoHtml=feedPhotoUrls.length?`<img id="feedPhotoImg" src="${feedPhotoUrls[0]}" alt="" draggable="false">`:`<div style="font-size:70px">✦</div>`;
   const dots=feedPhotoUrls.length>1?`<div class="photo-dots">${feedPhotoUrls.map((_,i)=>`<span class="photo-dot ${i===0?"active":""}"></span>`).join("")}</div>`:"";
   const nav=feedPhotoUrls.length>1?`<div class="photo-nav"><button id="prevPhoto" type="button" aria-label="Previous photo">‹</button><button id="nextPhoto" type="button" aria-label="Next photo">›</button></div>`:"";
-  $('feedCard').innerHTML=`<div class="photo photo-swipe swipe-card" id="feedPhoto"><div class="swipe-badge pass">✕ ${escapeHtml(t("swipePass"))}</div><div class="swipe-badge like">♥ ${escapeHtml(t("swipeLike"))}</div>${photoHtml}${dots}${nav}<div class="photo-overlay"><h2>${escapeHtml(p.display_name)} <span class="verified-badge" title="${escapeAttr(t("profileVerified"))}" aria-label="${escapeAttr(t("profileVerified"))}"></span>, ${age(p.date_of_birth)}</h2><div class="meta">${p.city==="jurmala"?"Jūrmala":"Riga"}${p.bio?` · ${escapeHtml(p.bio)}`:""}</div><div class="tags">${(p.interests||[]).slice(0,5).map(x=>`<span class="tag">${escapeHtml(x)}</span>`).join("")}</div></div></div><div class="actions"><button id="pass" class="circle" type="button" aria-label="${escapeAttr(t("swipePass"))}">×</button><button id="like" class="circle like" type="button" aria-label="${escapeAttr(t("swipeLike"))}">♥</button></div><div class="safety-actions"><button id="blockUser" class="btn alt small" type="button">🚫 ${escapeHtml(t("blockUser"))}</button><button id="reportUser" class="btn alt small" type="button">⚑ ${escapeHtml(t("reportUser"))}</button></div>`;
+  $('feedCard').innerHTML=`<div class="photo photo-swipe swipe-card" id="feedPhoto"><div class="swipe-badge pass">✕ ${escapeHtml(t("swipePass"))}</div><div class="swipe-badge like">♥ ${escapeHtml(t("swipeLike"))}</div>${photoHtml}${dots}${nav}<div class="photo-overlay"><h2>${escapeHtml(p.display_name)} <span class="verified-badge" title="${escapeAttr(t("profileVerified"))}" aria-label="${escapeAttr(t("profileVerified"))}"></span>, ${age(p.date_of_birth)}</h2><div class="meta">${p.city==="jurmala"?"Jūrmala":"Riga"}${p.bio?` · ${escapeHtml(p.bio)}`:""}</div><div class="tags">${(p.interests||[]).slice(0,5).map(x=>`<span class="tag">${escapeHtml(x)}</span>`).join("")}</div></div></div><div class="actions"><button id="pass" class="circle" type="button" title="${escapeAttr(t("swipePass"))}" aria-label="${escapeAttr(t("swipePass"))}">×</button><button id="like" class="circle like" type="button" title="${escapeAttr(t("swipeLike"))}" aria-label="${escapeAttr(t("swipeLike"))}">♥</button></div><div class="safety-actions"><button id="blockUser" class="btn alt small" type="button">🚫 ${escapeHtml(t("blockUser"))}</button><button id="reportUser" class="btn alt small" type="button">⚑ ${escapeHtml(t("reportUser"))}</button></div>`;
   $('pass').onclick=()=>animateCardAction('pass',p); $('like').onclick=()=>animateCardAction('like',p);
   feedPhotoUrls.slice(1,4).forEach(url=>{if(url){const pre=new Image();pre.decoding="async";pre.src=url;}}); $('blockUser').onclick=()=>blockUser(p); $('reportUser').onclick=()=>openReport(p);
   const setPhoto=(next)=>{if(feedPhotoUrls.length<2)return;feedPhotoIndex=(next+feedPhotoUrls.length)%feedPhotoUrls.length;const img=$('feedPhotoImg');if(img){img.classList.add('photo-changing');const nextUrl=feedPhotoUrls[feedPhotoIndex];const pre=new Image();pre.onload=()=>{img.src=nextUrl;requestAnimationFrame(()=>img.classList.remove('photo-changing'));};pre.src=nextUrl;}document.querySelectorAll('.photo-dot').forEach((d,i)=>d.classList.toggle('active',i===feedPhotoIndex));};
@@ -716,6 +726,15 @@ async function like(p){
   if(data){showMatchToast(p);await loadMatches();}
   return true;
 }
+document.addEventListener("keydown",e=>{
+  if(!user||!$("feed")?.classList.contains("active"))return;
+  if(["INPUT","TEXTAREA","SELECT"].includes(document.activeElement?.tagName))return;
+  if(e.key!=="ArrowLeft"&&e.key!=="ArrowRight")return;
+  const card=$("feedPhoto");
+  if(!card||card.dataset.actionBusy==="1"||!queue[idx])return;
+  e.preventDefault();
+  animateCardAction(e.key==="ArrowRight"?"like":"pass",queue[idx],e.key==="ArrowRight"?1:-1);
+});
 function showMatchToast(p){
   const el=$("matchToast");if(!el)return;el.innerHTML=`💞 ${escapeHtml(t("newMatch"))} <b>${escapeHtml(p.display_name)}</b>`;el.classList.add("show");clearTimeout(window.__matchToastTimer);window.__matchToastTimer=setTimeout(()=>el.classList.remove("show"),2600);
 }
