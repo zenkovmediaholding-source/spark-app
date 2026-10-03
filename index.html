@@ -1,0 +1,1596 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"/>
+<meta name="theme-color" content="#09050d"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="spark-build" content="v56-big-qa">
+<title>SPARK — Riga • Jūrmala · v56</title>
+<style>
+:root{--bg:#09050d;--card:#15101c;--card2:#211526;--text:#fff7ff;--muted:#b9aabd;--pink:#ff3d91;--violet:#8b5cf6;--line:#302136;--ok:#40e0a0;--verified:#3897f0;--danger:#ff5f6d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0%,#3a0e3e 0,#120818 38%,#07040a 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+button,input,select,textarea{font:inherit}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #ff6cae;outline-offset:2px}button{cursor:pointer}.app{max-width:520px;margin:auto;min-height:100vh;padding:18px 16px 100px}.brand{font-weight:900;letter-spacing:.14em;font-size:26px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.pill{border:1px solid var(--line);background:#ffffff09;border-radius:999px;padding:8px 12px;color:#ddd}
+.screen{display:none}.screen.active{display:block}.hero{padding:34px 6px 22px}.hero h1{font-size:48px;line-height:.95;margin:0 0 14px}.hero p{color:var(--muted);font-size:17px;line-height:1.5}.gradient{background:linear-gradient(100deg,#ff3d91,#a855f7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.card{background:linear-gradient(145deg,#1b1222,#100b15);border:1px solid var(--line);border-radius:28px;padding:18px;box-shadow:0 20px 60px #0007}.field{margin:12px 0}.field label{display:block;color:var(--muted);font-size:13px;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:#0e0913;color:white;border-radius:15px;padding:13px 14px;outline:none}.field textarea{min-height:90px;resize:vertical}.btn{border:0;border-radius:16px;padding:14px 18px;color:white;font-weight:800;background:linear-gradient(100deg,var(--pink),var(--violet));width:100%;margin-top:8px}.btn:disabled,.circle:disabled{opacity:.45;cursor:not-allowed;filter:saturate(.55)}.btn.alt{background:#ffffff0b;border:1px solid var(--line)}.btn.small{width:auto;padding:10px 14px}.row{display:flex;gap:10px}.row>*{flex:1}.lang{display:flex;gap:8px;margin:10px 0 20px}.lang button{flex:1;border:1px solid var(--line);background:#ffffff08;color:white;border-radius:13px;padding:10px}.lang button.active{background:#ff3d9120;border-color:#ff3d91}.notice{padding:13px 14px;border-radius:16px;background:#ff3d9112;border:1px solid #ff3d9144;color:#f9d7e8;margin:12px 0}.ok{background:#40e0a012;border-color:#40e0a044}.error{background:#ff5f6d12;border-color:#ff5f6d44}.feed-card{position:relative;overflow:hidden;padding:0}.photo{height:58vh;min-height:430px;max-height:650px;background:linear-gradient(135deg,#301631,#100b14);display:flex;align-items:center;justify-content:center;color:#6e5b72}.photo img{width:100%;height:100%;object-fit:cover}.photo-overlay{position:absolute;inset:auto 0 0;padding:70px 22px 22px;background:linear-gradient(transparent,#000d)}.photo-overlay h2{font-size:31px;margin:0 0 5px}.meta{color:#ddd}.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.tag{padding:7px 10px;border-radius:999px;background:#ffffff15;font-size:12px}.actions{display:flex;gap:12px;margin-top:14px}.circle{width:58px;height:58px;border-radius:50%;border:1px solid var(--line);background:#ffffff0b;color:white;font-size:24px}.circle.like{background:linear-gradient(135deg,#ff3d91,#8b5cf6);border:0}.nav{position:fixed;bottom:0;left:0;right:0;background:#0c0710ee;backdrop-filter:blur(18px);border-top:1px solid var(--line);padding:10px max(16px,calc((100vw - 520px)/2));display:flex;justify-content:space-around;z-index:20}.nav button{background:none;border:0;color:#9d8fa3;font-size:12px}.nav button.active{color:white}.chat-list{display:grid;gap:10px}.chat{display:flex;gap:12px;align-items:center;padding:13px;border:1px solid var(--line);background:#ffffff06;border-radius:18px;text-align:left;color:inherit;width:100%}.chat-main{min-width:0;flex:1}.chat-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.chat-preview{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}.chat-meta{display:flex;align-items:center;gap:7px}.chat-time{font-size:11px;color:var(--muted);white-space:nowrap}.unread{min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:linear-gradient(135deg,var(--pink),var(--violet));display:grid;place-items:center;font-size:11px;font-weight:900}.avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#ff3d91,#8b5cf6);display:grid;place-items:center;font-weight:900;overflow:hidden}.avatar img{width:100%;height:100%;object-fit:cover}.messages{height:55vh;overflow:auto;display:flex;flex-direction:column;gap:8px;padding:10px 0}.bubble{max-width:78%;padding:10px 13px;border-radius:17px;background:#ffffff0b;border:1px solid var(--line);align-self:flex-start}.bubble.mine{align-self:flex-end;background:linear-gradient(135deg,#ff3d9133,#8b5cf633);border-color:#ff3d9144}.verified-badge{display:inline-grid;place-items:center;width:19px;height:19px;margin-left:5px;border-radius:50%;background:var(--verified);color:#fff;font-size:12px;font-weight:950;line-height:1;vertical-align:2px;box-shadow:0 0 0 2px #09050d,0 2px 8px #3897f066}.verified-badge::before{content:"✓";transform:translateY(-.5px)}.verified-label{display:inline-flex;align-items:center;gap:5px;color:#cfe9ff}.verified-label .verified-badge{margin-left:0;box-shadow:none}.small{font-size:12px;color:var(--muted)}.safety-actions{display:flex;gap:8px;margin-top:12px}.chat-header{margin-bottom:14px}.chat-title-row{display:flex;align-items:center;gap:10px}.chat-back{flex:0 0 auto!important}.chat-title-wrap{min-width:0;flex:1}.chat-safety-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.chat-action{min-width:0;width:100%;min-height:48px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#211529,#130d18);color:#eee;display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 12px;font-size:13px;font-weight:800;letter-spacing:.01em;transition:transform .16s,border-color .16s,background .16s}.chat-action:hover{border-color:#ffffff2e;background:linear-gradient(145deg,#29192f,#170f1c)}.chat-action:active{transform:translateY(1px) scale(.98)}.chat-action.danger{color:#ffdce9}.chat-action-icon{width:25px;height:25px;display:grid;place-items:center;border-radius:9px;background:#ffffff0b;border:1px solid #ffffff12;font-size:15px;line-height:1}.chat-action.danger .chat-action-icon{background:#ff3d9112;border-color:#ff3d9130}.safety-actions .btn{margin:0}.report-modal{position:fixed;inset:0;background:#050308cc;backdrop-filter:blur(12px);z-index:80;display:grid;place-items:end center;padding:16px}.report-sheet{width:min(520px,100%);background:linear-gradient(145deg,#1b1222,#100b15);border:1px solid var(--line);border-radius:26px;padding:18px;box-shadow:0 30px 80px #000b}.report-reasons{display:grid;gap:8px;margin:12px 0}.report-reasons button{text-align:left;border:1px solid var(--line);background:#ffffff06;color:#fff;border-radius:14px;padding:12px}.report-reasons button.active{border-color:#ff3d91;background:#ff3d9115}.report-details{min-height:80px}.demo-chat{border:1px solid #3897ff66!important;background:linear-gradient(145deg,#111a2a,#0d1018)!important;position:relative}.demo-chat::after{content:"DEMO";position:absolute;right:12px;top:10px;font-size:9px;font-weight:900;letter-spacing:.12em;color:#8fc7ff;border:1px solid #3897ff66;border-radius:999px;padding:4px 7px}.demo-avatar{background:linear-gradient(135deg,#3897ff,#8b5cf6)!important}.demo-note{margin:0 0 12px;padding:10px 12px;border-radius:14px;background:#3897ff12;border:1px solid #3897ff44;color:#cfe9ff;font-size:12px}.chat-profile-avatar{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;flex:0 0 46px;background:linear-gradient(135deg,#3897ff,#8b5cf6);font-weight:900;overflow:hidden;border:1px solid #ffffff18}.chat-profile-avatar img{width:100%;height:100%;object-fit:cover}.chat-status{display:flex;align-items:center;gap:6px;margin-top:2px}.online-dot{width:7px;height:7px;border-radius:50%;background:#40e0a0;box-shadow:0 0 0 3px #40e0a014}.typing{align-self:flex-start;display:inline-flex;gap:4px;align-items:center;padding:8px 11px;border-radius:15px;background:#ffffff08;border:1px solid var(--line);color:var(--muted);font-size:12px}.typing i{width:5px;height:5px;border-radius:50%;background:#b9aabd;animation:typingDot 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}@keyframes typingDot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-2px)}}.chat-date{align-self:center;padding:5px 9px;border-radius:999px;background:#ffffff07;border:1px solid #ffffff0d;color:#8f8195;font-size:10px}.composer{position:sticky;bottom:78px;z-index:5;margin-top:8px;padding:8px 0 2px;background:linear-gradient(#09050d00,#09050df2 20%,#09050d 60%)}.composer-row{display:flex;gap:8px;align-items:center}.composer-input-wrap{flex:1;display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:#110b16;border-radius:18px;padding:5px 6px 5px 12px}.composer-input-wrap input{flex:1;border:0!important;background:transparent!important;padding:9px 2px!important;margin:0!important}.icon-btn{width:38px;height:38px;border:0;border-radius:12px;background:#ffffff08;color:#d9cde0;display:grid;place-items:center}.send-btn{width:44px;height:44px;border-radius:15px;border:0;background:linear-gradient(135deg,var(--pink),var(--violet));color:#fff;font-weight:900}.emoji-panel{display:flex;gap:7px;overflow:auto;padding:8px 2px 2px}.emoji-panel button{border:1px solid var(--line);background:#ffffff06;color:#fff;border-radius:12px;padding:7px 10px}.chat-photo{display:block;max-width:220px;max-height:260px;border-radius:14px;margin-top:7px;object-fit:cover;border:1px solid #ffffff18}.attach-btn{position:relative;overflow:hidden}.attach-btn input{position:absolute;inset:0;opacity:0;cursor:pointer}.demo-reset{margin-top:8px;font-size:11px;color:#8f8195;text-align:center}.demo-reset button{border:0;background:none;color:#9fcfff;padding:0;text-decoration:underline}.hide{display:none!important}.offline-banner{position:fixed;top:calc(8px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:120;width:min(400px,calc(100vw - 24px));padding:11px 14px;border-radius:15px;background:#2a1118ee;border:1px solid #ff5f6d66;box-shadow:0 12px 30px #0008;backdrop-filter:blur(12px);font-size:13px;text-align:center;color:#ffe8ed}.offline-banner.online{background:#10251bee;border-color:#40e0a066;color:#d9ffef}.retry-btn{margin-top:10px!important}
+.consent-row{display:flex;gap:9px;align-items:flex-start;color:#b9aabd;font-size:12px;line-height:1.45;margin:12px 0}.consent-row input{accent-color:#ff3d91;margin-top:2px}.settings-grid{display:grid;gap:10px;margin-top:14px}.danger-zone{margin-top:14px;border-color:#ff5f6d55!important;background:linear-gradient(145deg,#211016,#120a0f)!important}.legal-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.legal-link{border:1px solid var(--line);background:#ffffff06;color:#d9cde0;border-radius:12px;padding:8px 10px;font-size:12px}.modal-text{max-height:52vh;overflow:auto;line-height:1.55;color:#ddd}.settings-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 14px;border:1px solid var(--line);background:#ffffff06;border-radius:16px}.settings-row .small{flex:1}.edit-card{margin-top:12px}.edit-actions{display:flex;gap:10px}.edit-actions>*{flex:1}
+.mod-card{display:grid;gap:12px}.filter-panel{margin:0 0 12px}.filter-panel .field{flex:1}.filter-panel .row{align-items:flex-end}.filter-panel .btn{width:100%}.profile-photo-box{margin:0 0 16px}.profile-photo-preview{width:100%;aspect-ratio:4/5;border-radius:22px;overflow:hidden;background:linear-gradient(145deg,#1b1222,#100b15);border:1px solid var(--line);display:grid;place-items:center;font-size:64px;margin-bottom:10px}.profile-photo-preview img{width:100%;height:100%;object-fit:cover}.photo-nav{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 10px;pointer-events:none}.photo-nav button{pointer-events:auto;width:40px;height:40px;border:1px solid #ffffff33;background:#0008;color:white;border-radius:50%;font-size:22px}.photo-dots{position:absolute;top:12px;left:12px;right:12px;display:flex;gap:5px;z-index:3}.photo-dot{height:4px;flex:1;border-radius:99px;background:#ffffff55}.photo-dot.active{background:#fff}.profile-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.profile-thumb{position:relative;border-radius:16px;overflow:hidden;background:#100b15;border:1px solid var(--line);min-width:0}.profile-thumb img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}.profile-thumb .thumb-badge{position:absolute;left:7px;top:7px;padding:5px 8px;border-radius:999px;background:#000b;font-size:10px;font-weight:800;z-index:2}.profile-thumb .thumb-actions{position:static;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto auto;gap:6px;padding:7px;background:#120d18}.profile-thumb .thumb-actions button{min-width:0;width:100%;border:1px solid #ffffff0d;border-radius:10px;background:#000a;color:#fff;font-size:11px;line-height:1.2;padding:9px 7px;white-space:normal;overflow-wrap:anywhere;word-break:normal;text-align:center}.profile-thumb .thumb-actions button:first-child{grid-column:1 / -1}.profile-thumb .thumb-actions button:nth-child(2),.profile-thumb .thumb-actions button:nth-child(3){grid-column:auto}.profile-thumb .thumb-actions button:last-child{grid-column:1 / -1;min-height:38px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.profile-thumb .thumb-actions button:disabled{opacity:.38}.profile-thumb .thumb-actions button:not(:disabled):active{transform:scale(.98)}.photo-count{margin-top:8px}.photo-swipe{touch-action:pan-y;position:relative;user-select:none;overflow:hidden}.swipe-card{will-change:transform;transition:transform .22s ease,opacity .22s ease}.swipe-card.dragging{transition:none}.swipe-badge{position:absolute;top:22px;padding:10px 14px;border:2px solid currentColor;border-radius:12px;font-weight:900;font-size:18px;letter-spacing:.04em;opacity:0;z-index:5;pointer-events:none}.swipe-badge.like{right:18px;color:#ff6cae;transform:rotate(10deg)}.swipe-badge.pass{left:18px;color:#fff;transform:rotate(-10deg)}.match-toast{position:fixed;left:50%;bottom:88px;transform:translate(-50%,20px);z-index:50;background:linear-gradient(135deg,#ff3d91,#8b5cf6);color:#fff;padding:14px 18px;border-radius:18px;box-shadow:0 15px 40px #0009;font-weight:900;opacity:0;pointer-events:none;transition:.25s ease;white-space:nowrap}.match-toast.show{opacity:1;transform:translate(-50%,0)}.profile-photo-box .btn{margin-top:8px}.mod-photo{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;background:#100b15;border:1px solid var(--line)}.mod-actions{display:flex;gap:8px}.mod-actions .btn{margin:0}.mod-status{font-size:13px;color:var(--muted)}
+
+/* SPARK mobile app shell */
+html{background:#09050d}
+body{min-height:100dvh;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+.app{width:100%;max-width:430px;min-height:100dvh;margin:0 auto;padding:calc(12px + env(safe-area-inset-top)) 16px calc(92px + env(safe-area-inset-bottom))}
+.top{min-height:42px}
+.hero{padding:22px 2px 18px}
+.hero h1{font-size:clamp(38px,11vw,48px);letter-spacing:-.04em}
+.hero p{font-size:16px}
+.card{border-radius:24px;padding:16px;box-shadow:0 16px 45px #0008}
+.lang{margin:6px 0 14px;gap:7px}
+.lang button{min-height:46px;font-size:15px}
+.field{margin:10px 0}
+.field input,.field select,.field textarea{min-height:50px;font-size:16px;padding:13px}
+.row{gap:8px}
+#auth .row{flex-direction:column}
+#auth .row .btn{min-height:52px}
+.btn{min-height:50px;font-size:15px}
+.nav{padding:8px 12px calc(8px + env(safe-area-inset-bottom));height:72px}
+.nav button{min-width:72px;min-height:54px}
+.feed-card{border-radius:24px}
+.photo{height:calc(100dvh - 235px);min-height:430px;max-height:none}
+.actions{justify-content:center;padding-bottom:4px}
+.circle{width:62px;height:62px}
+.messages{height:calc(100dvh - 245px)}
+#chat .row:last-child{position:sticky;bottom:78px;background:#09050dee;padding-top:8px}
+#messageInput{min-width:0;padding:12px;border:1px solid var(--line);border-radius:15px;background:#0e0913;color:#fff}
+
+@media(max-width:380px){.chat-safety-actions{grid-template-columns:1fr}.chat-action{min-height:44px}}
+@media (max-width:360px){
+  .chat-action{min-width:36px;padding:7px 8px;font-size:14px}
+  .app{padding-left:12px;padding-right:12px}
+  .hero h1{font-size:36px}
+  .card{padding:14px}
+}
+@media (min-width:600px){
+  body{display:flex;justify-content:center}
+  .app{box-shadow:0 0 100px #0008}
+}
+
+
+.onboard{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:0 0 14px}.onstep{height:6px;border-radius:99px;background:#ffffff18;overflow:hidden}.onstep.done{background:linear-gradient(90deg,#ff4fd8,#8b5cff)}.onstep.current{background:#ffffff42}.onlabel{display:flex;justify-content:space-between;gap:10px;margin:0 0 12px;font-size:12px;color:#b9aabd}.onlabel strong{color:#fff}.checklist{display:grid;gap:8px;margin:12px 0 0}.check{display:flex;align-items:center;gap:9px;font-size:13px;color:#c8bacb}.check i{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#ffffff0d;font-style:normal}.check.done{color:#fff}.check.done i{background:#35d89a;color:#07120e}
+
+.install-btn{display:none;min-height:42px;padding:9px 12px;border:1px solid #ff3d9166;border-radius:14px;background:#ff3d9112;color:#fff;font-weight:800}.install-btn.show{display:inline-flex;align-items:center;gap:7px}.install-sheet{position:fixed;left:12px;right:12px;bottom:calc(82px + env(safe-area-inset-bottom));z-index:90;padding:16px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#1b1222,#100b15);box-shadow:0 25px 70px #000b}.install-sheet .row{align-items:center}.install-sheet .small{line-height:1.45}.safe-bottom{padding-bottom:max(100px,calc(100px + env(safe-area-inset-bottom)))}@media(max-width:520px){body{overscroll-behavior-y:none}.app{padding-left:12px;padding-right:12px;padding-top:max(14px,env(safe-area-inset-top));padding-bottom:max(100px,calc(100px + env(safe-area-inset-bottom)))}.hero{padding-top:22px}.hero h1{font-size:42px}.photo{height:min(66dvh,650px);min-height:400px}.messages{height:min(56dvh,560px);min-height:320px}.composer{bottom:calc(72px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom)}.nav{padding-bottom:max(10px,env(safe-area-inset-bottom));}.chat-action{min-height:52px}.btn,.circle,.send-btn,.icon-btn{touch-action:manipulation}}
+
+/* v55 responsive/accessibility hardening */
+.app{padding-top:max(18px,env(safe-area-inset-top));padding-bottom:max(112px,calc(100px + env(safe-area-inset-bottom)));}
+.nav{padding-bottom:max(10px,calc(10px + env(safe-area-inset-bottom)));}
+.nav button{min-width:0;flex:1;min-height:48px;padding:4px 3px;line-height:1.15;}
+.nav button span{display:inline-block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.btn,.chat-action,.lang button,.circle,.icon-btn,.send-btn,.report-reasons button{min-height:44px;}
+.hero h1{overflow-wrap:anywhere;}
+.card,.report-sheet,.chat,.field{min-width:0;}
+.match-toast{width:min(92vw,480px);white-space:normal;text-align:center;}
+.chat-title-wrap h2{overflow-wrap:anywhere;}
+.settings-row{min-width:0;}
+.settings-row>div:first-child{min-width:0;}
+@media (max-width:380px){
+  .app{padding-left:12px;padding-right:12px;}
+  .hero{padding-left:2px;padding-right:2px;}
+  .hero h1{font-size:39px;line-height:1;}
+  .hero p{font-size:15px;}
+  .top{gap:8px;}
+  .top h2{font-size:22px;}
+  .card{padding:14px;border-radius:22px;}
+  .row{gap:7px;}
+  .lang{gap:5px;}
+  .lang button{padding:9px 7px;}
+  .profile-gallery{gap:8px;}
+  .profile-thumb .thumb-actions{gap:5px;padding:6px;}
+  .profile-thumb .thumb-actions button{font-size:10.5px;padding:9px 5px;}
+  .chat-safety-actions{gap:7px;}
+  .chat-action{font-size:12px;padding:9px 7px;}
+  .chat-action-icon{width:22px;height:22px;flex:0 0 22px;}
+  .composer-row{gap:6px;}
+  .composer-input-wrap{padding-left:7px;}
+  .icon-btn{width:34px;height:34px;flex:0 0 34px;}
+  .send-btn{width:42px;height:42px;flex:0 0 42px;}
+  .photo{min-height:360px;}
+  .feed-card .photo-overlay{padding:55px 16px 16px;}
+  .feed-card .photo-overlay h2{font-size:26px;}
+}
+@media (max-width:340px){
+  .nav{padding-left:6px;padding-right:6px;}
+  .nav button{font-size:11px;}
+  .nav button:first-line{font-size:16px;}
+  .chat-safety-actions{grid-template-columns:1fr;}
+  .settings-row{display:grid;gap:10px;}
+  .settings-row .lang{width:100%!important;}
+}
+
+/* v56 big-screen / edge-state hardening */
+html{overflow-x:hidden;background:#09050d}
+body{overflow-x:hidden;overflow-wrap:anywhere}
+img{max-width:100%}
+button{max-width:100%}
+.nav button span{overflow-wrap:anywhere}
+.profile-thumb .thumb-actions button{word-break:break-word}
+.profile-thumb .thumb-actions button:last-child{overflow-wrap:anywhere;text-overflow:clip}
+.chat-preview,.chat-title-wrap,.chat-top,.chat-meta{min-width:0}
+.bubble{overflow-wrap:anywhere;word-break:break-word}
+.bubble .chat-photo{max-width:min(220px,70vw);height:auto}
+.messages{scrollbar-width:thin}
+.notice,.demo-note,.small{overflow-wrap:anywhere}
+@media(max-width:360px){
+  .profile-gallery{grid-template-columns:1fr}
+  .profile-thumb .thumb-actions{grid-template-columns:1fr 1fr}
+  .profile-thumb .thumb-actions button:first-child,
+  .profile-thumb .thumb-actions button:last-child{grid-column:1 / -1}
+  .profile-thumb .thumb-actions button{font-size:12px;min-height:40px}
+  .chat-title-row{gap:7px}
+  .chat-profile-avatar{width:42px;height:42px;flex-basis:42px}
+  .chat-action{font-size:11.5px}
+  .composer-input-wrap{gap:3px}
+  .composer-input-wrap input{font-size:16px}
+}
+<style>
+/* v62 navigation hit-area fix */
+.nav{pointer-events:auto!important;touch-action:manipulation;z-index:9999!important;isolation:isolate;}
+.nav button{pointer-events:auto!important;touch-action:manipulation;position:relative;z-index:10000;cursor:pointer;-webkit-user-select:none;user-select:none;}
+.nav button:active{transform:scale(.97)}
+.btn,.circle,.chat-action,.pill,.install-btn,.lang button{pointer-events:auto!important;touch-action:manipulation;}
+.screen{position:relative;}
+</style>
+</style>
+</head>
+<body>
+<div id="offlineBanner" class="offline-banner hide" role="status" aria-live="polite"></div>
+<div id="runtimeError" class="offline-banner hide" role="alert" style="top:auto;bottom:18px;background:#2a1118;border-color:#ff5f6d99"></div>
+<div class="app">
+  <div class="top"><div class="brand">SPARK</div><div style="display:flex;gap:8px;align-items:center"><button id="installApp" class="install-btn" type="button">＋ Установить</button><button id="logout" class="pill hide" data-i18n="logout">Выйти</button></div></div>
+<div id="installSheet" class="install-sheet hide" aria-hidden="true"><div class="install-card"><div class="install-title">SPARK</div><div id="installHint" class="small">Установи SPARK на телефон.</div><div class="row" style="margin-top:12px"><button id="installAction" class="btn" type="button">Как установить</button><button id="installLater" class="btn alt" type="button">Позже</button></div><button id="installClose" class="small" type="button" style="display:block;margin:10px auto 0;background:none;border:0;color:#9d8fa3">Закрыть</button></div></div>
+<div id="matchToast" class="match-toast" aria-live="polite"></div>
+
+  <section id="auth" class="screen active">
+    <div class="hero"><div class="small" data-i18n="region">RIGA • JŪRMALA</div><h1><span data-i18n="find">Найди свою</span> <span class="gradient" data-i18n="spark">искру</span>.</h1><p data-i18n="hero">Знакомства с обязательной фото-верификацией. Ярко, быстро и без фейков.</p></div>
+    <div class="lang"><button data-lang="ru" class="active">RU</button><button data-lang="lv">LV</button><button data-lang="en">EN</button></div>
+    <div class="card">
+      <div class="field"><label data-i18n="email">Email</label><input id="email" type="email" autocomplete="email" data-i18n-placeholder="emailPlaceholder" placeholder="you@example.com"></div>
+      <div class="field"><label data-i18n="password">Пароль</label><input id="password" type="password" autocomplete="new-password" data-i18n-placeholder="passwordPlaceholder" placeholder="••••••••"></div>
+      <label class="consent-row"><input id="signupConsent" type="checkbox"><span data-i18n="signupConsent">Мне 18+, я принимаю Правила и Политику конфиденциальности.</span></label>
+      <div class="row"><button id="signup" class="btn" data-i18n="signup">Создать аккаунт</button><button id="signin" class="btn alt" data-i18n="signin">Войти</button></div>
+      <button id="forgotPassword" class="btn alt small" style="width:100%;margin-top:10px" data-i18n="forgotPassword">Забыли пароль?</button>
+      <div id="authMsg" class="notice hide" style="margin-top:12px"></div>
+    </div>
+  </section>
+
+  <section id="resetPassword" class="screen">
+    <div class="hero"><h1><span data-i18n="newPasswordTitle">Новый</span> <span class="gradient" data-i18n="passwordTitle">пароль</span></h1><p data-i18n="newPasswordIntro">Установи новый пароль для аккаунта SPARK.</p></div>
+    <div class="card">
+      <div class="field"><label data-i18n="newPassword">Новый пароль</label><input id="newPassword" type="password" autocomplete="new-password" placeholder="••••••••"></div>
+      <div class="field"><label data-i18n="repeatPassword">Повтори пароль</label><input id="repeatPassword" type="password" autocomplete="new-password" placeholder="••••••••"></div>
+      <button id="updatePassword" class="btn" data-i18n="updatePassword">Сохранить новый пароль</button>
+      <div id="resetMsg" class="notice hide" style="margin-top:12px"></div>
+    </div>
+  </section>
+
+  <section id="profileSetup" class="screen">
+    <div class="hero"><h1><span data-i18n="your">Твой</span> <span class="gradient" data-i18n="profile">профиль</span></h1><p data-i18n="profileIntro">Сначала заполним базу. В ленту попадут только подтверждённые профили.</p></div>
+    <div class="card">
+      <div id="onboardProfile"></div>
+      <div class="field"><label data-i18n="name">Имя</label><input id="name" maxlength="40" autocomplete="name"></div>
+      <div class="row"><div class="field"><label data-i18n="dob">Дата рождения</label><input id="dob" type="date"></div><div class="field"><label data-i18n="city">Город</label><select id="city"><option value="riga">Riga</option><option value="jurmala">Jūrmala</option></select></div></div>
+      <div class="field"><label data-i18n="about">О себе</label><textarea id="bio" maxlength="500" data-i18n-placeholder="bioPlaceholder" placeholder="Пара слов о тебе…"></textarea></div>
+      <div class="field"><label data-i18n="interests">Интересы через запятую</label><input id="interests" maxlength="300" data-i18n-placeholder="interestsPlaceholder" placeholder="музыка, море, путешествия"></div>
+      <button id="saveProfile" class="btn" data-i18n="saveProfile">Сохранить профиль</button>
+      <div id="profileMsg" class="small" style="margin-top:10px"></div>
+    </div>
+  </section>
+
+  <section id="verify" class="screen">
+    <div class="hero"><h1><span data-i18n="verifyVerb">Подтверди</span> <span class="gradient" data-i18n="photo">фото</span></h1><p data-i18n="verifyIntro">Это обязательный шаг. Загрузи актуальное селфи — оно уйдёт на проверку. До одобрения профиль не показывается другим.</p></div>
+    <div class="card">
+      <div id="onboardVerify"></div>
+      <div class="notice">🔐 <span data-i18n="verifyNotice">Сейчас создаётся заявка на проверку. Реальную liveness-проверку подключим перед запуском.</span></div>
+      <div class="field"><label data-i18n="verifyPhoto">Фото для верификации</label><input id="verifyPhoto" type="file" accept="image/*" capture="user"></div>
+      <button id="openModerationFromVerify" class="btn alt hide" type="button" data-i18n="moderation">🛡️ Модерация</button>
+    <button id="submitVerify" class="btn" data-i18n="submitVerify">Отправить на проверку</button>
+      <div id="verifyMsg" class="small" style="margin-top:10px"></div>
+    </div>
+  </section>
+
+  <section id="feed" class="screen">
+    <div class="top"><div><div class="small" data-i18n="nearby">РЯДОМ</div><h2 style="margin:2px 0" data-i18n="feed">Лента</h2></div><button id="filterToggle" class="btn alt small" type="button">⚙️</button></div>
+    <div id="filterPanel" class="card filter-panel hide">
+      <div class="row">
+        <div class="field"><label data-i18n="minAge">От</label><input id="minAge" type="number" min="18" max="99" value="18"></div>
+        <div class="field"><label data-i18n="maxAge">До</label><input id="maxAge" type="number" min="18" max="99" value="99"></div>
+      </div>
+      <div class="field"><label data-i18n="city">Город</label><select id="filterCity"><option value="all" data-i18n="allCities">Оба города</option><option value="riga">Riga</option><option value="jurmala">Jūrmala</option></select></div>
+      <button id="applyFilters" class="btn" data-i18n="applyFilters">Применить</button>
+    </div>
+    <span id="cityPill" class="pill hide">Riga</span>
+    <div id="feedCard" class="card feed-card"></div>
+  </section>
+
+  <section id="matches" class="screen">
+    <div class="hero" style="padding-top:10px"><h1><span data-i18n="your">Ваши</span> <span class="gradient" data-i18n="matches">матчи</span></h1><p data-i18n="matchesIntro">Когда симпатия взаимна — начинается разговор.</p></div>
+    <button id="openMessagesTop" class="btn alt" type="button">💬 <span data-i18n="messagesNav">Сообщения</span></button>
+    <div class="demo-note" data-i18n="demoChatNote">🧪 Демо-чат — здесь можно проверить, как выглядит входящее сообщение от вымышленного профиля.</div>
+    <div id="matchList" class="chat-list"></div>
+  </section>
+
+  <section id="chat" class="screen">
+    <div class="chat-header">
+      <div class="chat-title-row">
+        <button id="backMatches" class="btn alt small chat-back" type="button" data-i18n-aria="back" aria-label="Назад">←</button>
+        <div id="chatAvatar" class="chat-profile-avatar">А</div>
+        <div class="chat-title-wrap">
+          <h2 id="chatTitle" style="margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></h2>
+          <div class="small chat-status"><span class="online-dot"></span><span id="chatStatusText" data-i18n="onlineNow">Сейчас в сети</span></div>
+        </div>
+      </div>
+      <div class="chat-safety-actions">
+        <button id="chatReport" class="chat-action" type="button">
+          <span class="chat-action-icon" aria-hidden="true">⚑</span>
+          <span data-i18n="chatReport">Пожаловаться</span>
+        </button>
+        <button id="chatBlock" class="chat-action danger" type="button">
+          <span class="chat-action-icon" aria-hidden="true">⊘</span>
+          <span data-i18n="chatBlock">Заблокировать</span>
+        </button>
+      </div>
+    </div>
+    <div id="messages" class="messages"></div>
+    <div id="typingIndicator" class="typing hide"><i></i><i></i><i></i><span data-i18n="typing">печатает…</span></div>
+    <div class="composer">
+      <div id="emojiPanel" class="emoji-panel hide"></div>
+      <div class="composer-row">
+        <div class="composer-input-wrap">
+          <button id="emojiToggle" class="icon-btn" type="button" data-i18n-aria="emoji" aria-label="Emoji">☺</button>
+          <label class="icon-btn attach-btn" data-i18n-aria="photo" aria-label="Фото">＋<input id="photoInput" type="file" accept="image/*" capture="environment"></label>
+          <input id="messageInput" inputmode="text" enterkeyhint="send" data-i18n-placeholder="messagePlaceholder" placeholder="Напиши сообщение…" maxlength="2000" autocomplete="off">
+        </div>
+        <button id="sendMessage" class="send-btn" type="button" data-i18n-aria="send" aria-label="Send">➤</button>
+      </div>
+      <div class="demo-reset" id="demoResetHint">Демо-чат сохраняется только на этом устройстве. <button type="button" onclick="sparkResetDemo()">Сбросить</button></div>
+    </div>
+  </section>
+
+  <section id="me" class="screen">
+    <div class="hero" style="padding-top:10px"><h1><span data-i18n="my">Мой</span> <span class="gradient" data-i18n="profile">профиль</span></h1></div>
+    <div class="card">
+      <div id="meInfo"></div>
+      <button id="editProfileToggle" class="btn alt" data-i18n="editProfile">Редактировать профиль</button>
+      <div id="editProfileCard" class="card edit-card hide">
+        <div class="field"><label data-i18n="name">Имя</label><input id="editName" maxlength="40" autocomplete="name"></div>
+        <div class="field"><label data-i18n="dob">Дата рождения</label><input id="editDob" type="date"></div>
+        <div class="field"><label data-i18n="city">Город</label><select id="editCity"><option value="riga">Riga</option><option value="jurmala">Jūrmala</option></select></div>
+        <div class="field"><label data-i18n="about">О себе</label><textarea id="editBio" maxlength="500"></textarea></div>
+        <div class="field"><label data-i18n="interests">Интересы через запятую</label><input id="editInterests" maxlength="300"></div>
+        <div class="edit-actions"><button id="cancelEditProfile" class="btn alt" type="button" data-i18n="cancel">Отмена</button><button id="saveEditProfile" class="btn" type="button" data-i18n="saveProfile">Сохранить профиль</button></div>
+        <div id="editProfileMsg" class="small" style="margin-top:8px"></div>
+      </div>
+      <div id="mePhoto" class="profile-photo-box">
+        <div id="mePhotoPreview" class="profile-photo-preview">✦</div>
+        <div class="field" style="margin:0">
+          <label data-i18n="profilePhotos">Фото профиля (до 6)</label>
+          <input id="profilePhotoInput" type="file" accept="image/*" multiple>
+        </div>
+        <button id="saveProfilePhoto" class="btn" data-i18n="addPhotos">Добавить фото</button>
+        <div id="profilePhotoMsg" class="small" style="margin-top:8px"></div>
+        <div id="profilePhotoCount" class="small photo-count"></div>
+        <div id="profileGallery" class="profile-gallery"></div>
+      </div>
+      <div id="meStatus" class="notice"></div>
+      <div class="settings-grid">
+        <div class="settings-row"><div><b data-i18n="languageSetting">Язык</b><div class="small" data-i18n="languageHint">Меняется сразу и сохраняется в профиле.</div></div><div class="lang" style="margin:0;width:180px"><button type="button" data-lang="ru">RU</button><button type="button" data-lang="lv">LV</button><button type="button" data-lang="en">EN</button></div></div>
+      </div>
+      <div class="settings-row" style="margin-top:10px"><div><b data-i18n="notifications">Уведомления</b><div id="notificationStatus" class="small"></div></div><button id="notificationToggle" class="btn alt small" type="button" data-i18n="enableNotifications">Включить уведомления</button></div>
+      <div class="legal-links">
+        <button class="legal-link" type="button" id="termsBtn" data-i18n="terms">Правила</button>
+        <button class="legal-link" type="button" id="privacyBtn" data-i18n="privacy">Конфиденциальность</button>
+        <button class="legal-link" type="button" id="legalInfoBtn" data-i18n="legalInfo">Юридическая информация</button>
+      </div>
+      <button id="refreshMe" class="btn alt" data-i18n="refresh">Обновить статус</button>
+      <div class="card edit-card" style="margin-top:14px">
+        <h3 style="margin-top:0" data-i18n="security">Безопасность</h3>
+        <div class="field"><label data-i18n="currentPassword">Текущий пароль</label><input id="currentPassword" type="password" autocomplete="current-password"></div>
+        <div class="field"><label data-i18n="newPassword">Новый пароль</label><input id="editNewPassword" type="password" minlength="8" autocomplete="new-password"></div>
+        <button id="changePassword" class="btn alt" type="button" data-i18n="changePassword">Сменить пароль</button>
+        <div id="passwordMsg" class="small" style="margin-top:8px"></div>
+        <div class="edit-actions" style="margin-top:12px"><button id="logoutCurrent" class="btn alt" type="button" data-i18n="logoutCurrent">Выйти с этого устройства</button><button id="logoutAll" class="btn" type="button" data-i18n="logoutAll">Выйти со всех устройств</button></div>
+      </div>
+      <div class="card danger-zone">
+        <h3 style="margin-top:0" data-i18n="dangerZone">Удаление аккаунта</h3>
+        <p class="small" data-i18n="deleteAccountHint">Это необратимо: профиль, фото, матчи и сообщения будут удалены.</p>
+        <button id="deleteAccount" class="btn" type="button" style="background:linear-gradient(100deg,#ff5f6d,#c0265d)" data-i18n="deleteAccount">Удалить аккаунт</button>
+        <div id="deleteAccountMsg" class="small" style="margin-top:8px"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="moderation" class="screen">
+    <div class="hero" style="padding-top:10px">
+      <div class="small" data-i18n="moderationBadge">MODERATION</div>
+      <h1><span data-i18n="review">Проверь</span> <span class="gradient" data-i18n="requests">заявки</span></h1>
+      <p data-i18n="moderationIntro">Здесь появляются новые фото на подтверждение.</p>
+    </div>
+    <div id="moderationList" class="chat-list"></div>
+    <div class="hero" style="padding-top:20px">
+      <div class="small">PHOTOS</div>
+      <h2 style="margin:4px 0">Фото профиля</h2>
+      <p class="small">Ожидают ручной проверки. Приватные фото открываются только модератору по временной ссылке.</p>
+    </div>
+    <div id="photoModerationList" class="chat-list"></div>
+    <div class="hero" style="padding-top:20px"><div class="small">SAFETY</div><h2 style="margin:4px 0">Жалобы</h2></div>
+    <div id="reportsList" class="chat-list"></div>
+  </section>
+</div>
+
+<div id="legalModal" class="report-modal hide" aria-hidden="true">
+  <div class="report-sheet">
+    <div class="small">SPARK</div>
+    <h2 id="legalTitle" style="margin:5px 0 8px"></h2>
+    <div id="legalBody" class="modal-text"></div>
+    <div id="legalInfoBody" class="modal-text hide">
+      <div class="field"><label data-i18n="legalOperator">Оператор</label><div class="input-like"></div></div>
+      <div class="field"><label data-i18n="legalRegNumber">Регистрационный номер</label><div class="input-like"></div></div>
+      <div class="field"><label data-i18n="legalAddress">Юридический адрес</label><div class="input-like"></div></div>
+      <div class="field"><label data-i18n="legalCountry">Страна</label><div class="input-like"></div></div>
+      <div class="field"><label data-i18n="legalEmail">Email</label><div class="input-like"></div></div>
+      <div class="field"><label data-i18n="legalPrivacyContact">Контакт по вопросам приватности</label><div class="input-like"></div></div>
+      <div class="field"><label data-i18n="legalDataContact">Контакт по вопросам доступа/удаления данных</label><div class="input-like"></div></div>
+      <div class="field"><label data-i18n="legalTermsVersion">Версия правил</label><div class="input-like"></div></div>
+      <div class="field"><label data-i18n="legalPrivacyVersion">Версия политики конфиденциальности</label><div class="input-like"></div></div>
+    </div>
+    <button id="closeLegal" class="btn alt" type="button" data-i18n="close">Закрыть</button>
+  </div>
+</div>
+
+<div id="reportModal" class="report-modal hide" aria-hidden="true">
+  <div class="report-sheet">
+    <div class="small" data-i18n="safetyBadge">SAFETY</div>
+    <h2 style="margin:5px 0 8px" data-i18n="reportTitle">Пожаловаться на профиль</h2>
+    <p class="small" data-i18n="reportIntro">Выбери причину. Жалоба попадёт в очередь модерации.</p>
+    <div id="reportReasons" class="report-reasons"></div>
+    <textarea id="reportDetails" maxlength="2000" class="report-details" data-i18n-placeholder="reportDetailsPlaceholder" placeholder="Дополнительные детали…"></textarea>
+    <div class="row" style="margin-top:10px"><button id="cancelReport" class="btn alt" type="button" data-i18n="cancel">Отмена</button><button id="submitReport" class="btn" type="button" data-i18n="sendReport">Отправить жалобу</button></div>
+    <div id="reportMsg" class="small" style="margin-top:8px"></div>
+  </div>
+</div>
+
+<nav id="nav" class="nav hide">
+  <button id="feedNav" data-screen="feed" type="button">🔥<br><span data-i18n="feed">Лента</span></button>
+  <button id="matchesNav" data-screen="matches" type="button">💞<br><span data-i18n="matches">Матчи</span></button><button id="chatsNav" data-screen="chat" type="button">💬<br><span data-i18n="messagesNav">Чаты</span></button>
+  <button id="moderationNav" class="hide" data-screen="moderation">🛡️<br><span data-i18n="moderation">Модерация</span></button><button id="meNav" data-screen="me" type="button">👤<br><span data-i18n="me">Я</span></button>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1/dist/umd/supabase.min.js"></script>
+<script>
+const SUPABASE_URL = "https://ecjdnbrrwazgxkumvtwp.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVjamRuYnJyd2F6Z3hrdW12dHdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA5NjA0MzgsImV4cCI6MjEwNjUzNjQzOH0.OfGkbuZv3NKL1mEJfxwlYTXdwJeKRtDT_8S1EpAAPDA";
+const LOCAL_FILE_MODE = location.protocol === "file:";
+const sb = window.supabase?.createClient ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+
+let user=null, profile=null, queue=[], idx=0, currentMatch=null, currentChatUser=null, channel=null, isModerator=false, feedPhotoIndex=0, feedPhotoUrls=[];
+const I18N = {
+  ru:{
+    safetyBadge:"БЕЗОПАСНОСТЬ",reportTitle:"Пожаловаться на профиль",reportIntro:"Выбери причину. Жалоба попадёт в очередь модерации.",reportDetailsPlaceholder:"Дополнительные детали…",sendReport:"Отправить жалобу",reportReasons:["Спам или реклама","Оскорбления или угрозы","Фейковый профиль","Неподобающий контент","Другое"],blockUser:"Заблокировать",reportUser:"Пожаловаться",chatReport:"Пожаловаться",chatBlock:"Заблокировать",blockConfirm:"Заблокировать этого пользователя?",blocked:"Пользователь заблокирован.",
+    region:"RIGA • JŪRMALA",find:"Найди свою",spark:"искру",hero:"Знакомства с обязательной фото-верификацией. Ярко, быстро и без фейков.",
+    email:"Email",password:"Пароль",signup:"Создать аккаунт",signin:"Войти",forgotPassword:"Забыли пароль?",newPasswordTitle:"Новый",passwordTitle:"пароль",newPasswordIntro:"Установи новый пароль для аккаунта SPARK.",newPassword:"Новый пароль",repeatPassword:"Повтори пароль",updatePassword:"Сохранить новый пароль",your:"Твой",profile:"профиль",profileIntro:"Сначала заполним базу. В ленту попадут только подтверждённые профили.",
+    name:"Имя",dob:"Дата рождения",city:"Город",about:"О себе",interests:"Интересы через запятую",saveProfile:"Сохранить профиль",editProfile:"Редактировать профиль",cancel:"Отмена",languageSetting:"Язык",languageHint:"Меняется сразу и сохраняется в профиле.",security:"Безопасность",notifications:"Уведомления",enableNotifications:"Включить уведомления",notificationsOn:"Уведомления включены",notificationsOff:"Уведомления выключены",currentPassword:"Текущий пароль",newPassword:"Новый пароль",changePassword:"Сменить пароль",passwordChanged:"Пароль изменён.",passwordError:"Не удалось изменить пароль.",logoutAll:"Выйти со всех устройств",logoutCurrent:"Выйти с этого устройства",terms:"Правила",privacy:"Конфиденциальность",legalInfo:"Юридическая информация",legalOperator:"Оператор",legalRegNumber:"Регистрационный номер",legalAddress:"Юридический адрес",legalCountry:"Страна",legalEmail:"Email",legalPrivacyContact:"Контакт по вопросам приватности",legalDataContact:"Контакт по вопросам доступа/удаления данных",legalTermsVersion:"Версия правил",legalPrivacyVersion:"Версия политики конфиденциальности",close:"Закрыть",back:"Назад",send:"Отправить",emoji:"Эмодзи",photo:"Фото",demoChatNote:"🧪 Демо-чат — здесь можно проверить, как выглядит входящее сообщение от вымышленного профиля.",signupConsent:"Мне 18+, я принимаю Правила и Политику конфиденциальности.",dangerZone:"Удаление аккаунта",deleteAccount:"Удалить аккаунт",deleteAccountHint:"Это необратимо: профиль, фото, матчи и сообщения будут удалены.",deleteConfirm:"Удалить аккаунт навсегда? Введите SPARK для подтверждения.",deleteConfirmPlaceholder:"Введите SPARK",deleteAccountDeleted:"Аккаунт удалён.",deleteAccountError:"Не удалось удалить аккаунт. Попробуй ещё раз.",
+    verifyVerb:"Подтверди",photo:"фото",verifyIntro:"Это обязательный шаг. Загрузи актуальное селфи — оно уйдёт на проверку. До одобрения профиль не показывается другим.",
+    verifyNotice:"Сейчас создаётся заявка на проверку. Реальную liveness-проверку подключим перед запуском.",verifyPhoto:"Фото для верификации",submitVerify:"Отправить на проверку",
+    nearby:"РЯДОМ",feed:"Лента",matches:"Матчи",matchesIntro:"Когда симпатия взаимна — начинается разговор.",sparkChat:"SPARK chat",messagesNav:"Сообщения",my:"Мой",me:"Я",refresh:"Обновить статус",logout:"Выйти",
+    emailPlaceholder:"you@example.com",passwordPlaceholder:"••••••••",bioPlaceholder:"Пара слов о тебе…",interestsPlaceholder:"музыка, море, путешествия",messagePlaceholder:"Напиши сообщение…",typing:"печатает…",
+    noNew:"Пока никого нового",noNewText:"Когда появятся новые подтверждённые профили, они будут здесь.",noMatches:"Пока нет взаимных симпатий.",
+    openChat:"Открыть чат",noMessage:"Начни разговор",onlineNow:"Сейчас в сети",offlineNow:"Не в сети",newMessages:"новых",photoMessage:"Фото",matchCreated:"Новый матч",profileVerified:"Фото подтверждено. Ты видим в ленте.",profilePending:"Фото на проверке.",profileNotVerified:"Верификация ещё не пройдена.",
+    ageRequired:"Нужен возраст 18+.",nameRequired:"Введи имя.",profileSaved:"Профиль сохранён.",choosePhoto:"Выбери фото.",sent:"Заявка отправлена. После одобрения профиль появится в ленте.",messageTooLong:"Сообщение не может быть длиннее 2000 символов.",photoTooLarge:"Фото слишком большое. Максимум 4 МБ.",photoSending:"Фото уже отправляется…",imageOnly:"Можно отправлять только изображения.",demoNoChanges:"Это демонстрационный аккаунт — реальные данные не изменяются.",demoNoReport:"Это демонстрационный аккаунт — жалоба не отправляется в базу.",logoutAllConfirm:"Выйти со всех устройств?",verificationStatus:"Статус",moderationBadge:"МОДЕРАЦИЯ",review:"Проверь",requests:"заявки",moderation:"Модерация",moderationIntro:"Здесь появляются новые фото на подтверждение.",photoModerationEmpty:"Новых фото на проверку нет.",photoApprove:"Одобрить фото",photoReject:"Отклонить фото",photoRejectReason:"Причина отклонения",photoModerationError:"Не удалось загрузить очередь фото.",photoModerated:"Фото обработано.",pendingRequests:"Новых заявок нет.",submitted:"Отправлено",approve:"Подтвердить",reject:"Отклонить",rejectReason:"Причина отказа (необязательно)",approved:"Заявка подтверждена.",rejected:"Заявка отклонена.",moderationError:"Не удалось загрузить заявки.",profilePhotos:"Фото профиля (до 6)",addPhotos:"Добавить фото",photoSaved:"Фото добавлено.",photoRequired:"Выбери фото.",photoLimit:"Можно загрузить максимум 6 фото.",primaryPhoto:"Главное",makePrimary:"Сделать главным",deletePhoto:"Удалить",moveLeft:"←",moveRight:"→",photosHint:"Главное фото показывается первым. Фото можно менять местами.",stepProfile:"Профиль",stepPhoto:"Фото",stepVerify:"Проверка",stepReady:"Готово",stepOf:"Шаг",checkName:"Имя заполнено",checkDob:"Возраст 18+",checkCity:"Город выбран",checkPhoto:"Главное фото добавлено",checkVerify:"Фото отправлено на проверку",addProfilePhoto:"Добавь главное фото профиля, чтобы тебя могли показывать в ленте.",minAge:"Возраст от",maxAge:"Возраст до",allCities:"Оба города",applyFilters:"Применить",
+  },
+  lv:{
+    safetyBadge:"DROŠĪBA",reportTitle:"Ziņot par profilu",reportIntro:"Izvēlies iemeslu. Ziņojums nonāks moderācijas rindā.",reportDetailsPlaceholder:"Papildu informācija…",sendReport:"Nosūtīt ziņojumu",reportReasons:["Surogātpasts vai reklāma","Apvainojumi vai draudi","Viltus profils","Nepiemērots saturs","Cits"],blockUser:"Bloķēt",reportUser:"Ziņot",chatReport:"Ziņot",chatBlock:"Bloķēt",blockConfirm:"Bloķēt šo lietotāju?",blocked:"Lietotājs bloķēts.",
+    region:"RĪGA • JŪRMALA",find:"Atrodi savu",spark:"dzirksti",hero:"Iepazīšanās ar obligātu foto verifikāciju. Spilgti, ātri un bez viltus profiliem.",
+    email:"E-pasts",password:"Parole",signup:"Izveidot kontu",signin:"Pieslēgties",forgotPassword:"Aizmirsi paroli?",newPasswordTitle:"Jauna",passwordTitle:"parole",newPasswordIntro:"Iestati jaunu SPARK konta paroli.",newPassword:"Jaunā parole",repeatPassword:"Atkārto paroli",updatePassword:"Saglabāt jauno paroli",your:"Tavs",profile:"profils",profileIntro:"Vispirms aizpildīsim profilu. Plūsmā tiek rādīti tikai apstiprināti profili.",
+    name:"Vārds",dob:"Dzimšanas datums",city:"Pilsēta",about:"Par tevi",interests:"Intereses ar komatiem",saveProfile:"Saglabāt profilu",editProfile:"Rediģēt profilu",cancel:"Atcelt",languageSetting:"Valoda",languageHint:"Mainās uzreiz un tiek saglabāta profilā.",security:"Drošība",notifications:"Paziņojumi",enableNotifications:"Ieslēgt paziņojumus",notificationsOn:"Paziņojumi ieslēgti",notificationsOff:"Paziņojumi izslēgti",currentPassword:"Pašreizējā parole",newPassword:"Jaunā parole",changePassword:"Mainīt paroli",passwordChanged:"Parole nomainīta.",passwordError:"Neizdevās nomainīt paroli.",logoutAll:"Iziet no visām ierīcēm",logoutCurrent:"Iziet no šīs ierīces",terms:"Noteikumi",privacy:"Privātums",legalInfo:"Juridiskā informācija",legalOperator:"Operators",legalRegNumber:"Reģistrācijas numurs",legalAddress:"Juridiskā adrese",legalCountry:"Valsts",legalEmail:"E-pasts",legalPrivacyContact:"Privātuma kontaktpersona",legalDataContact:"Datu piekļuves/dzēšanas kontaktpersona",legalTermsVersion:"Noteikumu versija",legalPrivacyVersion:"Privātuma politikas versija",close:"Aizvērt",back:"Atpakaļ",send:"Sūtīt",emoji:"Emocijzīmes",photo:"Foto",demoChatNote:"🧪 Demo čats — šeit vari pārbaudīt, kā izskatās ienākoša ziņa no izdomāta profila.",signupConsent:"Man ir 18+ gadi, un es piekrītu noteikumiem un privātuma politikai.",dangerZone:"Konta dzēšana",deleteAccount:"Dzēst kontu",deleteAccountHint:"Tas ir neatgriezeniski: profils, foto, sakritības un ziņas tiks dzēstas.",deleteConfirm:"Dzēst kontu neatgriezeniski? Ieraksti SPARK, lai apstiprinātu.",deleteConfirmPlaceholder:"Ieraksti SPARK",deleteAccountDeleted:"Konts ir dzēsts.",deleteAccountError:"Neizdevās dzēst kontu. Mēģini vēlreiz.",
+    verifyVerb:"Apstiprini",photo:"foto",verifyIntro:"Tas ir obligāts solis. Augšupielādē aktuālu selfiju pārbaudei. Kamēr tas nav apstiprināts, profils citiem netiks rādīts.",
+    verifyNotice:"Tiks izveidots verifikācijas pieteikums. Īsto liveness pārbaudi pieslēgsim pirms palaišanas.",verifyPhoto:"Verifikācijas foto",submitVerify:"Nosūtīt pārbaudei",
+    nearby:"TUVUMĀ",feed:"Plūsma",matches:"Sakritības",matchesIntro:"Kad simpātija ir abpusēja, sākas saruna.",sparkChat:"SPARK tērzēšana",messagesNav:"Ziņas",my:"Mans",me:"Es",refresh:"Atjaunot statusu",logout:"Iziet",
+    emailPlaceholder:"you@example.com",passwordPlaceholder:"••••••••",bioPlaceholder:"Daži vārdi par tevi…",interestsPlaceholder:"mūzika, jūra, ceļojumi",messagePlaceholder:"Uzraksti ziņu…",typing:"raksta…",
+    noNew:"Pagaidām neviena jauna profila",noNewText:"Kad būs jauni apstiprināti profili, tie parādīsies šeit.",noMatches:"Pagaidām nav abpusēju simpātiju.",
+    openChat:"Atvērt sarunu",noMessage:"Sāc sarunu",onlineNow:"Tiešsaistē",offlineNow:"Nav tiešsaistē",newMessages:"jaunas",photoMessage:"Foto",matchCreated:"Jauna sakritība",profileVerified:"Foto ir apstiprināts. Tavs profils ir redzams plūsmā.",profilePending:"Foto tiek pārbaudīts.",profileNotVerified:"Verifikācija vēl nav pabeigta.",
+    ageRequired:"Nepieciešams vecums 18+.",nameRequired:"Ievadi vārdu.",profileSaved:"Profils saglabāts.",choosePhoto:"Izvēlies foto.",sent:"Pieteikums nosūtīts. Pēc apstiprināšanas profils parādīsies plūsmā.",messageTooLong:"Ziņa nedrīkst būt garāka par 2000 rakstzīmēm.",photoTooLarge:"Foto ir pārāk liels. Maksimums 4 MB.",photoSending:"Foto jau tiek nosūtīts…",imageOnly:"Drīkst sūtīt tikai attēlus.",demoNoChanges:"Šis ir demonstrācijas konts — reāli dati netiek mainīti.",demoNoReport:"Šis ir demonstrācijas konts — ziņojums netiek saglabāts.",logoutAllConfirm:"Iziet no visām ierīcēm?",verificationStatus:"Statuss",moderationBadge:"MODERĀCIJA",review:"Pārbaudi",requests:"pieteikumus",moderation:"Moderācija",moderationIntro:"Šeit parādās jaunie foto verifikācijai.",photoModerationEmpty:"Jaunu foto pārbaudei nav.",photoApprove:"Apstiprināt foto",photoReject:"Noraidīt foto",photoRejectReason:"Noraidījuma iemesls",photoModerationError:"Neizdevās ielādēt foto rindu.",photoModerated:"Foto apstrādāts.",pendingRequests:"Jaunu pieteikumu nav.",submitted:"Iesniegts",approve:"Apstiprināt",reject:"Noraidīt",rejectReason:"Noraidījuma iemesls (neobligāti)",approved:"Pieteikums apstiprināts.",rejected:"Pieteikums noraidīts.",moderationError:"Neizdevās ielādēt pieteikumus.",profilePhotos:"Profila foto (līdz 6)",addPhotos:"Pievienot foto",photoSaved:"Foto pievienots.",photoRequired:"Izvēlies foto.",photoLimit:"Var augšupielādēt ne vairāk kā 6 foto.",primaryPhoto:"Galvenais",makePrimary:"Iestatīt kā galveno",deletePhoto:"Dzēst",moveLeft:"←",moveRight:"→",photosHint:"Galvenais foto tiek rādīts pirmais. Foto var mainīt vietām.",addProfilePhoto:"Pievieno galveno profila foto, lai tevi varētu rādīt plūsmā.",minAge:"Vecums no",maxAge:"Vecums līdz",allCities:"Abas pilsētas",applyFilters:"Piemērot",
+  },
+  en:{
+    safetyBadge:"SAFETY",reportTitle:"Report profile",reportIntro:"Choose a reason. The report will go to moderation.",reportDetailsPlaceholder:"Additional details…",sendReport:"Send report",reportReasons:["Spam or advertising","Harassment or threats","Fake profile","Inappropriate content","Other"],blockUser:"Block",reportUser:"Report",chatReport:"Report",chatBlock:"Block",blockConfirm:"Block this user?",blocked:"User blocked.",
+    region:"RIGA • JŪRMALA",find:"Find your",spark:"spark",hero:"Dating with mandatory photo verification. Bright, fast and free of fake profiles.",
+    email:"Email",password:"Password",signup:"Create account",signin:"Sign in",forgotPassword:"Forgot password?",newPasswordTitle:"New",passwordTitle:"password",newPasswordIntro:"Set a new password for your SPARK account.",newPassword:"New password",repeatPassword:"Repeat password",updatePassword:"Save new password",your:"Your",profile:"profile",profileIntro:"First, complete your profile. Only verified profiles appear in discovery.",
+    name:"Name",dob:"Date of birth",city:"City",about:"About you",interests:"Interests separated by commas",saveProfile:"Save profile",editProfile:"Edit profile",cancel:"Cancel",languageSetting:"Language",languageHint:"Changes instantly and is saved to your profile.",security:"Security",notifications:"Notifications",enableNotifications:"Enable notifications",notificationsOn:"Notifications enabled",notificationsOff:"Notifications disabled",currentPassword:"Current password",newPassword:"New password",changePassword:"Change password",passwordChanged:"Password changed.",passwordError:"Could not change password.",logoutAll:"Sign out on all devices",logoutCurrent:"Sign out on this device",terms:"Terms",privacy:"Privacy",close:"Close",back:"Back",send:"Send",emoji:"Emoji",photo:"Photo",demoChatNote:"🧪 Demo chat — use it to preview what an incoming message from a fictional profile looks like.",signupConsent:"I am 18+ and I agree to the Terms and Privacy Policy.",dangerZone:"Delete account",deleteAccount:"Delete account",deleteAccountHint:"This is permanent: your profile, photos, matches and messages will be deleted.",deleteConfirm:"Delete your account permanently? Type SPARK to confirm.",deleteConfirmPlaceholder:"Type SPARK",deleteAccountDeleted:"Account deleted.",deleteAccountError:"Could not delete the account. Please try again.",
+    verifyVerb:"Verify",photo:"photo",verifyIntro:"This step is required. Upload a current selfie for review. Your profile stays hidden until approval.",
+    verifyNotice:"A verification request will be created. Real liveness verification will be connected before launch.",verifyPhoto:"Verification photo",submitVerify:"Send for review",
+    nearby:"NEARBY",feed:"Discover",matches:"Matches",matchesIntro:"When the interest is mutual, the conversation begins.",sparkChat:"SPARK chat",messagesNav:"Messages",my:"My",me:"Me",refresh:"Refresh status",logout:"Sign out",
+    emailPlaceholder:"you@example.com",passwordPlaceholder:"••••••••",bioPlaceholder:"A few words about you…",interestsPlaceholder:"music, sea, travel",messagePlaceholder:"Write a message…",typing:"typing…",
+    noNew:"No one new yet",noNewText:"New verified profiles will appear here.",noMatches:"No mutual matches yet.",swipeLike:"Like",swipePass:"Pass",newMatch:"It’s a match!",openChat:"Open chat",
+    openChat:"Open chat",profileVerified:"Photo verified. Your profile is visible in discovery.",profilePending:"Photo is under review.",profileNotVerified:"Verification is not complete yet.",
+    ageRequired:"You must be 18+.",nameRequired:"Enter your name.",profileSaved:"Profile saved.",choosePhoto:"Choose a photo.",sent:"Verification request sent. Your profile will appear after approval.",moderationBadge:"MODERATION",review:"Review",requests:"requests",moderation:"Moderation",moderationIntro:"New verification photos appear here.",photoModerationEmpty:"No profile photos are waiting for review.",photoApprove:"Approve photo",photoReject:"Reject photo",photoRejectReason:"Rejection reason",photoModerationError:"Could not load the photo queue.",photoModerated:"Photo reviewed.",pendingRequests:"No new requests.",submitted:"Submitted",approve:"Approve",reject:"Reject",rejectReason:"Rejection reason (optional)",approved:"Request approved.",rejected:"Request rejected.",moderationError:"Could not load requests.",profilePhotos:"Profile photos (up to 6)",addPhotos:"Add photos",photoSaved:"Photo added.",photoRequired:"Choose a photo.",photoLimit:"You can upload up to 6 photos.",primaryPhoto:"Primary",makePrimary:"Make primary",deletePhoto:"Delete",moveLeft:"←",moveRight:"→",photosHint:"Your primary photo is shown first. You can reorder photos."
+  }
+};
+I18N.ru.rateLimitLikes="Слишком много действий за короткое время. Попробуй позже.";
+I18N.ru.rateLimitPasses="Слишком много действий за короткое время. Попробуй позже.";
+I18N.ru.rateLimitMessages="Слишком много сообщений за короткое время. Попробуй через несколько минут.";
+I18N.ru.rateLimitReports="Слишком много жалоб за сутки. Попробуй позже.";
+I18N.lv.rateLimitLikes="Pārāk daudz darbību īsā laikā. Mēģini vēlāk.";
+I18N.lv.rateLimitPasses="Pārāk daudz darbību īsā laikā. Mēģini vēlāk.";
+I18N.lv.rateLimitMessages="Pārāk daudz ziņu īsā laikā. Mēģini vēlreiz pēc dažām minūtēm.";
+I18N.lv.rateLimitReports="Pārāk daudz ziņojumu 24 stundu laikā. Mēģini vēlāk.";
+I18N.en.rateLimitLikes="Too many actions in a short time. Please try again later.";
+I18N.en.rateLimitPasses="Too many actions in a short time. Please try again later.";
+I18N.en.rateLimitMessages="Too many messages in a short time. Please try again in a few minutes.";
+I18N.en.rateLimitReports="Too many reports in 24 hours. Please try again later.";
+function rateLimitText(error){const low=String(error?.message||error||"").toLowerCase();if(!low.includes("rate_limit_"))return null;if(low.includes("reports"))return t("rateLimitReports");if(low.includes("messages"))return t("rateLimitMessages");if(low.includes("passes"))return t("rateLimitPasses");return t("rateLimitLikes");}
+let lang = localStorage.getItem("spark_language") || "ru";
+function t(k){ return (I18N[lang] && I18N[lang][k]) || I18N.ru[k] || k; }
+function applyLanguage(){
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{ const k=el.dataset.i18n; if(I18N[lang][k]) el.textContent=I18N[lang][k]; });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{ const k=el.dataset.i18nPlaceholder; if(I18N[lang][k]) el.placeholder=I18N[lang][k]; });
+  document.querySelectorAll("[data-i18n-aria]").forEach(el=>{ const k=el.dataset.i18nAria; if(I18N[lang][k]) el.setAttribute("aria-label",I18N[lang][k]); });
+  document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
+  localStorage.setItem("spark_language",lang);
+  if(!navigator.onLine)renderNetwork();
+  if(user && profile){
+    if($("matches")?.classList.contains("active")) loadMatches().catch(()=>{});
+    if($("chat")?.classList.contains("active") && currentMatch) loadMessages().catch(()=>{});
+    if($("me")?.classList.contains("active")) loadMe().catch(()=>{});
+  }
+}
+function setLanguage(next){
+  lang=next; applyLanguage(); renderOnboarding(document.getElementById("profileSetup")?.classList.contains("active")?"profileSetup":"verify");
+  if($("authMsg")) $("authMsg").classList.add("hide");
+
+  if(user && profile && profile.language!==next){
+    sb.from("profiles").update({language:next,updated_at:new Date().toISOString()}).eq("id",user.id).then(()=>{});
+  }
+}
+
+const DEMO_MATCH="demo-alexandra-24";
+const DEMO_STORAGE_KEY="spark_demo_messages_v2";
+const DEMO_DEFAULT_MESSAGES=[
+  {sender:"demo",body:"Привет! 😊 Как проходит твой день?",created_at:new Date(Date.now()-8*60000).toISOString()},
+  {sender:"demo",body:"Увидела твой профиль — очень понравились путешествия ✨",created_at:new Date(Date.now()-6*60000).toISOString()}
+];
+function loadDemoMessages(){
+  try{const raw=localStorage.getItem(DEMO_STORAGE_KEY);if(raw){const parsed=JSON.parse(raw);if(Array.isArray(parsed)&&parsed.length)return parsed;}}catch(e){console.warn("demo storage read",e)}
+  return DEMO_DEFAULT_MESSAGES.map(x=>({...x}));
+}
+let demoMessages=loadDemoMessages();
+let demoReplyTimer=null;
+const messageMediaUrls=new Map();
+function saveDemoMessages(){try{localStorage.setItem(DEMO_STORAGE_KEY,JSON.stringify(demoMessages));}catch(e){console.warn("demo storage write",e)}}
+const $=id=>document.getElementById(id);
+function chatDraftKey(mid){return `spark_message_draft_${mid||"none"}`;}
+function readChatDraft(mid){try{return localStorage.getItem(chatDraftKey(mid))||localStorage.getItem("spark_message_draft")||"";}catch{return "";}}
+function saveChatDraft(mid,value){try{const v=String(value||"").slice(0,2000);if(v)localStorage.setItem(chatDraftKey(mid),v);else localStorage.removeItem(chatDraftKey(mid));localStorage.removeItem("spark_message_draft");}catch{}}
+function clearChatDraft(mid){try{localStorage.removeItem(chatDraftKey(mid));localStorage.removeItem("spark_message_draft");}catch{}}
+let deferredInstallPrompt=null;
+const installStateKey="spark_install_dismissed_v1";
+function isStandalone(){return window.matchMedia?.("(display-mode: standalone)").matches || window.navigator.standalone===true;}
+function isIOS(){return /iphone|ipad|ipod/i.test(navigator.userAgent||"") && !window.MSStream;}
+function setupInstallUI(){
+  const btn=$("installApp"), sheet=$("installSheet"), action=$("installAction"), close=$("installClose"), later=$("installLater"), hint=$("installHint");
+  if(!btn||!sheet)return;
+  const dismissed=localStorage.getItem(installStateKey)==="1";
+  const showIOS=()=>{ if(isStandalone()||dismissed)return; btn.classList.add("show"); btn.textContent="＋ На экран"; hint.textContent=lang==="lv"?"Safari: Spied Share → Add to Home Screen.":lang==="en"?"Safari: tap Share → Add to Home Screen.":"Safari: нажми Поделиться → На экран «Домой»."; action.textContent=lang==="lv"?"Как установить":lang==="en"?"How to install":"Как установить"; sheet.classList.remove("hide"); sheet.setAttribute("aria-hidden","false"); };
+  const showAndroid=()=>{ if(isStandalone()||dismissed)return; btn.classList.add("show"); sheet.classList.remove("hide"); sheet.setAttribute("aria-hidden","false"); };
+  window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredInstallPrompt=e;showAndroid();});
+  btn.onclick=()=>{if(isIOS()){showIOS();return;} sheet.classList.toggle("hide"); sheet.setAttribute("aria-hidden",sheet.classList.contains("hide")?"true":"false");};
+  action.onclick=async()=>{
+    if(isIOS()){showIOS();return;}
+    if(deferredInstallPrompt){deferredInstallPrompt.prompt();try{await deferredInstallPrompt.userChoice;}catch(e){} deferredInstallPrompt=null; sheet.classList.add("hide"); sheet.setAttribute("aria-hidden","true"); btn.classList.remove("show");}
+  };
+  const dismiss=()=>{sheet.classList.add("hide");sheet.setAttribute("aria-hidden","true");localStorage.setItem(installStateKey,"1");};
+  close.onclick=dismiss; later.onclick=dismiss;
+  if(isIOS()) setTimeout(showIOS,1400);
+}
+let offlineWasShown=false;
+function networkText(kind="offline"){
+  const ru={offline:"Нет соединения. Проверь интернет — SPARK сохранит введённый текст.",online:"Соединение восстановлено.",retry:"Повторить"};
+  const lv={offline:"Nav savienojuma. Pārbaudi internetu — SPARK saglabās ievadīto tekstu.",online:"Savienojums atjaunots.",retry:"Mēģināt vēlreiz"};
+  const en={offline:"No internet connection. Check your network — SPARK will keep your typed text.",online:"Connection restored.",retry:"Retry"};
+  const d=lang==="lv"?lv:lang==="en"?en:ru; return d[kind]||d.offline;
+}
+function renderNetwork(){
+  const el=$("offlineBanner"); if(!el)return;
+  if(!navigator.onLine){el.textContent=networkText("offline");el.classList.remove("hide","online");offlineWasShown=true;return;}
+  if(offlineWasShown){el.textContent=networkText("online");el.classList.remove("hide");el.classList.add("online");setTimeout(()=>el.classList.add("hide"),1800);offlineWasShown=false;}
+}
+function ensureOnline(){
+  if(navigator.onLine)return true; renderNetwork(); return false;
+}
+function friendlyError(error){
+  const raw=String(error?.message||error||""); const low=raw.toLowerCase();
+  if(!navigator.onLine || low.includes("failed to fetch") || low.includes("networkerror") || low.includes("network request failed")) return networkText("offline");
+  return raw|| (lang==="lv"?"Darbība neizdevās.":lang==="en"?"Something went wrong.":"Не удалось выполнить действие.");
+}
+window.addEventListener("offline",renderNetwork);
+window.addEventListener("online",()=>{renderNetwork(); if(user && document.querySelector("#feed.active")) setTimeout(()=>loadFeed(),250); if(user && currentMatch && document.querySelector("#chat.active")) setTimeout(()=>loadMessages().catch(()=>{}),450);});
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState!=="visible")return; renderNetwork(); if(user && currentMatch && document.querySelector("#chat.active")) setTimeout(()=>loadMessages().catch(()=>{}),300);});
+const screens=["auth","profileSetup","verify","feed","matches","chat","me","moderation"];
+function show(name){screens.forEach(x=>$(x).classList.toggle("active",x===name)); const nav=$("nav"); if(nav) nav.classList.toggle("hide",!user || (["auth","profileSetup","verify"].includes(name) && !isModerator)); const logout=$("logout"); if(logout) logout.classList.toggle("hide",!user); const modNav=$("moderationNav"); if(modNav) modNav.classList.toggle("hide",!isModerator);
+  if($("openModerationFromVerify")) $("openModerationFromVerify").classList.toggle("hide",!isModerator); document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.screen===name));}
+function msg(el,text,ok=false){$(el).textContent=text; $(el).style.color=ok?"#40e0a0":"#b9aabd";}
+function age(d){const x=new Date(d),n=new Date();let a=n.getFullYear()-x.getFullYear();if(n<new Date(n.getFullYear(),x.getMonth(),x.getDate()))a--;return a}
+async function init(){
+  if(!sb){ authNotice("Не загрузился модуль SPARK. Открой файл ещё раз."); show("auth"); return; }
+  if(LOCAL_FILE_MODE){
+    const ok=await checkSupabaseConnection();
+    if(!ok){
+      authNotice(lang==="ru"?"Открытие файла напрямую блокирует сетевой запрос в этом браузере. Открой SPARK через HTTPS-ссылку — тогда вход и регистрация будут работать.":lang==="lv"?"Šis pārlūks bloķē tīkla pieprasījumu, atverot HTML failu. Atver SPARK caur HTTPS saiti.":"This browser blocks network requests from a local HTML file. Open SPARK from an HTTPS link.");
+    }
+  }
+  const {data,error}=await sb.auth.getSession();
+  if(error){authNotice(authErrorText(error));show("auth");return;}
+  user=data.session?.user||null;
+  if(user) await boot(); else show("auth");
+}
+function onboardingHTML(stage){
+  const p=profile||{};
+  const checks=[!!p.display_name,!!p.date_of_birth&&age(p.date_of_birth)>=18,!!p.city];
+  const photoReady=!!window.__sparkPrimaryPhoto;
+  const verifyReady=!!window.__sparkVerification && window.__sparkVerification.status!==undefined;
+  const current=stage==='profileSetup'?1:stage==='verify'?3:4;
+  const labels=[t("stepProfile"),t("stepPhoto"),t("stepVerify"),t("stepReady")];
+  return `<div class="onlabel"><span>${t("stepOf")} ${current}/4 · <strong>${labels[current-1]}</strong></span><span>${Math.round(current/4*100)}%</span></div><div class="onboard">${[1,2,3,4].map(n=>`<div class="onstep ${n<current?'done':''} ${n===current?'current':''}"></div>`).join('')}</div><div class="checklist"><div class="check ${checks[0]?'done':''}"><i>${checks[0]?'✓':'1'}</i>${t("checkName")}</div><div class="check ${checks[1]?'done':''}"><i>${checks[1]?'✓':'2'}</i>${t("checkDob")}</div><div class="check ${checks[2]?'done':''}"><i>${checks[2]?'✓':'3'}</i>${t("checkCity")}</div>${stage!=='profileSetup'?`<div class="check ${photoReady?'done':''}"><i>${photoReady?'✓':'4'}</i>${t("checkPhoto")}</div>`:''}${stage==='verify'?`<div class="check ${verifyReady?'done':''}"><i>${verifyReady?'✓':'5'}</i>${t("checkVerify")}</div>`:''}</div>`;
+}
+function renderOnboarding(stage){
+  if($('onboardProfile')) $('onboardProfile').innerHTML=onboardingHTML(stage);
+  if($('onboardVerify')) $('onboardVerify').innerHTML=onboardingHTML(stage);
+}
+async function boot(){
+  if(!user) return;
+  const {data,error}=await sb.from("profiles").select("*").eq("id",user.id).maybeSingle();
+  if(error){console.error(error); show("auth"); authNotice(authErrorText(error)); return}
+  profile=data;
+  if(profile?.language && !localStorage.getItem("spark_language")) { lang=profile.language; applyLanguage(); }
+  const modResult = await sb.rpc("is_current_user_moderator");
+  if(modResult.error) console.error("Moderator check failed", modResult.error);
+  isModerator = !modResult.error && modResult.data === true;
+  $("moderationNav").classList.toggle("hide",!isModerator);
+  if(!profile){renderOnboarding("profileSetup");show("profileSetup");return}
+  const {data:v,error:verificationError}=await sb.from("verifications").select("*").eq("user_id",user.id).maybeSingle();
+  if(verificationError){console.error(verificationError);show("auth");authNotice(authErrorText(verificationError));return}
+  window.__sparkVerification=v||null;
+  if(!v || v.status!=="approved"){renderOnboarding("verify");show("verify"); renderVerify(v); return}
+  const {data:primaryPhoto,error:primaryPhotoError}=await sb.from("photos").select("id").eq("user_id",user.id).eq("type","profile").eq("is_primary",true).limit(1);
+  if(primaryPhotoError){console.error(primaryPhotoError);show("auth");authNotice(authErrorText(primaryPhotoError));return}
+  window.__sparkPrimaryPhoto=!!primaryPhoto?.length;
+  if(!primaryPhoto?.length){renderOnboarding("verify");await loadMe(); $("meStatus").innerHTML=`📸 ${t("addProfilePhoto")}`; show("me"); return}
+  await loadPreferences(); await loadFeed(); show("feed");
+}
+function renderVerify(v){const empty=lang==="ru"?"Верификация ещё не отправлена.":lang==="lv"?"Verifikācija vēl nav nosūtīta.":"Verification has not been submitted yet.";const status=v?.status;const labels={pending:lang==="ru"?"на проверке":lang==="lv"?"gaida pārbaudi":"pending",approved:lang==="ru"?"одобрена":lang==="lv"?"apstiprināta":"approved",rejected:lang==="ru"?"отклонена":lang==="lv"?"noraidīta":"rejected"};let text=status?`${t("verificationStatus")}: ${labels[status]||status}`:empty;if(status==="rejected"&&v?.rejection_reason) text+=` — ${lang==="ru"?"Причина":lang==="lv"?"Iemesls":"Reason"}: ${v.rejection_reason}`;$("verifyMsg").textContent=text}
+async function saveProfile(){
+  if(!user || !ensureOnline())return;
+  const dob=$("dob").value;
+  const displayName=$("name").value.trim();
+  const bio=$("bio").value.trim();
+  const interests=$("interests").value.split(",").map(x=>x.trim()).filter(Boolean);
+  if(!displayName){msg("profileMsg",t("nameRequired"));return}
+  if(displayName.length>40){msg("profileMsg",lang==="ru"?"Имя не длиннее 40 символов.":lang==="lv"?"Vārds nedrīkst būt garāks par 40 rakstzīmēm.":"Name must be 40 characters or fewer.");return}
+  if(!dob || age(dob)<18){msg("profileMsg",t("ageRequired"));return}
+  if(bio.length>500){msg("profileMsg",lang==="ru"?"Описание не длиннее 500 символов.":lang==="lv"?"Apraksts nedrīkst būt garāks par 500 rakstzīmēm.":"Bio must be 500 characters or fewer.");return}
+  if(interests.length>12 || interests.some(x=>x.length>40)){msg("profileMsg",lang==="ru"?"Можно указать до 12 интересов, каждый до 40 символов.":lang==="lv"?"Vari norādīt līdz 12 interesēm, katru līdz 40 rakstzīmēm.":"Add up to 12 interests, each up to 40 characters.");return}
+  const payload={id:user.id,display_name:displayName,date_of_birth:dob,city:$("city").value,bio,language:document.querySelector(".lang button.active")?.dataset.lang||"ru",interests};
+  const {error}=await sb.from("profiles").upsert(payload);
+  if(error){msg("profileMsg",friendlyError(error));return}
+  profile=payload; window.__sparkPrimaryPhoto=false; window.__sparkVerification=null; renderOnboarding("verify"); show("verify");
+}
+async function submitVerify(){
+  if(window.__sparkVerifyBusy)return;
+  if(!ensureOnline())return;
+  window.__sparkVerifyBusy=true;
+  try{
+  const f=$("verifyPhoto").files[0];
+  if(!f){msg("verifyMsg",t("choosePhoto"));return}
+  const {data:existingVerification}=await sb.from("verifications").select("status").eq("user_id",user.id).maybeSingle();
+  if(existingVerification?.status==="pending"){msg("verifyMsg",lang==="ru"?"Проверка уже отправлена. Дождись решения модератора.":lang==="lv"?"Verifikācija jau nosūtīta. Sagaidi moderatora lēmumu.":"Verification is already pending. Please wait for moderation.");return}
+  if(!/^image\/(jpeg|png|webp)$/i.test(f.type)){msg("verifyMsg",lang==="ru"?"Нужна фотография JPG, PNG или WebP.":lang==="lv"?"Nepieciešams JPG, PNG vai WebP fotoattēls.":"Please choose a JPG, PNG or WebP photo.");return}
+  if(f.size>8*1024*1024){msg("verifyMsg",lang==="ru"?"Фото слишком большое. Максимум 8 МБ.":lang==="lv"?"Foto ir pārāk liels. Maksimums 8 MB.":"Photo is too large. Maximum 8 MB.");return}
+  let prepared;
+  try{prepared=await prepareImageFile(f,4500000,1800)}catch(e){msg("verifyMsg",userFacingError(e));return}
+  const path=`${user.id}/verification-${Date.now()}-${Math.random().toString(36).slice(2,7)}.jpg`;
+  const {error:up}=await sb.storage.from("profile-photos").upload(path,prepared,{contentType:"image/jpeg",upsert:false,cacheControl:"3600"});
+  if(up){msg("verifyMsg",friendlyError(up));return}
+  const {error:pe}=await sb.from("photos").insert({user_id:user.id,storage_path:path,type:"verification",sort_order:0,is_primary:false});
+  if(pe){await sb.storage.from("profile-photos").remove([path]);msg("verifyMsg",friendlyError(pe));return}
+  const {error:ve}=await sb.from("verifications").upsert({user_id:user.id,status:"pending",method:"selfie",submitted_at:new Date().toISOString()});
+  if(ve){await sb.from("photos").delete().eq("user_id",user.id).eq("storage_path",path);await sb.storage.from("profile-photos").remove([path]);msg("verifyMsg",friendlyError(ve));return}
+  $("verifyPhoto").value="";
+  window.__sparkVerification={status:"pending"}; renderOnboarding("verify"); msg("verifyMsg",t("sent"),true);
+  } finally { window.__sparkVerifyBusy=false; }
+}
+async function signed(path){const {data}=await sb.storage.from("profile-photos").createSignedUrl(path,3600);return data?.signedUrl||""}
+async function loadFeed(){
+  const minAge=Math.max(18,Math.min(99,parseInt($("minAge")?.value||18,10)||18));
+  const maxAge=Math.max(minAge,Math.min(99,parseInt($("maxAge")?.value||99,10)||99));
+  const city=$("filterCity")?.value||"all";
+  const cutoffMin=new Date(); cutoffMin.setFullYear(cutoffMin.getFullYear()-maxAge);
+  const cutoffMax=new Date(); cutoffMax.setFullYear(cutoffMax.getFullYear()-minAge);
+  let q=sb.from("profiles").select("id,display_name,date_of_birth,city,bio,interests")
+    .eq("is_discoverable",true).neq("id",user.id)
+    .gte("date_of_birth",cutoffMin.toISOString().slice(0,10))
+    .lte("date_of_birth",cutoffMax.toISOString().slice(0,10));
+  if(city!=="all") q=q.eq("city",city);
+  const {data,error}=await q.limit(60);
+  if(error){console.error(error);$("feedCard").innerHTML=`<div style="padding:28px;text-align:center"><div style="font-size:40px">⌁</div><h2>${escapeHtml(friendlyError(error))}</h2><button class="btn retry-btn" type="button" onclick="loadFeed()">${escapeHtml(networkText("retry"))}</button></div>`;return}
+  const ids=(data||[]).map(x=>x.id);
+  if(!ids.length){queue=[];idx=0;await renderCard();return}
+  const [{data:liked,error:likedError},{data:passed,error:passedError}]=await Promise.all([
+    sb.from("likes").select("to_user_id").eq("from_user_id",user.id).in("to_user_id",ids),
+    sb.from("passes").select("to_user_id").eq("from_user_id",user.id).in("to_user_id",ids)
+  ]);
+  if(likedError||passedError){const err=likedError||passedError;console.error("feed history",err);$("feedCard").innerHTML=`<div style="padding:28px;text-align:center"><h2>${escapeHtml(friendlyError(err))}</h2><button class="btn retry-btn" type="button" onclick="loadFeed()">${escapeHtml(networkText("retry"))}</button></div>`;return}
+  const skip=new Set([...(liked||[]).map(x=>x.to_user_id),...(passed||[]).map(x=>x.to_user_id)]);
+  queue=(data||[]).filter(x=>!skip.has(x.id));
+  idx=0; await renderCard();
+}
+async function renderCard(){
+  const p=queue[idx];
+  if(!p){feedPhotoUrls=[];feedPhotoIndex=0;$('feedCard').innerHTML=`<div style="padding:28px;text-align:center"><div style="font-size:44px">✨</div><h2>${t("noNew")}</h2><p class="small">${t("noNewText")}</p></div>`;return}
+  const {data:ph,error}=await sb.from("photos").select("id,storage_path,sort_order").eq("user_id",p.id).eq("type","profile").order("sort_order",{ascending:true}).order("created_at",{ascending:true});
+  if(error){console.error(error);feedPhotoUrls=[]} else {feedPhotoUrls=await Promise.all((ph||[]).map(x=>signed(x.storage_path)));}
+  feedPhotoUrls=feedPhotoUrls.filter(Boolean); feedPhotoIndex=0;
+  const photoHtml=feedPhotoUrls.length?`<img id="feedPhotoImg" src="${feedPhotoUrls[0]}" alt="" draggable="false">`:`<div style="font-size:70px">✦</div>`;
+  const dots=feedPhotoUrls.length>1?`<div class="photo-dots">${feedPhotoUrls.map((_,i)=>`<span class="photo-dot ${i===0?"active":""}"></span>`).join("")}</div>`:"";
+  const nav=feedPhotoUrls.length>1?`<div class="photo-nav"><button id="prevPhoto" type="button" aria-label="Previous photo">‹</button><button id="nextPhoto" type="button" aria-label="Next photo">›</button></div>`:"";
+  $('feedCard').innerHTML=`<div class="photo photo-swipe swipe-card" id="feedPhoto"><div class="swipe-badge pass">✕ ${escapeHtml(t("swipePass"))}</div><div class="swipe-badge like">♥ ${escapeHtml(t("swipeLike"))}</div>${photoHtml}${dots}${nav}<div class="photo-overlay"><h2>${escapeHtml(p.display_name)} <span class="verified-badge" title="${escapeAttr(t("profileVerified"))}" aria-label="${escapeAttr(t("profileVerified"))}"></span>, ${age(p.date_of_birth)}</h2><div class="meta">${p.city==="jurmala"?"Jūrmala":"Riga"}${p.bio?` · ${escapeHtml(p.bio)}`:""}</div><div class="tags">${(p.interests||[]).slice(0,5).map(x=>`<span class="tag">${escapeHtml(x)}</span>`).join("")}</div></div></div><div class="actions"><button id="pass" class="circle" type="button" aria-label="${escapeAttr(t("swipePass"))}">×</button><button id="like" class="circle like" type="button" aria-label="${escapeAttr(t("swipeLike"))}">♥</button></div><div class="safety-actions"><button id="blockUser" class="btn alt small" type="button">🚫 ${escapeHtml(t("blockUser"))}</button><button id="reportUser" class="btn alt small" type="button">⚑ ${escapeHtml(t("reportUser"))}</button></div>`;
+  $('pass').onclick=()=>animateCardAction('pass',p); $('like').onclick=()=>animateCardAction('like',p); $('blockUser').onclick=()=>blockUser(p); $('reportUser').onclick=()=>openReport(p);
+  const setPhoto=(next)=>{if(feedPhotoUrls.length<2)return;feedPhotoIndex=(next+feedPhotoUrls.length)%feedPhotoUrls.length;const img=$('feedPhotoImg');if(img)img.src=feedPhotoUrls[feedPhotoIndex];document.querySelectorAll('.photo-dot').forEach((d,i)=>d.classList.toggle('active',i===feedPhotoIndex));};
+  if($('prevPhoto')) $('prevPhoto').onclick=e=>{e.stopPropagation();setPhoto(feedPhotoIndex-1)};
+  if($('nextPhoto')) $('nextPhoto').onclick=e=>{e.stopPropagation();setPhoto(feedPhotoIndex+1)};
+  const swipe=$('feedPhoto');
+  if(swipe){
+    let sx=0,sy=0,dx=0,dragging=false,photoGesture=false;
+    const likeBadge=swipe.querySelector('.swipe-badge.like'), passBadge=swipe.querySelector('.swipe-badge.pass');
+    swipe.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;sx=e.clientX;sy=e.clientY;dx=0;dragging=false;photoGesture=false;swipe.classList.add('dragging');try{swipe.setPointerCapture(e.pointerId)}catch{}});
+    swipe.addEventListener('pointermove',e=>{
+      if(!swipe.classList.contains('dragging'))return;
+      dx=e.clientX-sx; const dy=e.clientY-sy;
+      if(Math.abs(dx)<8 && Math.abs(dy)<8)return;
+      if(Math.abs(dy)>Math.abs(dx)*1.25){photoGesture=true;swipe.classList.remove('dragging');return}
+      dragging=true; e.preventDefault();
+      const r=Math.min(Math.abs(dx)/150,1); swipe.style.transform=`translateX(${dx}px) rotate(${dx*.035}deg)`; swipe.style.opacity=String(1-r*.12);
+      if(likeBadge) likeBadge.style.opacity=String(dx>0?r:0); if(passBadge) passBadge.style.opacity=String(dx<0?r:0);
+    });
+    swipe.addEventListener('pointerup',e=>{
+      swipe.classList.remove('dragging');
+      if(!dragging){swipe.style.transform="";swipe.style.opacity="";return}
+      const threshold=110;
+      if(Math.abs(dx)>=threshold){animateCardAction(dx>0?'like':'pass',p,dx>0?1:-1);}
+      else if(feedPhotoUrls.length>1 && Math.abs(dx)>45 && Math.abs(dx)>Math.abs(e.clientY-sy)){setPhoto(feedPhotoIndex+(dx<0?1:-1));swipe.style.transform="";swipe.style.opacity="";if(likeBadge)likeBadge.style.opacity=0;if(passBadge)passBadge.style.opacity=0;}
+      else {swipe.style.transform="";swipe.style.opacity="";if(likeBadge)likeBadge.style.opacity=0;if(passBadge)passBadge.style.opacity=0;}
+      dx=0;dragging=false;
+    });
+    swipe.addEventListener('pointercancel',()=>{swipe.classList.remove('dragging');swipe.style.transform="";swipe.style.opacity="";if(likeBadge)likeBadge.style.opacity=0;if(passBadge)passBadge.style.opacity=0;dx=0;dragging=false});
+  }
+}
+function restoreCardAction(card){
+  if(!card)return;
+  card.dataset.actionBusy="";
+  card.style.transition="transform .18s ease, opacity .18s ease";
+  card.style.transform=""; card.style.opacity="1";
+  card.querySelectorAll(".swipe-badge").forEach(b=>b.style.opacity="0");
+}
+function animateCardAction(kind,p,dir){
+  const card=$('feedPhoto'); if(!card)return;
+  if(card.dataset.actionBusy==="1")return; card.dataset.actionBusy="1";
+  const d=dir??(kind==="like"?1:-1),badge=card.querySelector(kind==="like"?'.swipe-badge.like':'.swipe-badge.pass');
+  if(badge)badge.style.opacity="1";
+  card.style.transition="transform .25s ease, opacity .25s ease";card.style.transform=`translateX(${d*120}%) rotate(${d*18}deg)`;card.style.opacity="0";
+  setTimeout(async()=>{
+    const ok=kind==="like" ? await like(p) : await passUser(p);
+    if(!ok){ restoreCardAction(card); }
+  },210);
+}
+async function passUser(p){
+  if(!ensureOnline())return false;
+  const {error}=await sb.from("passes").insert({from_user_id:user.id,to_user_id:p.id});
+  if(error){
+    const raw=String(error.message||"").toLowerCase();
+    if(raw.includes("duplicate")||raw.includes("unique")){idx++;await renderCard();return true}
+    const msg=rateLimitText(error);if(msg)showToast(msg);else showToast(friendlyError(error));
+    return false;
+  }
+  idx++; await renderCard();
+  return true;
+}
+async function like(p){
+  if(!ensureOnline())return false;
+  const {data,error}=await sb.rpc("like_user",{target_user:p.id});
+  if(error){const msg=rateLimitText(error);if(msg)showToast(msg);else showToast(friendlyError(error));return false}
+  idx++; await renderCard();
+  if(data){showMatchToast(p);await loadMatches();}
+  return true;
+}
+function showMatchToast(p){
+  const el=$("matchToast");if(!el)return;el.innerHTML=`💞 ${escapeHtml(t("newMatch"))} <b>${escapeHtml(p.display_name)}</b>`;el.classList.add("show");clearTimeout(window.__matchToastTimer);window.__matchToastTimer=setTimeout(()=>el.classList.remove("show"),2600);
+}
+let reportTarget=null;
+function openReport(p){
+  reportTarget=p;
+  const box=$("reportReasons");
+  box.innerHTML=(t("reportReasons")||[]).map((r,i)=>`<button type="button" data-reason-index="${i}">${escapeHtml(r)}</button>`).join("");
+  box.querySelectorAll("button").forEach(b=>b.onclick=()=>{box.querySelectorAll("button").forEach(x=>x.classList.remove("active"));b.classList.add("active")});
+  $("reportDetails").value=""; $("reportMsg").textContent=""; $("reportModal").classList.remove("hide");
+}
+function closeReport(){reportTarget=null;$("reportModal").classList.add("hide");}
+async function submitReport(){
+  if(!reportTarget || !ensureOnline())return;
+  const active=$("reportReasons").querySelector("button.active");
+  if(!active){$("reportMsg").textContent=t("reportTitle");return}
+  const reason=(t("reportReasons")||[])[Number(active.dataset.reasonIndex)]||"other";
+  const details=$("reportDetails").value.trim();
+  if(details.length>2000){$("reportMsg").textContent=lang==="ru"?"Описание не длиннее 2000 символов.":lang==="lv"?"Apraksts nedrīkst būt garāks par 2000 rakstzīmēm.":"Details must be 2000 characters or fewer.";return}
+  const {error}=await sb.from("reports").insert({reporter_id:user.id,reported_id:reportTarget.id,reason,details:details||null});
+  if(error){const rl=rateLimitText(error); const duplicate=String(error.message||"").toLowerCase().includes("reports_reporter_reported_reason_key"); if(duplicate){closeReport();showToast(t("sent"));return;} $("reportMsg").textContent=rl||friendlyError(error); return}
+  closeReport(); showToast(t("sent"));
+}
+async function blockUser(p){
+  if(!ensureOnline())return;
+  if(!p||!confirm(t("blockConfirm")))return;
+  const {error}=await sb.from("blocks").upsert({blocker_id:user.id,blocked_id:p.id},{onConflict:"blocker_id,blocked_id"});
+  if(error){showToast(friendlyError(error));return}
+  idx++; await renderCard();
+}
+
+async function loadReports(){
+  const box=$("reportsList"); if(!box)return;
+  const {data:reports,error}=await sb.from("reports").select("id,reporter_id,reported_id,reason,details,created_at").order("created_at",{ascending:false}).limit(50);
+  if(error){box.innerHTML=`<div class="notice error">${escapeHtml(friendlyError(error))}</div>`;return}
+  if(!reports?.length){box.innerHTML=`<div class="card"><p class="small">Пока жалоб нет.</p></div>`;return}
+  const ids=[...new Set(reports.flatMap(r=>[r.reporter_id,r.reported_id]))];
+  const {data:ps}=await sb.from("profiles").select("id,display_name").in("id",ids);
+  const pm=new Map((ps||[]).map(x=>[x.id,x]));
+  box.innerHTML=reports.map(r=>{const reporter=pm.get(r.reporter_id)?.display_name||"?", reported=pm.get(r.reported_id)?.display_name||"?"; return `<div class="card"><div class="small">${escapeHtml(new Date(r.created_at).toLocaleString())}</div><p style="margin:7px 0"><b>${escapeHtml(reporter)}</b> → <b>${escapeHtml(reported)}</b></p><div class="tag">${escapeHtml(r.reason)}</div>${r.details?`<p class="small">${escapeHtml(r.details)}</p>`:""}<button class="btn alt small" data-report-block="${escapeAttr(r.reported_id)}">🚫 ${escapeHtml(t("blockUser"))}</button></div>`}).join("");
+  box.querySelectorAll("[data-report-block]").forEach(b=>b.onclick=async()=>{const id=b.dataset.reportBlock;if(!confirm(t("blockConfirm")))return;const {error}=await sb.from("blocks").upsert({blocker_id:user.id,blocked_id:id},{onConflict:"blocker_id,blocked_id"});if(error)showToast(friendlyError(error));else await loadReports()});
+}
+
+
+async function loadPhotoModeration(){
+  const box=$("photoModerationList");
+  if(!box || !isModerator) return;
+  const {data:photos,error}=await sb.from("moderation_photo_queue")
+    .select("id,user_id,storage_path,type,sort_order,is_primary,created_at,moderation_status")
+    .order("created_at",{ascending:true});
+  if(error){
+    box.innerHTML=`<div class="notice error">${escapeHtml(t("photoModerationError"))}</div>`;
+    return;
+  }
+  const rows=photos||[];
+  if(!rows.length){
+    box.innerHTML=`<div class="card"><p class="small">${escapeHtml(t("photoModerationEmpty"))}</p></div>`;
+    return;
+  }
+  const ids=[...new Set(rows.map(x=>x.user_id))];
+  const {data:profiles}=await sb.from("profiles").select("id,display_name,date_of_birth,city").in("id",ids);
+  const pm=new Map((profiles||[]).map(p=>[p.id,p]));
+  const cards=[];
+  for(const ph of rows){
+    const p=pm.get(ph.user_id);
+    let url="";
+    try{
+      const r=await sb.rpc("get_photo_moderation_url",{p_photo_id:ph.id,p_expires_in:300});
+      if(!r.error) url=r.data||"";
+    }catch(e){ console.error("photo moderation url",e); }
+    cards.push(`<div class="card mod-card" data-photo-card="${escapeAttr(ph.id)}">
+      ${url?`<img class="mod-photo" src="${escapeAttr(url)}" alt="">`:`<div class="mod-photo"></div>`}
+      <div>
+        <h2 style="margin:0 0 4px">${escapeHtml(p?.display_name||"SPARK user")}</h2>
+        <div class="small">${p?.date_of_birth?escapeHtml(String(age(p.date_of_birth))):""}${p?.city?` · ${p.city==="jurmala"?"Jūrmala":"Riga"}`:""} · ${escapeHtml(new Date(ph.created_at).toLocaleString())}</div>
+        <div class="tags"><span class="tag">${escapeHtml(ph.type)}</span>${ph.is_primary?`<span class="tag">${escapeHtml(t("primaryPhoto"))}</span>`:""}</div>
+      </div>
+      <div class="field" style="margin:0">
+        <label>${escapeHtml(t("photoRejectReason"))}</label>
+        <textarea id="photo-reason-${escapeAttr(ph.id)}" rows="3" maxlength="1000"></textarea>
+      </div>
+      <div class="mod-actions">
+        <button class="btn" data-photo-approve="${escapeAttr(ph.id)}">✓ ${escapeHtml(t("photoApprove"))}</button>
+        <button class="btn alt" data-photo-reject="${escapeAttr(ph.id)}">× ${escapeHtml(t("photoReject"))}</button>
+      </div>
+    </div>`);
+  }
+  box.innerHTML=cards.join("");
+  box.querySelectorAll("[data-photo-approve]").forEach(b=>b.onclick=()=>moderatePhoto(b.dataset.photoApprove,"approve"));
+  box.querySelectorAll("[data-photo-reject]").forEach(b=>b.onclick=()=>moderatePhoto(b.dataset.photoReject,"reject"));
+}
+async function moderatePhoto(id,action){
+  const reason=action==="reject"?($(`photo-reason-${id}`)?.value.trim()||""):"";
+  if(action==="reject" && !reason){
+    $(`photo-reason-${id}`)?.focus();
+    return;
+  }
+  const {error}=await sb.rpc("moderate_photo",{p_photo_id:id,p_action:action,p_reason:reason||null});
+  if(error){ showToast(friendlyError(error)); return; }
+  await loadPhotoModeration();
+  await loadModeration();
+}
+
+async function loadModeration(){
+  if(!isModerator){$("moderationList").innerHTML=`<div class="notice error">${escapeHtml(t("moderationNoAccess"))}</div>`;show("moderation");return}
+  await loadReports();
+  await loadPhotoModeration();
+  const {data:vs,error}=await sb.from("verifications")
+    .select("id,user_id,status,submitted_at,rejection_reason")
+    .eq("status","pending")
+    .order("submitted_at",{ascending:true});
+  if(error){$("moderationList").innerHTML=`<div class="notice error">${escapeHtml(t("moderationError"))}</div>`;return}
+  const rows=vs||[];
+  if(!rows.length){$("moderationList").innerHTML=`<div class="card"><p class="small">${escapeHtml(t("pendingRequests"))}</p></div>`;return}
+  const ids=rows.map(v=>v.user_id);
+  const [{data:profiles},{data:photos}]=await Promise.all([
+    sb.from("profiles").select("id,display_name,date_of_birth,city,bio").in("id",ids),
+    sb.from("photos").select("user_id,storage_path,created_at").in("user_id",ids).eq("type","verification").order("created_at",{ascending:false})
+  ]);
+  const pm=new Map((profiles||[]).map(p=>[p.id,p]));
+  const phm=new Map();
+  for(const ph of (photos||[])) if(!phm.has(ph.user_id)) phm.set(ph.user_id,ph);
+  const cards=[];
+  for(const v of rows){
+    const p=pm.get(v.user_id); if(!p) continue;
+    const ph=phm.get(v.user_id);
+    const url=ph?await signed(ph.storage_path):"";
+    cards.push(`<div class="card mod-card">
+      ${url?`<img class="mod-photo" src="${url}" alt="">`:`<div class="mod-photo"></div>`}
+      <div><h2 style="margin:0 0 4px">${escapeHtml(p.display_name)}, ${age(p.date_of_birth)}</h2>
+      <div class="small">${p.city==="jurmala"?"Jūrmala":"Riga"} · ${escapeHtml(v.submitted_at?new Date(v.submitted_at).toLocaleString():"")}</div>
+      ${p.bio?`<p>${escapeHtml(p.bio)}</p>`:""}</div>
+      <div class="field" style="margin:0"><label>${escapeHtml(t("rejectReason"))}</label><textarea id="reason-${v.id}" rows="3"></textarea></div>
+      <div class="mod-actions">
+        <button class="btn" data-approve="${v.id}">✓ ${escapeHtml(t("approve"))}</button>
+        <button class="btn alt" data-reject="${v.id}">× ${escapeHtml(t("reject"))}</button>
+      </div>
+    </div>`);
+  }
+  $("moderationList").innerHTML=cards.join("");
+  document.querySelectorAll("[data-approve]").forEach(b=>b.onclick=()=>reviewVerification(b.dataset.approve,"approved"));
+  document.querySelectorAll("[data-reject]").forEach(b=>b.onclick=()=>reviewVerification(b.dataset.reject,"rejected"));
+}
+async function reviewVerification(id,status){
+  const reason=status==="rejected"?($(`reason-${id}`)?.value.trim()||""):"";
+  const patch={status,reviewed_at:new Date().toISOString(),reviewed_by:user.id,rejection_reason:reason||null};
+  const {error}=await sb.from("verifications").update(patch).eq("id",id).eq("status","pending");
+  if(error){showToast(friendlyError(error));return}
+  await loadModeration();
+}
+function formatChatTime(iso){
+  if(!iso) return "";
+  const d=new Date(iso), now=new Date();
+  const sameDay=d.toDateString()===now.toDateString();
+  if(sameDay) return d.toLocaleTimeString(lang==="en"?"en-GB":lang==="lv"?"lv-LV":"ru-RU",{hour:"2-digit",minute:"2-digit"});
+  const diff=Math.floor((now-d)/86400000);
+  if(diff<7) return d.toLocaleDateString(lang==="en"?"en-GB":lang==="lv"?"lv-LV":"ru-RU",{weekday:"short"});
+  return d.toLocaleDateString(lang==="en"?"en-GB":lang==="lv"?"lv-LV":"ru-RU",{day:"2-digit",month:"2-digit"});
+}
+async function markMatchRead(mid){
+  if(!mid||!user)return;
+  const {error}=await sb.from("match_reads").upsert(
+    {match_id:mid,user_id:user.id,last_read_at:new Date().toISOString()},
+    {onConflict:"match_id,user_id"}
+  );
+  if(error) console.error(error);
+}
+async function loadMatches(){
+  try{
+  const {data:ms,error:me}=await sb.from("matches").select("id,user_a,user_b,created_at").or(`user_a.eq.${user.id},user_b.eq.${user.id}`).order("created_at",{ascending:false});
+  if(me){$("matchList").innerHTML=`<div class="notice error">${escapeHtml(friendlyError(me))}</div>`;return}
+  const matches=ms||[];
+  // Демо-чат должен быть виден даже когда у пользователя ещё нет реальных матчей.
+  const ids=matches.map(m=>m.user_a===user.id?m.user_b:m.user_a);
+  let ps=[],reads=[],myBlocks=[],theirBlocks=[];
+  if(matches.length){
+    const results=await Promise.all([
+      sb.from("profiles").select("id,display_name").in("id",ids),
+      sb.from("match_reads").select("match_id,last_read_at").eq("user_id",user.id).in("match_id",matches.map(m=>m.id)),
+      sb.from("blocks").select("blocked_id").eq("blocker_id",user.id).in("blocked_id",ids),
+      sb.from("blocks").select("blocker_id").in("blocker_id",ids).eq("blocked_id",user.id)
+    ]);
+    const bad=results.find(r=>r.error);
+    if(bad?.error) throw bad.error;
+    [ps,reads,myBlocks,theirBlocks]=results.map(r=>r.data||[]);
+  }
+  const blockedIds=new Set([...(myBlocks||[]).map(x=>x.blocked_id),...(theirBlocks||[]).map(x=>x.blocker_id)]);
+  const visibleMatches=matches.filter(m=>!blockedIds.has(m.user_a===user.id?m.user_b:m.user_a));
+  const visibleIds=visibleMatches.map(m=>m.user_a===user.id?m.user_b:m.user_a);
+  const readMap=new Map((reads||[]).map(r=>[r.match_id,r.last_read_at]));
+  const photoMap=new Map();
+  if(visibleIds.length){
+    const {data:photos,error:photoError}=await sb.from("photos").select("user_id,storage_path,sort_order,is_primary").in("user_id",visibleIds).eq("type","profile").order("is_primary",{ascending:false}).order("sort_order",{ascending:true});
+    if(photoError) throw photoError;
+    for(const ph of (photos||[])) if(!photoMap.has(ph.user_id)) photoMap.set(ph.user_id,ph);
+  }
+  const messageResults=visibleMatches.length?await Promise.all(visibleMatches.map(m=>sb.from("messages").select("id,match_id,sender_id,body,created_at").eq("match_id",m.id).order("created_at",{ascending:false}).limit(100))):[];
+  const badMessage=messageResults.find(r=>r.error); if(badMessage?.error) throw badMessage.error;
+  const latest=new Map(), unread=new Map();
+  for(const result of messageResults){
+    for(const msg of (result.data||[])){
+      if(!latest.has(msg.match_id)) latest.set(msg.match_id,msg);
+      if(msg.sender_id!==user.id){
+        const readAt=readMap.get(msg.match_id);
+        if(!readAt || new Date(msg.created_at)>new Date(readAt)) unread.set(msg.match_id,(unread.get(msg.match_id)||0)+1);
+      }
+    }
+  }
+  const profileMap=new Map((ps||[]).map(p=>[p.id,p]));
+  const rows=[];
+  for(const m of visibleMatches){
+    const pid=m.user_a===user.id?m.user_b:m.user_a, p=profileMap.get(pid);
+    if(!p) continue;
+    const ph=photoMap.get(pid), avatar=ph?await signed(ph.storage_path):"";
+    const last=latest.get(m.id), count=unread.get(m.id)||0;
+    const preview=last?(last.sender_id===user.id?`${lang==="ru"?"Вы":lang==="lv"?"Jūs":"You"}: `:"")+last.body:t("noMessage");
+    rows.push(`<button type="button" class="chat" data-mid="${m.id}" data-name="${escapeAttr(p.display_name)}">
+      <div class="avatar">${avatar?`<img src="${escapeAttr(avatar)}" alt="" onerror="this.remove()">`:escapeHtml(p.display_name[0]||"S")}</div>
+      <div class="chat-main">
+        <div class="chat-top"><b>${escapeHtml(p.display_name)}<span class="verified-badge" title="${escapeAttr(t("profileVerified"))}" aria-label="${escapeAttr(t("profileVerified"))}"></span></b><div class="chat-meta">${last?`<span class="chat-time">${formatChatTime(last.created_at)}</span>`:""}${count?`<span class="unread">${count>99?"99+":count}</span>`:""}</div></div>
+        <div class="small chat-preview">${escapeHtml(preview)}</div>
+      </div>
+    </button>`);
+  }
+  const demoName=lang==="ru"?"Александра, 24":lang==="lv"?"Aleksandra, 24":"Alexandra, 24"; const demoPreview=lang==="ru"?"Привет! 😊 Как проходит твой день?":lang==="lv"?"Sveika! 😊 Kā tev iet?":"Hi! 😊 How is your day going?"; const demoRow=`<button type="button" class="chat demo-chat" data-mid="${DEMO_MATCH}" data-name="${escapeAttr(demoName)}">
+      <div class="avatar demo-avatar">А</div>
+      <div class="chat-main">
+        <div class="chat-top"><b>${escapeHtml(demoName)}<span class="verified-badge" title="${escapeAttr(t("profileVerified"))}" aria-label="${escapeAttr(t("profileVerified"))}"></span></b><div class="chat-meta"><span class="chat-time">${lang==="ru"?"сейчас":lang==="lv"?"tagad":"now"}</span><span class="unread">2</span></div></div>
+        <div class="small chat-preview">${escapeHtml(demoPreview)}</div>
+      </div>
+    </button>`;
+  $("matchList").innerHTML=demoRow+(rows.length?rows.join(""):`<div class="card"><p class="small">${escapeHtml(t("noMatches"))}</p></div>`);
+  document.querySelectorAll("#matchList [data-mid]").forEach(b=>{
+    b.onclick=async(e)=>{e.preventDefault();e.stopPropagation();await openChat(b.dataset.mid,b.dataset.name);};
+  });
+  }catch(e){
+    console.error("loadMatches error",e);
+    $("matchList").innerHTML=demoRowFallback();
+    document.querySelector("#matchList [data-mid]")?.addEventListener("click",()=>openChat(DEMO_MATCH,"Александра, 24"));
+  }
+}
+function demoRowFallback(){const demoName=lang==="ru"?"Александра, 24":lang==="lv"?"Aleksandra, 24":"Alexandra, 24";const demoPreview=lang==="ru"?"Привет! 😊 Как проходит твой день?":lang==="lv"?"Sveika! 😊 Kā tev iet?":"Hi! 😊 How is your day going?";return `<button class="chat demo-chat" data-mid="${DEMO_MATCH}" data-name="${escapeAttr(demoName)}" type="button"><div class="avatar demo-avatar">А</div><div class="chat-main"><div class="chat-top"><b>${escapeHtml(demoName)}<span class="verified-badge"></span></b><div class="chat-meta"><span class="chat-time">${lang==="ru"?"сейчас":lang==="lv"?"tagad":"now"}</span><span class="unread">2</span></div></div><div class="small chat-preview">${escapeHtml(demoPreview)}</div></div></button>`;}
+function notificationSupported(){return "Notification" in window;}
+function notificationEnabled(){return localStorage.getItem("spark_notifications")==="1" && notificationSupported() && Notification.permission==="granted";}
+function renderNotificationState(){
+  const status=$("notificationStatus"), btn=$("notificationToggle"); if(!status||!btn)return;
+  if(!notificationSupported()){status.textContent=lang==="ru"?"Браузер не поддерживает уведомления.":lang==="lv"?"Pārlūks neatbalsta paziņojumus.":"This browser does not support notifications.";btn.disabled=true;return}
+  const on=notificationEnabled(); status.textContent=on?t("notificationsOn"):(Notification.permission==="denied"?t("notificationsOff"):t("enableNotifications")); btn.textContent=on?t("notificationsOn"):t("enableNotifications"); btn.disabled=false;
+}
+async function toggleNotifications(){
+  if(!notificationSupported()){renderNotificationState();return}
+  if(notificationEnabled()){localStorage.removeItem("spark_notifications");renderNotificationState();return}
+  try{const p=await Notification.requestPermission(); if(p==="granted"){localStorage.setItem("spark_notifications","1"); if(navigator.serviceWorker?.ready){const reg=await navigator.serviceWorker.ready; try{await reg.showNotification("SPARK",{body:lang==="ru"?"Уведомления включены.":lang==="lv"?"Paziņojumi ieslēgti.":"Notifications enabled.",tag:"spark-enabled",icon:"./icons/icon-192.png"});}catch(e){}}}}catch(e){}
+  renderNotificationState();
+}
+function notifyIncomingMessage(payload){
+  if(!notificationEnabled()||document.visibilityState==="visible")return;
+  const body=payload?.new?.message_type==="photo"?(lang==="ru"?"Новое фото в чате":lang==="lv"?"Jauns foto čatā":"New photo in chat"):(lang==="ru"?"Новое сообщение в SPARK":lang==="lv"?"Jauna ziņa SPARK":"New message on SPARK");
+  const mid=payload?.new?.match_id||""; navigator.serviceWorker?.ready.then(reg=>reg.showNotification("SPARK",{body,tag:"spark-message",icon:"./icons/icon-192.png",badge:"./icons/icon-192.png",data:{match_id:mid}})).catch(()=>{try{new Notification("SPARK",{body})}catch(e){}}); if(window.SparkNative?.isNative) window.SparkNative.post("incoming-message",{match_id:mid});
+}
+function initSparkNativeBridge(){
+  const isIOSWebKit=!!(window.webkit&&window.webkit.messageHandlers&&window.webkit.messageHandlers.spark);
+  const isAndroid=!!(window.AndroidSpark&&typeof window.AndroidSpark.postMessage==="function");
+  const isCapacitor=!!(window.Capacitor&&typeof window.Capacitor.isNativePlatform==="function"&&window.Capacitor.isNativePlatform());
+  const native= {
+    get isNative(){return isIOSWebKit||isAndroid||isCapacitor},
+    post(type,payload={}){
+      const msg=JSON.stringify({type,payload});
+      try{
+        if(isIOSWebKit) window.webkit.messageHandlers.spark.postMessage({type,payload});
+        else if(isAndroid) window.AndroidSpark.postMessage(msg);
+        window.dispatchEvent(new CustomEvent("spark:native",{detail:{type,payload}}));
+      }catch(e){console.warn("SPARK native bridge",e)}
+    },
+    openChat(matchId){if(matchId)this.post("open-chat",{match_id:matchId})},
+    setBadge(count){this.post("set-badge",{count:Math.max(0,Number(count)||0)})},
+    requestPushToken(){this.post("request-push-token",{})},
+    ready(){this.post("web-ready",{url:location.href})}
+  };
+  window.SparkNative=native;
+  native.ready();
+}
+function initNotificationNavigation(){
+  const openFromTarget=mid=>{
+    if(!mid||!user)return;
+    setTimeout(()=>openChat(mid,"").catch(()=>{}),80);
+  };
+  window.addEventListener("spark:native-open-chat",e=>openFromTarget(e.detail?.match_id));
+  if(navigator.serviceWorker){
+    navigator.serviceWorker.addEventListener("message",e=>openFromTarget(e.data?.match_id));
+  }
+  const params=new URLSearchParams(location.search);
+  const mid=params.get("chat")||params.get("match_id");
+  if(mid) openFromTarget(mid);
+  window.addEventListener("spark:open-chat",e=>openFromTarget(e.detail?.match_id));
+}
+function initMobileLifecycle(){
+  const refresh=()=>{
+    if(!user||document.visibilityState!=="visible")return;
+    renderNetwork();
+    if(currentMatch&&currentMatch!==DEMO_MATCH && document.querySelector("#chat.active")) setTimeout(()=>openChat(currentMatch,currentChatName).catch(()=>{}),180);
+    if(document.querySelector("#feed.active")) setTimeout(()=>loadFeed().catch(()=>{}),180);
+  };
+  document.addEventListener("visibilitychange",refresh);
+  window.addEventListener("pageshow",refresh);
+  window.addEventListener("focus",refresh);
+  window.addEventListener("online",refresh);
+  window.addEventListener("pagehide",()=>{ try{ localStorage.setItem("spark_last_active",String(Date.now())); }catch(e){} if(channel){try{sb.removeChannel(channel)}catch(e){} channel=null;} });
+  window.addEventListener("spark:resume",refresh);
+}
+async function openChat(mid,name){ currentChatName=name||"";
+  currentMatch=mid;
+  if(mid===DEMO_MATCH){
+    currentChatUser={id:"demo-alexandra-24",display_name:"Александра, 24",demo:true};
+    $("chatTitle").innerHTML=`Александра, 24 <span class="verified-badge" title="Фото подтверждено"></span>`;
+    $("chatAvatar").innerHTML="А"; $("chatAvatar").className="chat-profile-avatar demo-avatar";
+    $("chatStatusText").textContent=t("onlineNow");
+    $("chatReport").title=t("chatReport"); $("chatBlock").title=t("chatBlock");
+    show("chat"); try{const draft=readChatDraft(currentMatch); if(draft && !$("messageInput").value) $("messageInput").value=draft.slice(0,2000);}catch{} await loadMessages(); return;
+  }
+  const {data:match,error:matchError}=await sb.from("matches").select("id,user_a,user_b").eq("id",mid).maybeSingle();
+  if(matchError || !match){currentMatch=null;currentChatUser=null;show("matches");showToast(matchError?friendlyError(matchError):t("noMatches"));await loadMatches().catch(()=>{});return}
+  const otherId=match.user_a===user.id?match.user_b:match.user_a;
+  const {data:other}=await sb.from("profiles").select("id,display_name").eq("id",otherId).maybeSingle();
+  currentChatUser=other||{id:otherId,display_name:name};
+  $("chatTitle").innerHTML=`${escapeHtml(currentChatUser.display_name||name)} <span class="verified-badge" title="${escapeAttr(t("profileVerified"))}"></span>`;
+  $("chatAvatar").className="chat-profile-avatar";
+  $("chatAvatar").textContent=(currentChatUser.display_name||name||"S").slice(0,1).toUpperCase();
+  $("chatStatusText").textContent=t("onlineNow");
+  $("chatReport").title=t("chatReport");
+  $("chatBlock").title=t("chatBlock");
+  show("chat");
+  try{const draft=readChatDraft(currentMatch); if(draft && !$("messageInput").value) $("messageInput").value=draft.slice(0,2000);}catch{}
+  await markMatchRead(mid);
+  await loadMessages();
+  if(channel) { sb.removeChannel(channel); channel=null; }
+  const otherUserId=currentChatUser.id;
+  channel=sb.channel("match-"+mid,{config:{presence:{key:user.id}}})
+    .on("postgres_changes",{event:"INSERT",schema:"public",table:"messages",filter:`match_id=eq.${mid}`},async(payload)=>{
+      if(currentMatch!==mid)return;
+      await loadMessages();
+      if(payload?.new?.sender_id!==user.id){ notifyIncomingMessage(payload); await markMatchRead(mid); }
+    })
+    .on("broadcast",{event:"typing"},({payload})=>{
+      if(payload?.user_id!==user.id){
+        const visible=!!payload?.typing;
+        $("typingIndicator").classList.toggle("hide",!visible);
+        clearTimeout(window.sparkTypingHideTimer);
+        if(visible) window.sparkTypingHideTimer=setTimeout(()=>$("typingIndicator").classList.add("hide"),1800);
+      }
+    })
+    .on("presence",{event:"sync"},()=>{
+      const state=channel.presenceState();
+      const online=Object.keys(state).some(k=>k===otherUserId);
+      $("chatStatusText").textContent=online?t("onlineNow"):t("offlineNow");
+      $("chatStatusText").previousElementSibling.style.background=online?"#40e0a0":"#77717a";
+    })
+    .subscribe(async(status)=>{
+      if(status==="SUBSCRIBED") {
+        try { await channel.track({user_id:user.id,online_at:new Date().toISOString()}); } catch(e) { console.warn("presence track",e); }
+      }
+    });
+}
+async function blockChatUser(){
+  if(currentChatUser?.demo){showToast(t("demoNoChanges"));return}
+  if(!currentChatUser||!confirm(t("blockConfirm")))return;
+  const {error}=await sb.from("blocks").upsert({blocker_id:user.id,blocked_id:currentChatUser.id},{onConflict:"blocker_id,blocked_id"});
+  if(error){showToast(friendlyError(error));return}
+  if(channel){sb.removeChannel(channel);channel=null}
+  currentMatch=null; currentChatUser=null;
+  show("matches");
+  await loadMatches();
+}
+
+async function reportChatUser(){
+  if(currentChatUser?.demo){showToast(t("demoNoReport"));return}
+  if(currentChatUser) openReport(currentChatUser);
+}
+
+async function loadMessages(){
+  if(!currentMatch)return;
+  if(currentMatch===DEMO_MATCH){
+    const today=new Date().toLocaleDateString(lang==="ru"?"ru-RU":lang==="lv"?"lv-LV":"en-US",{day:"numeric",month:"long"});
+    $("messages").innerHTML=`<div class="chat-date">${escapeHtml(today)}</div>`+demoMessages.map(m=>`<div class="bubble ${m.sender==="me"?"mine":""}">${m.type==="photo"&&m.body?`<img class="chat-photo" src="${escapeAttr(m.body)}" alt="${escapeAttr(lang==="ru"?"Фото":lang==="lv"?"Foto":"Photo")}" loading="lazy">`:escapeHtml(m.body||"")}<div class="small" style="text-align:right;margin-top:4px">${formatChatTime(m.created_at)}${m.sender==="me"?" · ✓✓":""}</div></div>`).join("");
+    $("messages").scrollTop=$("messages").scrollHeight; return;
+  }
+  const {data,error}=await sb.from("messages").select("id,sender_id,body,message_type,media_path,created_at").eq("match_id",currentMatch).order("created_at",{ascending:true});
+  if(error){$("messages").innerHTML=`<div class="notice error">${escapeHtml(friendlyError(error))}</div>`;return}
+  const rows=data||[];
+  const photoRows=rows.filter(m=>m.message_type==="photo"&&m.media_path);
+  await Promise.all(photoRows.map(async m=>{
+    try{
+      const {data:u}=await sb.storage.from("chat-media").createSignedUrl(m.media_path,3600);
+      if(u?.signedUrl) messageMediaUrls.set(m.id,u.signedUrl);
+    }catch(e){console.warn("message media url",e)}
+  }));
+  $("messages").innerHTML=rows.map(m=>{
+    const isPhoto=m.message_type==="photo";
+    const media=messageMediaUrls.get(m.id);
+    const content=isPhoto
+      ? (media?`<img class="chat-photo" src="${escapeAttr(media)}" alt="${escapeAttr(lang==="ru"?"Фото":lang==="lv"?"Foto":"Photo")}" loading="lazy">`:`<div class="small">Фото недоступно</div>`)
+      : escapeHtml(m.body||"");
+    return `<div class="bubble ${m.sender_id===user.id?"mine":""}">${content}<div class="small" style="text-align:right;margin-top:4px">${formatChatTime(m.created_at)}${m.sender_id===user.id?" · ✓✓":""}</div></div>`;
+  }).join("");
+  $("messages").scrollTop=$("messages").scrollHeight;
+}
+async function sendMessage(){
+  if(!ensureOnline())return;
+  if(window.__sparkSendingMessage)return;
+  const body=$("messageInput").value.trim();if(!body||!currentMatch)return;if(body.length>2000){msg("chatMsg",t("messageTooLong"));return;}
+  window.__sparkSendingMessage=true;
+  const sendBtn=$("sendMessage"); if(sendBtn)sendBtn.disabled=true;
+  try{
+  if(currentMatch===DEMO_MATCH){
+    demoMessages.push({sender:"me",body,created_at:new Date().toISOString()}); saveDemoMessages(); $("messageInput").value=""; clearChatDraft(currentMatch); await loadMessages();
+    $("typingIndicator").classList.remove("hide");
+    clearTimeout(demoReplyTimer); demoReplyTimer=setTimeout(async()=>{
+      $("typingIndicator").classList.add("hide");
+      demoMessages.push({sender:"demo",body:"Хаха 😊 Расскажи подробнее!",created_at:new Date().toISOString()}); saveDemoMessages();
+      await loadMessages();
+    },1200); return;
+  }
+  const {error}=await sb.from("messages").insert({match_id:currentMatch,sender_id:user.id,body});
+  if(error){const em=rateLimitText(error)||friendlyError(error);msg("chatMsg",em);} else {$('messageInput').value="";clearChatDraft(currentMatch); await markMatchRead(currentMatch);await loadMessages(); if(channel) channel.send({type:"broadcast",event:"typing",payload:{user_id:user.id,typing:false}})}
+  } finally {
+    window.__sparkSendingMessage=false;
+    if(sendBtn)sendBtn.disabled=false;
+  }
+}
+async function savePreferences(){
+  if(!ensureOnline())return;
+  const min_age=Math.max(18,Math.min(99,parseInt($("minAge").value||18,10)||18));
+  const max_age=Math.max(min_age,Math.min(99,parseInt($("maxAge").value||99,10)||99));
+  const city=$("filterCity").value;
+  const cities=city==="all"?["riga","jurmala"]:[city];
+  const {error}=await sb.from("preferences").upsert({user_id:user.id,min_age,max_age,cities,interests:[]});
+  if(error) console.error(error);
+}
+async function loadPreferences(){
+  const {data}=await sb.from("preferences").select("min_age,max_age,cities").eq("user_id",user.id).maybeSingle();
+  if(data){
+    $("minAge").value=data.min_age??18;
+    $("maxAge").value=data.max_age??99;
+    $("filterCity").value=(data.cities||[]).length===1?data.cities[0]:"all";
+  }
+}
+async function loadProfilePhoto(){
+  await loadMyPhotos();
+}
+async function loadMyPhotos(){
+  const {data:rows,error}=await sb.from("photos").select("id,storage_path,sort_order,is_primary,created_at").eq("user_id",user.id).eq("type","profile").order("sort_order",{ascending:true}).order("created_at",{ascending:true});
+  if(error){console.error(error);return []}
+  const photos=rows||[];
+  const urls=await Promise.all(photos.map(x=>signed(x.storage_path)));
+  const items=photos.map((x,i)=>({...x,url:urls[i]}));
+  if(items.length){
+    const primary=items.find(x=>x.is_primary)||items[0];
+    $('mePhotoPreview').innerHTML=primary.url?`<img src="${primary.url}" alt="">`:"✦";
+  }else $('mePhotoPreview').innerHTML="✦";
+  $('profilePhotoCount').textContent=`${items.length}/6 · ${t("photosHint")}`;
+  $('profileGallery').innerHTML=items.map((ph,i)=>`<div class="profile-thumb"><img src="${ph.url||""}" alt=""><div class="thumb-badge">${ph.is_primary?escapeHtml(t("primaryPhoto")):"#"+(i+1)}</div><div class="thumb-actions"><button type="button" data-primary="${ph.id}" ${ph.is_primary?"disabled":""}>${ph.is_primary?"✓ ":""}${escapeHtml(t("makePrimary"))}</button><button type="button" data-left="${ph.id}" ${i===0||ph.is_primary?"disabled":""}>${escapeHtml(t("moveLeft"))}</button><button type="button" data-right="${ph.id}" ${i===items.length-1||ph.is_primary?"disabled":""}>${escapeHtml(t("moveRight"))}</button><button type="button" data-delete="${ph.id}">${escapeHtml(t("deletePhoto"))}</button></div></div>`).join("");
+  document.querySelectorAll('[data-primary]').forEach(b=>b.onclick=()=>setPrimaryPhoto(b.dataset.primary));
+  document.querySelectorAll('[data-left]').forEach(b=>{b.setAttribute("aria-label",t("moveLeft"));b.onclick=()=>moveProfilePhoto(b.dataset.left,-1)});
+  document.querySelectorAll('[data-right]').forEach(b=>{b.setAttribute("aria-label",t("moveRight"));b.onclick=()=>moveProfilePhoto(b.dataset.right,1)});
+  document.querySelectorAll('[data-delete]').forEach(b=>{b.setAttribute("aria-label",t("deletePhoto"));b.onclick=()=>deleteProfilePhoto(b.dataset.delete)});
+  return items;
+}
+async function saveProfilePhoto(){
+  if(window.__sparkSavingProfilePhotos)return;
+  if(!ensureOnline())return;
+  window.__sparkSavingProfilePhotos=true;
+  try{
+  const files=[...($('profilePhotoInput').files||[])];
+  if(!files.length){msg("profilePhotoMsg",t("photoRequired"));return}
+  const {count}=await sb.from("photos").select("id",{count:"exact",head:true}).eq("user_id",user.id).eq("type","profile");
+  const current=count||0;
+  if(current>=6){msg("profilePhotoMsg",t("photoLimit"));return}
+  const selected=files.slice(0,6-current);
+  if(files.length>selected.length) msg("profilePhotoMsg",t("photoLimit"));
+  let added=0;
+  for(const f of selected){
+    if(!/^image\/(jpeg|png|webp)$/i.test(f.type)){msg("profilePhotoMsg",lang==="ru"?"Можно загружать только JPG, PNG или WebP.":lang==="lv"?"Var augšupielādēt tikai JPG, PNG vai WebP.":"Only JPG, PNG, or WebP images are allowed.");continue}
+    if(f.size>8*1024*1024){msg("profilePhotoMsg",lang==="ru"?"Фото слишком большое. Максимум 8 МБ.":lang==="lv"?"Foto ir pārāk liels. Maksimums 8 MB.":"Photo is too large. Maximum 8 MB.");continue}
+    let prepared;
+    try{prepared=await prepareImageFile(f,3500000,1800)}catch(e){msg("profilePhotoMsg",userFacingError(e));continue}
+    const path=`${user.id}/profile-${Date.now()}-${Math.random().toString(36).slice(2,7)}.jpg`;
+    const {error:up}=await sb.storage.from("profile-photos").upload(path,prepared,{contentType:"image/jpeg",upsert:false,cacheControl:"3600"});
+    if(up){msg("profilePhotoMsg",friendlyError(up));continue}
+    const {data:last}=await sb.from("photos").select("sort_order").eq("user_id",user.id).eq("type","profile").order("sort_order",{ascending:false}).limit(1).maybeSingle();
+    const {count:afterCount}=await sb.from("photos").select("id",{count:"exact",head:true}).eq("user_id",user.id).eq("type","profile");
+    const makePrimary=(afterCount||0)===0;
+    const {error:pe}=await sb.from("photos").insert({user_id:user.id,storage_path:path,type:"profile",sort_order:(last?.sort_order??-1)+1,is_primary:makePrimary});
+    if(pe){await sb.storage.from("profile-photos").remove([path]);msg("profilePhotoMsg",friendlyError(pe));continue}
+    if(makePrimary){
+      const {error:clearPrimaryError}=await sb.from("photos").update({is_primary:false}).eq("user_id",user.id).eq("type","profile").neq("storage_path",path);
+      if(clearPrimaryError){
+        await sb.from("photos").delete().eq("user_id",user.id).eq("storage_path",path);
+        await sb.storage.from("profile-photos").remove([path]);
+        msg("profilePhotoMsg",friendlyError(clearPrimaryError));
+        continue;
+      }
+    }
+    added++;
+  }
+  $('profilePhotoInput').value="";
+  if(added>0) msg("profilePhotoMsg",t("photoSaved"),true);
+  else if(!files.length) msg("profilePhotoMsg",t("photoRequired"));
+  await loadMyPhotos();
+  } finally { window.__sparkSavingProfilePhotos=false; }
+}
+async function setPrimaryPhoto(id){
+  if(!ensureOnline()||window.__sparkPhotoMutationBusy)return;
+  window.__sparkPhotoMutationBusy=true;
+  try{
+  const {data:oldPrimary}=await sb.from("photos").select("id").eq("user_id",user.id).eq("type","profile").eq("is_primary",true).maybeSingle();
+  const {error:e1}=await sb.from("photos").update({is_primary:false}).eq("user_id",user.id).eq("type","profile").eq("is_primary",true);
+  if(e1){msg("profilePhotoMsg",friendlyError(e1));return}
+  const {error:e2}=await sb.from("photos").update({is_primary:true,sort_order:0}).eq("user_id",user.id).eq("type","profile").eq("id",id);
+  if(e2){if(oldPrimary?.id) await sb.from("photos").update({is_primary:true}).eq("user_id",user.id).eq("type","profile").eq("id",oldPrimary.id);msg("profilePhotoMsg",friendlyError(e2));return}
+  const {data:others}=await sb.from("photos").select("id,sort_order").eq("user_id",user.id).eq("type","profile").neq("id",id).order("sort_order",{ascending:true});
+  for(let i=0;i<(others||[]).length;i++) await sb.from("photos").update({sort_order:i+1}).eq("id",others[i].id).eq("user_id",user.id);
+  await loadMyPhotos();
+  } finally { window.__sparkPhotoMutationBusy=false; }
+}
+async function moveProfilePhoto(id,direction){
+  if(!ensureOnline()||window.__sparkPhotoMutationBusy)return;
+  window.__sparkPhotoMutationBusy=true;
+  try{
+  const {data:rows,error}=await sb.from("photos").select("id,sort_order,is_primary").eq("user_id",user.id).eq("type","profile").order("sort_order",{ascending:true}).order("created_at",{ascending:true});
+  if(error)return;
+  const arr=rows||[],i=arr.findIndex(x=>x.id===id),j=i+direction;
+  if(i<0||j<0||j>=arr.length||arr[i]?.is_primary)return;
+  const a=arr[i],b=arr[j];
+  const {error:e0}=await sb.from("photos").update({sort_order:999}).eq("id",a.id).eq("user_id",user.id);
+  if(e0){msg("profilePhotoMsg",friendlyError(e0));return}
+  const {error:e1}=await sb.from("photos").update({sort_order:a.sort_order}).eq("id",b.id).eq("user_id",user.id);
+  if(e1){await sb.from("photos").update({sort_order:a.sort_order}).eq("id",a.id).eq("user_id",user.id);msg("profilePhotoMsg",friendlyError(e1));return}
+  const {error:e2}=await sb.from("photos").update({sort_order:b.sort_order}).eq("id",a.id).eq("user_id",user.id);
+  if(e2){await sb.from("photos").update({sort_order:a.sort_order}).eq("id",a.id).eq("user_id",user.id);await sb.from("photos").update({sort_order:b.sort_order}).eq("id",b.id).eq("user_id",user.id);msg("profilePhotoMsg",friendlyError(e2));return}
+  await loadMyPhotos();
+  } finally { window.__sparkPhotoMutationBusy=false; }
+}
+async function deleteProfilePhoto(id){
+  if(!ensureOnline()||window.__sparkPhotoMutationBusy)return;
+  window.__sparkPhotoMutationBusy=true;
+  try{
+  const {data:ph}=await sb.from("photos").select("id,storage_path,is_primary,sort_order").eq("id",id).eq("user_id",user.id).eq("type","profile").maybeSingle();
+  if(!ph)return;
+  let nextPrimary=null;
+  if(ph.is_primary){
+    const {data:next}=await sb.from("photos").select("id,sort_order").eq("user_id",user.id).eq("type","profile").neq("id",id).order("sort_order",{ascending:true}).order("created_at",{ascending:true}).limit(1).maybeSingle();
+    nextPrimary=next||null;
+  }
+  const {error:de}=await sb.from("photos").delete().eq("id",id).eq("user_id",user.id);
+  if(de){msg("profilePhotoMsg",friendlyError(de));return}
+  await sb.storage.from("profile-photos").remove([ph.storage_path]);
+  if(ph.is_primary && nextPrimary){
+    const {error:setErr}=await sb.from("photos").update({is_primary:true,sort_order:0}).eq("id",nextPrimary.id).eq("user_id",user.id);
+    if(setErr){msg("profilePhotoMsg",friendlyError(setErr));return}
+  }
+  await loadMyPhotos();
+  } finally { window.__sparkPhotoMutationBusy=false; }
+}
+function fillEditProfile(){
+  if(!profile)return;
+  $("editName").value=profile.display_name||"";
+  $("editDob").value=profile.date_of_birth||"";
+  $("editCity").value=profile.city||"riga";
+  $("editBio").value=profile.bio||"";
+  $("editInterests").value=Array.isArray(profile.interests)?profile.interests.join(", "):"";
+  $("editProfileMsg").textContent="";
+}
+async function saveEditedProfile(){
+  if(!user||!profile||!ensureOnline())return;
+  const dob=$("editDob").value;
+  if(!dob||age(dob)<18){msg("editProfileMsg",t("ageRequired"));return}
+  const payload={display_name:$("editName").value.trim(),date_of_birth:dob,city:$("editCity").value,bio:$("editBio").value.trim(),interests:$("editInterests").value.split(",").map(x=>x.trim()).filter(Boolean),updated_at:new Date().toISOString()};
+  if(!payload.display_name){msg("editProfileMsg",t("nameRequired")||"Введите имя.");return}
+  if(payload.display_name.length>40){msg("editProfileMsg",lang==="ru"?"Имя не длиннее 40 символов.":lang==="lv"?"Vārds nedrīkst būt garāks par 40 rakstzīmēm.":"Name must be 40 characters or fewer.");return}
+  if(payload.bio.length>500){msg("editProfileMsg",lang==="ru"?"Описание не длиннее 500 символов.":lang==="lv"?"Apraksts nedrīkst būt garāks par 500 rakstzīmēm.":"Bio must be 500 characters or fewer.");return}
+  if(payload.interests.length>12 || payload.interests.some(x=>x.length>40)){msg("editProfileMsg",lang==="ru"?"Можно указать до 12 интересов, каждый до 40 символов.":lang==="lv"?"Vari norādīt līdz 12 interesēm, katru līdz 40 rakstzīmēm.":"Add up to 12 interests, each up to 40 characters.");return}
+  const {data,error}=await sb.from("profiles").update(payload).eq("id",user.id).select("*").single();
+  if(error){msg("editProfileMsg",friendlyError(error));return}
+  profile=data; fillEditProfile(); $("editProfileCard").classList.add("hide"); msg("editProfileMsg",t("profileSaved"),true); await loadMe();
+}
+async function loadMe(){
+  const {data:v}=await sb.from("verifications").select("*").eq("user_id",user.id).maybeSingle();
+  $("meInfo").innerHTML=`<h2 style="margin-top:0">${escapeHtml(profile.display_name)}</h2><p class="small">${profile.city==="jurmala"?"Jūrmala":"Riga"} · ${age(profile.date_of_birth)}</p><p>${escapeHtml(profile.bio||"")}</p>`;
+  $("meStatus").innerHTML=v?.status==="approved"?`<span class="verified-label"><span class="verified-badge" aria-hidden="true"></span>${t("profileVerified")}</span>`:v?.status==="pending"?`⏳ ${t("profilePending")}`:`🔐 ${t("profileNotVerified")}`;
+  await loadProfilePhoto();
+}
+
+async function prepareImageFile(file,maxBytes=3500000,maxSide=1800){
+  if(!file || !file.type.startsWith("image/")) throw new Error("Выбери изображение.");
+  if(file.size<=maxBytes && /\.(jpe?g|png|webp)$/i.test(file.name)) return file;
+  const url=URL.createObjectURL(file);
+  try{
+    const img=await new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=()=>reject(new Error("Не удалось прочитать фото."));i.src=url});
+    const scale=Math.min(1,maxSide/Math.max(img.naturalWidth||img.width,img.naturalHeight||img.height));
+    const w=Math.max(1,Math.round((img.naturalWidth||img.width)*scale));
+    const h=Math.max(1,Math.round((img.naturalHeight||img.height)*scale));
+    const c=document.createElement("canvas");c.width=w;c.height=h;const ctx=c.getContext("2d");ctx.drawImage(img,0,0,w,h);
+    const blob=await new Promise(resolve=>c.toBlob(resolve,"image/jpeg",.84));
+    if(!blob) throw new Error("Не удалось обработать фото.");
+    return new File([blob],(file.name.replace(/\.[^.]+$/i,"")||"photo")+".jpg",{type:"image/jpeg",lastModified:Date.now()});
+  }finally{URL.revokeObjectURL(url)}
+}
+function userFacingError(error){
+  const raw=String(error?.message||error||""); const low=raw.toLowerCase();
+  if(low.includes("413")||low.includes("payload")||low.includes("too large")||low.includes("size")) return lang==="ru"?"Фото слишком большое. Выбери другое или попробуй ещё раз.":lang==="lv"?"Foto ir pārāk liels. Izvēlies citu foto un mēģini vēlreiz.":"Photo is too large. Choose another one and try again.";
+  if(low.includes("network")||low.includes("fetch")) return lang==="ru"?"Нет соединения. Проверь интернет и повтори.":lang==="lv"?"Nav savienojuma. Pārbaudi internetu un mēģini vēlreiz.":"No connection. Check the internet and try again.";
+  return raw || (lang==="ru"?"Не удалось выполнить действие.":lang==="lv"?"Darbību neizdevās izpildīt.":"Action failed.");
+}
+
+function openLegal(kind){
+  const title=kind==="terms"?t("terms"):t("privacy");
+  const ruTerms=`<p><b>SPARK — правила сообщества</b></p><p>SPARK предназначен только для совершеннолетних пользователей 18+. Нельзя публиковать незаконный, угрожающий, мошеннический или сексуально эксплуатирующий контент, выдавать себя за другого человека, спамить или преследовать других пользователей.</p><p>Фото-верификация обязательна для показа профиля в Discovery. Жалобы и блокировки доступны прямо из профиля и чата. Модерация может ограничить доступ к сервису при нарушении правил.</p>`;
+  const lvTerms=`<p><b>SPARK — kopienas noteikumi</b></p><p>SPARK paredzēts tikai pilngadīgiem lietotājiem no 18 gadu vecuma. Aizliegts publicēt nelikumīgu, draudošu, krāpniecisku vai seksuāli ekspluatējošu saturu, uzdoties par citu personu, sūtīt surogātpastu vai vajāt citus lietotājus.</p><p>Foto verifikācija ir obligāta, lai profils būtu redzams Discovery. Ziņošana un bloķēšana ir pieejama profilā un sarunā.</p>`;
+  const enTerms=`<p><b>SPARK — community rules</b></p><p>SPARK is for adults aged 18+. Do not post illegal, threatening, fraudulent or sexually exploitative content, impersonate others, spam or harass users.</p><p>Photo verification is required before a profile can appear in Discovery. Reporting and blocking are available from profiles and chats. Moderation may restrict accounts that violate the rules.</p>`;
+  const ruPrivacy=`<p><b>Конфиденциальность</b></p><p>SPARK обрабатывает данные, необходимые для работы аккаунта и безопасности сервиса: email, профиль, настройки, фото, сведения о верификации, лайки, матчи, сообщения, блокировки, жалобы и технические события безопасности.</p><p><b>Фото и верификация.</b> Фото профиля и верификационные фото хранятся в закрытом Supabase Storage. Доступ к фото приложения выдаётся через временные подписанные ссылки. Профиль не появляется в Discovery до одобренной верификации и одобренного фото профиля.</p><p><b>Использование.</b> Данные используются для предоставления функций приложения, поиска совпадений, обмена сообщениями, предотвращения злоупотреблений, модерации и защиты аккаунтов.</p><p><b>Удаление и техническое хранение.</b> Пользователь может удалить аккаунт из приложения. В текущей реализации неактивные push-устройства очищаются после 90 дней, события безопасности — после 180 дней, а завершённые/неуспешные задания push-очереди — после 30 дней. Для отклонённых фото действует отдельная очередь очистки; физическое удаление Storage-объектов выполняется только после отдельного worker-процесса.</p><p><b>Права пользователя.</b> В зависимости от применимого законодательства пользователь может иметь право на доступ, исправление, удаление, ограничение обработки, переносимость данных и подачу жалобы в надзорный орган. Запросы по приватности должны направляться оператору сервиса после публикации его официальных реквизитов.</p><p><b>Важно для публичного релиза.</b> В этой сборке ещё не указаны юридическое наименование и адрес оператора, официальный privacy-контакт, применимые правовые основания обработки и полный перечень внешних обработчиков. Эти реквизиты нельзя выдумывать и необходимо заполнить до публикации приложения.</p>`;
+  const lvPrivacy=`<p><b>Privātums</b></p><p>SPARK apstrādā konta darbībai un drošībai nepieciešamos datus: e-pastu, profilu, iestatījumus, foto, verifikācijas informāciju, simpātijas, sakritības, ziņas, bloķēšanu, ziņojumus par pārkāpumiem un drošības tehniskos notikumus.</p><p><b>Foto un verifikācija.</b> Profila un verifikācijas foto tiek glabāti aizsargātā Supabase Storage. Lietotnei foto tiek izsniegti ar pagaidu parakstītām saitēm. Profils netiek rādīts Discovery, kamēr nav apstiprināta verifikācija un profila foto.</p><p><b>Izmantošana.</b> Dati tiek izmantoti lietotnes funkciju nodrošināšanai, sakritībām, ziņojumiem, ļaunprātīgas izmantošanas novēršanai, moderācijai un konta drošībai.</p><p><b>Dzēšana un tehniskā glabāšana.</b> Lietotājs var dzēst kontu lietotnē. Pašreizējā implementācijā neaktīvas push ierīces tiek dzēstas pēc 90 dienām, drošības notikumi pēc 180 dienām, bet pabeigti/neveiksmīgi push rindas ieraksti pēc 30 dienām. Noraidītajiem foto ir atsevišķa tīrīšanas rinda; Storage objektu fiziska dzēšana notiek tikai pēc atsevišķa worker procesa.</p><p><b>Lietotāja tiesības.</b> Atkarībā no piemērojamajiem tiesību aktiem lietotājam var būt tiesības piekļūt datiem, tos labot, dzēst, ierobežot apstrādi, pārnest datus un iesniegt sūdzību uzraudzības iestādei.</p><p><b>Svarīgi pirms publiskas palaišanas.</b> Šajā versijā vēl nav norādīts operatora juridiskais nosaukums un adrese, oficiālais privātuma kontakts, konkrētie apstrādes tiesiskie pamati un pilns ārējo apstrādātāju saraksts. Šie dati jāaizpilda pirms lietotnes publicēšanas.</p>`;
+  const enPrivacy=`<p><b>Privacy</b></p><p>SPARK processes data needed to operate accounts and protect the service: email, profile, settings, photos, verification information, likes, matches, messages, blocks, reports and security-related technical events.</p><p><b>Photos and verification.</b> Profile and verification photos are stored in protected Supabase Storage. The app receives photos through temporary signed URLs. A profile cannot appear in Discovery until verification and the profile photo are both approved.</p><p><b>Use of data.</b> Data is used to provide app features, matching and messaging, prevent abuse, perform moderation and protect accounts.</p><p><b>Deletion and technical retention.</b> Users can delete their account in the app. In the current implementation, inactive push devices are cleaned after 90 days, security events after 180 days, and completed/failed push-queue records after 30 days. Rejected photos have a separate cleanup queue; physical Storage deletion is performed only by a separate worker process.</p><p><b>User rights.</b> Depending on applicable law, users may have rights to access, rectify, erase, restrict processing, receive portable data and lodge a complaint with a supervisory authority. Privacy requests should be directed to the service operator once its official details are published.</p><p><b>Required before public release.</b> This build does not yet contain the operator's legal name and address, official privacy contact, specific legal bases for processing, or the complete list of external processors. These details must be supplied before publication; they should not be invented.</p>`;
+  const body=kind==="terms"?(lang==="ru"?ruTerms:lang==="lv"?lvTerms:enTerms):(lang==="ru"?ruPrivacy:lang==="lv"?lvPrivacy:enPrivacy);
+  $("legalTitle").textContent=title; $("legalBody").innerHTML=body; $("legalBody").classList.remove("hide"); $("legalInfoBody").classList.add("hide"); $("legalModal").classList.remove("hide"); $("legalModal").setAttribute("aria-hidden","false");
+}
+function openLegalInfo(){
+  $("legalTitle").textContent=t("legalInfo");
+  $("legalBody").classList.add("hide");
+  $("legalInfoBody").classList.remove("hide");
+  $("legalModal").classList.remove("hide");
+  $("legalModal").setAttribute("aria-hidden","false");
+}
+function closeLegal(){
+  $("legalModal").classList.add("hide");
+  $("legalModal").setAttribute("aria-hidden","true");
+  $("legalBody").classList.remove("hide");
+  $("legalInfoBody").classList.add("hide");
+}
+async function deleteAccount(){
+  if(!user||!ensureOnline())return;
+  const phrase=prompt(t("deleteConfirm"));
+  if(phrase===null)return;
+  if(phrase.trim().toUpperCase()!=="SPARK"){msg("deleteAccountMsg",t("deleteAccountError"));return}
+  const btn=$("deleteAccount"); if(btn)btn.disabled=true; msg("deleteAccountMsg",lang==="ru"?"Удаляем данные…":lang==="lv"?"Dati tiek dzēsti…":"Deleting your data…");
+  try{
+    const {error}=await sb.functions.invoke("delete-account",{body:{confirm:"SPARK"}});
+    if(error)throw error;
+    localStorage.removeItem("spark_notifications");
+    if(channel){try{await sb.removeChannel(channel)}catch(e){} channel=null}
+    user=null; profile=null; currentMatch=null; currentChatUser=null;
+    await sb.auth.signOut({scope:"local"});
+    msg("deleteAccountMsg",t("deleteAccountDeleted"),true);
+    setTimeout(()=>location.reload(),500);
+  }catch(e){console.error("delete account",e);const raw=String(e?.message||e||"").toLowerCase();const text=raw.includes("profile photos")||raw.includes("chat media")?(lang==="ru"?"Не удалось полностью удалить файлы. Аккаунт не удалён — повтори попытку позже.":lang==="lv"?"Neizdevās pilnībā dzēst failus. Konts nav dzēsts — mēģini vēlreiz vēlāk.":"Some files could not be removed. Your account was not deleted — please try again later."):t("deleteAccountError");msg("deleteAccountMsg",text);if(btn)btn.disabled=false}
+}
+
+function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function escapeAttr(s){return escapeHtml(s).replace(/`/g,"&#096;")}
+if($("openMessagesTop")) {
+  $("openMessagesTop").onclick=async()=>{
+    $("openMessagesTop").disabled=true;
+    try { await openChat(DEMO_MATCH,"Александра, 24"); } finally { $("openMessagesTop").disabled=false; }
+  };
+  $("openMessagesTop").dataset.bound="1";
+}
+if($("filterToggle")) $("filterToggle").onclick=()=> $("filterPanel").classList.toggle("hide");
+if($("applyFilters")) $("applyFilters").onclick=async()=>{await savePreferences();$("filterPanel").classList.add("hide");await loadFeed()};
+if($("saveProfilePhoto")) $("saveProfilePhoto").onclick=saveProfilePhoto;
+if($("deleteAccount")) $("deleteAccount").onclick=deleteAccount;
+if($("termsBtn")) $("termsBtn").onclick=()=>openLegal("terms");
+if($("privacyBtn")) $("privacyBtn").onclick=()=>openLegal("privacy");
+if($("legalInfoBtn")) $("legalInfoBtn").onclick=openLegalInfo;
+if($("closeLegal")) $("closeLegal").onclick=closeLegal;
+if($("legalModal")) $("legalModal").addEventListener("click",e=>{if(e.target===$("legalModal"))closeLegal()});
+if($("editProfileToggle")) $("editProfileToggle").onclick=()=>{fillEditProfile();$("editProfileCard").classList.toggle("hide")};
+if($("cancelEditProfile")) $("cancelEditProfile").onclick=()=>$("editProfileCard").classList.add("hide");
+if($("saveEditProfile")) $("saveEditProfile").onclick=saveEditedProfile;
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLanguage(b.dataset.lang));
+applyLanguage();
+if(location.protocol==="file:"){
+  const n=document.createElement("div"); n.className="notice"; n.style.marginTop="10px";
+  n.textContent=lang==="ru"?"Для полного входа с телефона лучше открыть SPARK по HTTPS-ссылке. Некоторые браузеры блокируют API из локального HTML.":lang==="lv"?"Pilnai darbībai telefonā atver SPARK caur HTTPS saiti. Daži pārlūki bloķē API no lokāla HTML faila.":"For full phone access, open SPARK from an HTTPS link. Some browsers block APIs from local HTML files.";
+  const a=$("authMsg"); a.parentNode.insertBefore(n,a);
+}
+function authNotice(text,ok=false){
+  const el=$("authMsg"); el.textContent=text; el.classList.remove("hide");
+  el.classList.toggle("ok",ok); el.classList.toggle("error",!ok);
+}
+function authErrorText(error){
+  const raw=String(error?.message||error||"");
+  const low=raw.toLowerCase();
+  if(low.includes("failed to fetch")||low.includes("networkerror")||low.includes("network request failed")) return lang==="ru"?"Не удаётся подключиться к SPARK. Проверь интернет. Если интернет есть — обнови страницу и попробуй ещё раз.":lang==="lv"?"Nevar izveidot savienojumu ar SPARK. Pārbaudi internetu un mēģini vēlreiz.":"SPARK could not connect. Check your internet connection and try again.";
+  if(low.includes("invalid api key")||low.includes("apikey")) return "Ошибка подключения SPARK. Обнови страницу — ключ доступа был обновлён.";
+  if(low.includes("email not confirmed")) return lang==="ru"?"Email ещё не подтверждён. Открой письмо от Supabase и перейди по ссылке.":lang==="lv"?"E-pasts vēl nav apstiprināts. Atver Supabase e-pastu un apstiprini adresi.":"Email is not confirmed yet. Open the Supabase email and confirm your address.";
+  if(low.includes("invalid login")) return lang==="ru"?"Неверный email или пароль.":lang==="lv"?"Nepareizs e-pasts vai parole.":"Invalid email or password.";
+  return raw|| (lang==="ru"?"Не удалось выполнить вход.":lang==="lv"?"Neizdevās pieslēgties.":"Could not sign in.");
+}
+async function checkSupabaseConnection(){
+  const ctrl=new AbortController(); const timer=setTimeout(()=>ctrl.abort(),7000);
+  try{
+    const r=await fetch(SUPABASE_URL+"/auth/v1/settings",{headers:{apikey:SUPABASE_KEY},signal:ctrl.signal,cache:"no-store"});
+    return r.ok;
+  }catch(e){return false}finally{clearTimeout(timer)}
+}
+let authBusy=false;
+async function sendPasswordReset(){
+  if(!ensureOnline())return;
+  const email=$("email").value.trim();
+  if(!email){authNotice(lang==="ru"?"Сначала введи email.":lang==="lv"?"Vispirms ievadi e-pastu.":"Enter your email first.");return}
+  const resetOpts=location.protocol==="https:" ? {redirectTo:window.location.origin+window.location.pathname} : {};
+  const {error}=await sb.auth.resetPasswordForEmail(email,resetOpts);
+  if(error) authNotice(authErrorText(error));
+  else authNotice(lang==="ru"?"Письмо для сброса пароля отправлено. Проверь почту.":lang==="lv"?"Paroles atiestatīšanas e-pasts ir nosūtīts.":"Password reset email sent. Check your inbox.",true);
+}
+async function updatePassword(){
+  if(!ensureOnline())return;
+  const a=$("newPassword").value,b=$("repeatPassword").value;
+  if(a.length<8){$("resetMsg").textContent=lang==="ru"?"Пароль должен быть минимум 8 символов.":lang==="lv"?"Parolei jābūt vismaz 8 rakstzīmēm.":"Password must be at least 8 characters.";$("resetMsg").classList.remove("hide");return}
+  if(a!==b){$("resetMsg").textContent=lang==="ru"?"Пароли не совпадают.":lang==="lv"?"Paroles nesakrīt.":"Passwords do not match.";$("resetMsg").classList.remove("hide");return}
+  const {error}=await sb.auth.updateUser({password:a});
+  const el=$("resetMsg");el.classList.remove("hide");el.classList.toggle("error",!!error);el.classList.toggle("ok",!error);
+  el.textContent=error?authErrorText(error):(lang==="ru"?"Пароль обновлён. Теперь можно войти.":lang==="lv"?"Parole atjaunināta. Tagad vari pieslēgties.":"Password updated. You can now sign in.");
+  if(!error){setTimeout(()=>{show("auth");sb.auth.signOut();},900)}
+}
+async function doSignup(){
+  if(authBusy)return;
+  const email=$("email").value.trim(), password=$("password").value;
+  if(!$("signupConsent")?.checked){authNotice(t("signupConsent"));return}
+  if(!email || password.length<8){authNotice(lang==="ru"?"Введи email и пароль минимум из 8 символов.":lang==="lv"?"Ievadi e-pastu un paroli vismaz no 8 rakstzīmēm.":"Enter an email and a password of at least 8 characters.");return}
+  authBusy=true; $("signup").disabled=true; $("signin").disabled=true;
+  try{
+    const {data,error}=await sb.auth.signUp({email,password,options:{data:{terms_version:"2026-10-03",privacy_version:"2026-10-03",consent_source:"spark-mobile"}}});
+    if(error){
+      const text=error.message.toLowerCase();
+      if(text.includes("rate")||text.includes("too many")||text.includes("email")){
+        authNotice(lang==="ru"?"Supabase временно ограничил отправку писем. Попробуй позже.":lang==="lv"?"Supabase īslaicīgi ierobežo e-pastu sūtīšanu. Mēģini vēlāk.":"Supabase temporarily limited email delivery. Please try again later.");
+      }else authNotice(authErrorText(error));
+    }else if(data.session){
+      user=data.user; await boot();
+    }else{
+      authNotice(lang==="ru"?"Аккаунт создан. Проверь почту и подтверди email, затем нажми «Войти».":lang==="lv"?"Konts izveidots. Pārbaudi e-pastu, apstiprini adresi un pēc tam pieslēdzies.":"Account created. Check your email, confirm your address, then sign in.",true);
+    }
+  }finally{
+    authBusy=false; $("signup").disabled=false; $("signin").disabled=false;
+  }
+}
+async function doSignin(){
+  if(authBusy)return;
+  const email=$("email").value.trim(), password=$("password").value;
+  if(!email || !password){authNotice(lang==="ru"?"Введи email и пароль.":lang==="lv"?"Ievadi e-pastu un paroli.":"Enter your email and password.");return}
+  authBusy=true; $("signup").disabled=true; $("signin").disabled=true;
+  try{
+    const {error}=await sb.auth.signInWithPassword({email,password});
+    if(error){
+      const text=error.message.toLowerCase();
+      if(text.includes("email not confirmed")) authNotice(lang==="ru"?"Email ещё не подтверждён. Открой письмо и перейди по ссылке подтверждения.":lang==="lv"?"E-pasts vēl nav apstiprināts. Atver apstiprinājuma saiti e-pastā.":"Email is not confirmed yet. Open the confirmation link in your email.");
+      else authNotice(authErrorText(error));
+    }else{
+      const {data}=await sb.auth.getSession(); user=data.session.user; await boot();
+    }
+  }finally{
+    authBusy=false; $("signup").disabled=false; $("signin").disabled=false;
+  }
+}
+$("signup").onclick=doSignup;
+$("signin").onclick=doSignin;
+$("forgotPassword").onclick=sendPasswordReset;
+$("updatePassword").onclick=updatePassword;
+$("password").addEventListener("keydown",e=>{if(e.key==="Enter")doSignin()});
+const CHAT_EMOJIS=["😊","😉","😍","🔥","❤️","😂","✨","😘","😎","🙌"];
+$("emojiToggle").onclick=()=>{const p=$("emojiPanel"); if(!p.innerHTML)p.innerHTML=CHAT_EMOJIS.map(e=>`<button type="button" data-emoji="${e}">${e}</button>`).join(""); p.classList.toggle("hide");};
+$("emojiPanel").addEventListener("click",e=>{const b=e.target.closest("[data-emoji]");if(!b)return;const input=$("messageInput");input.value+=b.dataset.emoji;input.focus();});
+$("photoInput").addEventListener("change",async e=>{
+  if(!ensureOnline()){e.target.value="";return}
+  const f=e.target.files?.[0]; if(!f||!currentMatch)return;
+  if(f.size>4*1024*1024){showToast(t("photoTooLarge"));e.target.value="";return}
+  if(!/^image\/(jpeg|png|webp|gif)$/i.test(f.type)){showToast(t("imageOnly"));e.target.value="";return}
+  if(currentMatch===DEMO_MATCH){
+    try{
+      const prepared=await prepareImageFile(f,650000,1100);
+      const r=new FileReader();
+      r.onload=async()=>{
+        try{demoMessages.push({sender:"me",type:"photo",body:r.result,created_at:new Date().toISOString()});saveDemoMessages();await loadMessages();
+          clearTimeout(demoReplyTimer); $("typingIndicator").classList.remove("hide");
+          demoReplyTimer=setTimeout(async()=>{$("typingIndicator").classList.add("hide");demoMessages.push({sender:"demo",body:"Красиво 😊",created_at:new Date().toISOString()});saveDemoMessages();await loadMessages()},1200);
+        }catch(err){showToast(userFacingError(err));}
+      };
+      r.readAsDataURL(prepared);
+    }catch(err){showToast(userFacingError(err));}
+    e.target.value=""; return;
+  }
+  if(!user){e.target.value="";return}
+  if(window.__sparkSendingPhoto){showToast(t("photoSending"));e.target.value="";return}
+  window.__sparkSendingPhoto=true;
+  const ext=({"image/jpeg":"jpg","image/png":"png","image/webp":"webp","image/gif":"gif"})[f.type.toLowerCase()]||"jpg";
+  const token=(crypto.randomUUID?crypto.randomUUID():`${Date.now()}-${Math.random().toString(36).slice(2)}`);
+  const path=`${currentMatch}/${user.id}/${token}.${ext}`;
+  try{
+    const {error:upError}=await sb.storage.from("chat-media").upload(path,f,{contentType:f.type,upsert:false,cacheControl:"3600"});
+    if(upError){msg("chatMsg",friendlyError(upError));return}
+    const {error:msgError}=await sb.from("messages").insert({match_id:currentMatch,sender_id:user.id,body:"📷 Фото",message_type:"photo",media_path:path});
+    if(msgError){await sb.storage.from("chat-media").remove([path]);msg("chatMsg",friendlyError(msgError));return}
+    clearChatDraft(currentMatch);
+    await markMatchRead(currentMatch); await loadMessages();
+  } finally {window.__sparkSendingPhoto=false;e.target.value="";}
+});
+$("saveProfile").onclick=saveProfile;$("submitVerify").onclick=submitVerify;$("sendMessage").onclick=sendMessage;$("chatBlock").onclick=blockChatUser;$("chatReport").onclick=reportChatUser;
+let sparkTypingTimer=null;
+$("messageInput").addEventListener("input",()=>{const input=$("messageInput");if(input.value.length>2000)input.value=input.value.slice(0,2000);
+  if(currentMatch) saveChatDraft(currentMatch,$("messageInput").value)
+  if(!channel||currentMatch===DEMO_MATCH)return;
+  clearTimeout(sparkTypingTimer);
+  channel.send({type:"broadcast",event:"typing",payload:{user_id:user.id,typing:true}});
+  sparkTypingTimer=setTimeout(()=>channel?.send({type:"broadcast",event:"typing",payload:{user_id:user.id,typing:false}}),1200);
+});
+$("messageInput").addEventListener("keydown",e=>{if(e.key==="Enter")sendMessage()});
+$("backMatches").onclick=()=>{if(channel)sb.removeChannel(channel);show("matches");loadMatches()};
+async function finishLogout(scope){
+  if(channel){try{await sb.removeChannel(channel)}catch(e){} channel=null}
+  currentMatch=null; currentChatUser=null; currentChatName="";
+  const {error}=await sb.auth.signOut({scope});
+  if(error){showToast(friendlyError(error));return}
+  user=null;profile=null;isModerator=false;show("auth");
+}
+$("logout").onclick=()=>finishLogout("local");
+$("logoutCurrent").onclick=()=>finishLogout("local");
+$("logoutAll").onclick=()=>{if(confirm(t("logoutAllConfirm"))) finishLogout("global")};
+$("changePassword").onclick=async()=>{
+  const current=$("currentPassword").value; const next=$("editNewPassword").value;
+  if(!current || !next || next.length<8){msg("passwordMsg",lang==="ru"?"Введи текущий пароль и новый пароль минимум из 8 символов.":lang==="lv"?"Ievadi pašreizējo paroli un jauno paroli vismaz ar 8 rakstzīmēm.":"Enter your current password and a new password of at least 8 characters.");return}
+  if(!user?.email){msg("passwordMsg",t("passwordError"));return}
+  const {error:reauthError}=await sb.auth.signInWithPassword({email:user.email,password:current});
+  if(reauthError){msg("passwordMsg",lang==="ru"?"Текущий пароль неверный.":lang==="lv"?"Pašreizējā parole nav pareiza.":"Current password is incorrect.");return}
+  const {error}=await sb.auth.updateUser({password:next});
+  if(error){msg("passwordMsg",authErrorText(error));return}
+  $("currentPassword").value="";$("editNewPassword").value="";msg("passwordMsg",t("passwordChanged"),true);
+};
+$("refreshMe").onclick=loadMe;
+$("notificationToggle").onclick=toggleNotifications;
+renderNotificationState();
+if($("openModerationFromVerify")) $("openModerationFromVerify").onclick=async()=>{await loadModeration();show("moderation")};
+async function navigate(screen, opts={}){
+  // IMPORTANT: switch screen synchronously first. Network/database must never block taps.
+  try { show(screen); } catch(e) { console.error("show screen failed", screen, e); return; }
+  try {
+    if(screen==="feed"){ loadFeed().catch(e=>console.error("feed load",e)); return; }
+    if(screen==="matches"){ loadMatches().catch(e=>console.error("matches load",e)); return; }
+    if(screen==="chat"){
+      const demoName=lang==="ru"?"Александра, 24":lang==="lv"?"Aleksandra, 24":"Alexandra, 24";
+      openChat(opts.match||DEMO_MATCH,opts.name||demoName).catch(e=>console.error("chat load",e)); return;
+    }
+    if(screen==="me"){ loadMe().catch(e=>console.error("profile load",e)); return; }
+    if(screen==="moderation"){ loadModeration().catch(e=>console.error("moderation load",e)); return; }
+  } catch(e){ console.error("Navigation error",e); }
+}
+
+// Mobile navigation: one delegated listener, installed immediately and independent of Supabase.
+(function installNavigationHandler(){
+  document.addEventListener("click", function(e){
+    const b=e.target && e.target.closest ? e.target.closest(".nav button[data-screen]") : null;
+    if(!b || b.disabled) return;
+    const target=b.getAttribute("data-screen");
+    if(!target) return;
+    e.preventDefault();
+    e.stopPropagation();
+    navigate(target);
+  }, false);
+})();
+window.sparkShow=show;
+window.sparkOpenDemoChat=()=>navigate("chat",{match:DEMO_MATCH,name:"Александра, 24"});
+window.sparkResetDemo=()=>{demoMessages=DEMO_DEFAULT_MESSAGES.map(x=>({...x}));saveDemoMessages();if(currentMatch===DEMO_MATCH)loadMessages();};
+initSparkNativeBridge();
+initNotificationNavigation();
+initMobileLifecycle();
+sb.auth.onAuthStateChange((event,s)=>{if(event==="PASSWORD_RECOVERY"){show("resetPassword");return;} if(event==="SIGNED_OUT"){user=null;profile=null;isModerator=false;currentMatch=null;currentChatName="";if(channel){sb.removeChannel(channel);channel=null;}show("auth");return;} if(s?.user&&!user){user=s.user;setTimeout(boot,0)}});
+setupInstallUI();
+window.addEventListener("online",()=>{renderNetwork(); if(user){setTimeout(()=>{loadMe().catch(()=>{}); if(currentMatch && currentMatch!==DEMO_MATCH)loadMessages().catch(()=>{});},500);}});
+window.addEventListener("offline",renderNetwork);
+renderNetwork();
+init();
+</script>
+
+<script>(function(){window.addEventListener("error",function(e){var el=document.getElementById("runtimeError");if(el){el.textContent="SPARK: "+(e.message||"ошибка загрузки");el.classList.remove("hide");}});window.addEventListener("unhandledrejection",function(e){var el=document.getElementById("runtimeError");if(el){el.textContent="SPARK: "+String(e.reason?.message||e.reason||"ошибка приложения");el.classList.remove("hide");}})})();</script></body>
+</html>
