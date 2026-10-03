@@ -6,8 +6,8 @@
 <meta name="theme-color" content="#09050d"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<meta name="spark-build" content="v74">
-<title>SPARK — Riga • Jūrmala · v74</title>
+<meta name="spark-build" content="v75">
+<title>SPARK — Riga • Jūrmala · v75</title>
 <style>
 :root{--bg:#09050d;--card:#15101c;--card2:#211526;--text:#fff7ff;--muted:#b9aabd;--pink:#ff3d91;--violet:#8b5cf6;--line:#302136;--ok:#40e0a0;--verified:#3897f0;--danger:#ff5f6d}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0%,#3a0e3e 0,#120818 38%,#07040a 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
@@ -647,6 +647,9 @@ async function signed(path){
   if(url)signedPhotoCache.set(path,{url,expires:Date.now()+50*60*1000});
   return url;
 }
+async function safeSigned(path){
+  try{return await signed(path)}catch(e){console.warn("profile photo unavailable",path,e);signedPhotoCache.delete(path);return ""}
+}
 async function loadFeed(){
   const minAge=Math.max(18,Math.min(99,parseInt($("minAge")?.value||18,10)||18));
   const maxAge=Math.max(minAge,Math.min(99,parseInt($("maxAge")?.value||99,10)||99));
@@ -685,14 +688,14 @@ async function renderCard(){
     feedPhotoUrls=(p.__photos||[]).map(demoPhotoUrl);
   }else{
     const {data:ph,error}=await sb.from("photos").select("id,storage_path,sort_order").eq("user_id",p.id).eq("type","profile").order("sort_order",{ascending:true}).order("created_at",{ascending:true});
-    if(error){console.error(error);feedPhotoUrls=[]} else {feedPhotoUrls=await Promise.all((ph||[]).map(x=>signed(x.storage_path)));}
+    if(error){console.error(error);feedPhotoUrls=[]} else {feedPhotoUrls=await Promise.all((ph||[]).map(x=>safeSigned(x.storage_path)));}
     feedPhotoUrls=feedPhotoUrls.filter(Boolean);
   }
   feedPhotoIndex=0;
   const photoHtml=feedPhotoUrls.length?`<img id="feedPhotoImg" src="${feedPhotoUrls[0]}" alt="" draggable="false">`:`<div style="font-size:70px">✦</div>`;
   const dots=feedPhotoUrls.length>1?`<div class="photo-dots">${feedPhotoUrls.map((_,i)=>`<span class="photo-dot ${i===0?"active":""}"></span>`).join("")}</div>`:"";
   const nav=feedPhotoUrls.length>1?`<div class="photo-nav"><button id="prevPhoto" type="button" aria-label="Previous photo">‹</button><button id="nextPhoto" type="button" aria-label="Next photo">›</button></div>`:"";
-  $('feedCard').innerHTML=`<div class="photo photo-swipe swipe-card" id="feedPhoto"><div class="swipe-badge pass">✕ ${escapeHtml(t("swipePass"))}</div><div class="swipe-badge like">♥ ${escapeHtml(t("swipeLike"))}</div>${photoHtml}${dots}${nav}<div class="photo-overlay">${p.__demo?`<div class="demo-badge">DEMO · AI</div>`:""}<h2>${escapeHtml(p.display_name)} <span class="verified-badge" title="${escapeAttr(t("profileVerified"))}" aria-label="${escapeAttr(t("profileVerified"))}"></span>, ${age(p.date_of_birth)}</h2><div class="meta">${p.city==="jurmala"?"Jūrmala":"Riga"}${p.bio?` · ${escapeHtml(p.bio)}`:""}</div><div class="tags">${(p.interests||[]).slice(0,5).map(x=>`<span class="tag">${escapeHtml(x)}</span>`).join("")}</div></div></div><div class="actions"><button id="pass" class="circle" type="button" title="${escapeAttr(t("swipePass"))}" aria-label="${escapeAttr(t("swipePass"))}">×</button><button id="like" class="circle like" type="button" title="${escapeAttr(t("swipeLike"))}" aria-label="${escapeAttr(t("swipeLike"))}">♥</button></div><div class="safety-actions"><button id="blockUser" class="btn alt small" type="button">🚫 ${escapeHtml(t("blockUser"))}</button><button id="reportUser" class="btn alt small" type="button">⚑ ${escapeHtml(t("reportUser"))}</button></div>`;
+  $('feedCard').innerHTML=`<div class="photo photo-swipe swipe-card" id="feedPhoto"><div class="swipe-badge pass">✕ ${escapeHtml(t("swipePass"))}</div><div class="swipe-badge like">♥ ${escapeHtml(t("swipeLike"))}</div>${photoHtml}${dots}${nav}<div class="photo-overlay">${p.__demo?`<div class="demo-badge">DEMO</div>`:""}<h2>${escapeHtml(p.display_name)} <span class="verified-badge" title="${escapeAttr(t("profileVerified"))}" aria-label="${escapeAttr(t("profileVerified"))}"></span>, ${age(p.date_of_birth)}</h2><div class="meta">${p.city==="jurmala"?"Jūrmala":"Riga"}${p.bio?` · ${escapeHtml(p.bio)}`:""}</div><div class="tags">${(p.interests||[]).slice(0,5).map(x=>`<span class="tag">${escapeHtml(x)}</span>`).join("")}</div></div></div><div class="actions"><button id="pass" class="circle" type="button" title="${escapeAttr(t("swipePass"))}" aria-label="${escapeAttr(t("swipePass"))}">×</button><button id="like" class="circle like" type="button" title="${escapeAttr(t("swipeLike"))}" aria-label="${escapeAttr(t("swipeLike"))}">♥</button></div><div class="safety-actions"><button id="blockUser" class="btn alt small" type="button">🚫 ${escapeHtml(t("blockUser"))}</button><button id="reportUser" class="btn alt small" type="button">⚑ ${escapeHtml(t("reportUser"))}</button></div>`;
   const feedImg=$("feedPhotoImg");
   if(feedImg && queue[idx]?.__demo){feedImg.addEventListener("error",()=>{feedImg.onerror=null;feedImg.src=demoFallbackUrl(queue[idx]?.display_name);},{once:true});}
   $('pass').onclick=()=>animateCardAction('pass',p); $('like').onclick=()=>animateCardAction('like',p);
@@ -803,7 +806,9 @@ function openReport(p){
 }
 function closeReport(){reportTarget=null;$("reportModal").classList.add("hide");}
 async function submitReport(){
-  if(!reportTarget || !ensureOnline())return;
+  if(!reportTarget)return;
+  if(reportTarget.__demo){closeReport();showToast(t("demoNoReport"));return;}
+  if(!ensureOnline())return;
   const active=$("reportReasons").querySelector("button.active");
   if(!active){$("reportMsg").textContent=t("reportTitle");return}
   const reason=(t("reportReasons")||[])[Number(active.dataset.reasonIndex)]||"other";
@@ -814,8 +819,10 @@ async function submitReport(){
   closeReport(); showToast(t("sent"));
 }
 async function blockUser(p){
+  if(!p)return;
+  if(p.__demo){showToast(t("demoNoChanges"));return;}
   if(!ensureOnline())return;
-  if(!p||!confirm(t("blockConfirm")))return;
+  if(!confirm(t("blockConfirm")))return;
   const {error}=await sb.from("blocks").upsert({blocker_id:user.id,blocked_id:p.id},{onConflict:"blocker_id,blocked_id"});
   if(error){showToast(friendlyError(error));return}
   idx++; await renderCard();
@@ -857,8 +864,7 @@ async function loadPhotoModeration(){
     const p=pm.get(ph.user_id);
     let url="";
     try{
-      const r=await sb.rpc("get_photo_moderation_url",{p_photo_id:ph.id,p_expires_in:300});
-      if(!r.error) url=r.data||"";
+      url=await safeSigned(ph.storage_path);
     }catch(e){ console.error("photo moderation url",e); }
     cards.push(`<div class="card mod-card" data-photo-card="${escapeAttr(ph.id)}">
       ${url?`<img class="mod-photo" src="${escapeAttr(url)}" alt="">`:`<div class="mod-photo"></div>`}
@@ -916,7 +922,7 @@ async function loadModeration(){
   for(const v of rows){
     const p=pm.get(v.user_id); if(!p) continue;
     const ph=phm.get(v.user_id);
-    const url=ph?await signed(ph.storage_path):"";
+    const url=ph?await safeSigned(ph.storage_path):"";
     cards.push(`<div class="card mod-card">
       ${url?`<img class="mod-photo" src="${url}" alt="">`:`<div class="mod-photo"></div>`}
       <div><h2 style="margin:0 0 4px">${escapeHtml(p.display_name)}, ${age(p.date_of_birth)}</h2>
@@ -1003,7 +1009,7 @@ async function loadMatches(){
   for(const m of visibleMatches){
     const pid=m.user_a===user.id?m.user_b:m.user_a, p=profileMap.get(pid);
     if(!p) continue;
-    const ph=photoMap.get(pid), avatar=ph?await signed(ph.storage_path):"";
+    const ph=photoMap.get(pid), avatar=ph?await safeSigned(ph.storage_path):"";
     const last=latest.get(m.id), count=unread.get(m.id)||0;
     const preview=last?(last.sender_id===user.id?`${lang==="ru"?"Вы":lang==="lv"?"Jūs":"You"}: `:"")+last.body:t("noMessage");
     rows.push(`<button type="button" class="chat" data-mid="${m.id}" data-name="${escapeAttr(p.display_name)}">
@@ -1216,7 +1222,7 @@ async function loadMyPhotos(){
   const {data:rows,error}=await sb.from("photos").select("id,storage_path,sort_order,is_primary,created_at").eq("user_id",user.id).eq("type","profile").order("sort_order",{ascending:true}).order("created_at",{ascending:true});
   if(error){console.error(error);return []}
   const photos=rows||[];
-  const urls=await Promise.all(photos.map(x=>signed(x.storage_path)));
+  const urls=await Promise.all(photos.map(x=>safeSigned(x.storage_path)));
   const items=photos.map((x,i)=>({...x,url:urls[i]}));
   if(items.length){
     const primary=items.find(x=>x.is_primary)||items[0];
