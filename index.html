@@ -626,13 +626,15 @@ async function loadFeed(){
   const {data,error}=await q.limit(60);
   if(error){console.error(error);$("feedCard").innerHTML=`<div style="padding:28px;text-align:center"><div style="font-size:40px">⌁</div><h2>${escapeHtml(friendlyError(error))}</h2><button class="btn retry-btn" type="button" onclick="loadFeed()">${escapeHtml(networkText("retry"))}</button></div>`;return}
   const ids=(data||[]).map(x=>x.id);
-  if(!ids.length){queue=[];idx=0;await renderCard();return}
-  const [{data:liked,error:likedError},{data:passed,error:passedError}]=await Promise.all([
-    sb.from("likes").select("to_user_id").eq("from_user_id",user.id).in("to_user_id",ids),
-    sb.from("passes").select("to_user_id").eq("from_user_id",user.id).in("to_user_id",ids)
-  ]);
-  if(likedError||passedError){const err=likedError||passedError;console.error("feed history",err);$("feedCard").innerHTML=`<div style="padding:28px;text-align:center"><h2>${escapeHtml(friendlyError(err))}</h2><button class="btn retry-btn" type="button" onclick="loadFeed()">${escapeHtml(networkText("retry"))}</button></div>`;return}
-  const skip=new Set([...(liked||[]).map(x=>x.to_user_id),...(passed||[]).map(x=>x.to_user_id)]);
+  let skip=new Set();
+  if(ids.length){
+    const [{data:liked,error:likedError},{data:passed,error:passedError}]=await Promise.all([
+      sb.from("likes").select("to_user_id").eq("from_user_id",user.id).in("to_user_id",ids),
+      sb.from("passes").select("to_user_id").eq("from_user_id",user.id).in("to_user_id",ids)
+    ]);
+    if(likedError||passedError){const err=likedError||passedError;console.error("feed history",err);$("feedCard").innerHTML=`<div style="padding:28px;text-align:center"><h2>${escapeHtml(friendlyError(err))}</h2><button class="btn retry-btn" type="button" onclick="loadFeed()">${escapeHtml(networkText("retry"))}</button></div>`;return}
+    skip=new Set([...(liked||[]).map(x=>x.to_user_id),...(passed||[]).map(x=>x.to_user_id)]);
+  }
   queue=(data||[]).filter(x=>!skip.has(x.id));
   const demos=DEMO_PROFILES.filter(x=>{
     const a=age(x.date_of_birth);
